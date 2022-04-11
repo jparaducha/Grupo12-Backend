@@ -1,4 +1,4 @@
-# Grupo12-Backend
+# DOCS
 
 <div>
 <div><h4>POST '/auth/register' =  Recibe por body { "password" , "name" , "email" }</h4></div>
