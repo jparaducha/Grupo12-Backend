@@ -1,6 +1,7 @@
 # DOCS
 
 <div>
+    <div><h4>## Registro ##</h4></div>
 <div><h4>POST '/auth/register' =  Recibe por body { "password" , "name" , "email" }</h4></div>
 <div>Si alguno de los valores está vacío devuelve un json "Missing credentials"</div>
 <div>Si el email no es un correo válido devuelve un json "Invalid Email"</div>
