@@ -26,7 +26,7 @@ const transporter = nodemailer.createTransport({
 
 
 
-router.post("/register", async (req,res)=>{
+router.post("/register", validInfo ,async (req,res)=>{
     try {
         //1. destructure req.body;
 
@@ -128,8 +128,6 @@ router.post("/forgot", async (req,res)=>{
       let newQuery = await Reset.create({
           token , email, "expiry" : new Date(Date.now() + 15000)
       })
-  
-    //   let newQuery = await pool.query("INSERT INTO resets(token, email) VALUES ($1, $2)",[token, email]);
   
       let emailText = `Este es el código para cambiar su contraseña ${token}`;
       const options = {
