@@ -11,5 +11,7 @@ app.use(cors());
 
 app.use("/auth", require("./routes/auth"));
 
+app.use("/dashboard", require("./routes/dashboard"));
+
 
 app.listen( APIPORT , ()=> console.log(`Server running on port ${APIPORT}`));
