@@ -7,20 +7,14 @@ require("dotenv").config();
 const { 
     DB_HOST,
     DB_PORT,
-    DB_USERNAME,
+    DB_USER,
     DB_PASSWORD,
     DB_DATABASE
 } = process.env
 
-// const sequelize = new Sequelize(DB_DATABASE, DB_USERNAME, DB_PASSWORD, {
-//     host : DB_HOST,
-//     port : DB_PORT,
-//     dialect : "postgres"
-// })
-
-const sequelize = new Sequelize("ecommerce", "admin", "admin", {
-    host : "localhost",
-    port : 5432,
+const sequelize = new Sequelize(DB_DATABASE, DB_USER, DB_PASSWORD, {
+    host : DB_HOST,
+    port : DB_PORT,
     dialect : "postgres",
     logging : false
 })
