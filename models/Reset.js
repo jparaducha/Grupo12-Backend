@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) =>{
-     sequelize.define("reset", {
+    sequelize.define("reset", {
     token : {
         type : DataTypes.STRING,
         allowNull : false
