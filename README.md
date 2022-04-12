@@ -1,7 +1,8 @@
 # DOCS
 
-<div>
-    <div><h3>## Registro ##</h3></div>
+<div>```diff
+    !<div><h3>## Registro ##</h3></div>
+    ```
 <div><h4>POST '/auth/register' =  Recibe por body { "password" , "name" , "email" }</h4></div>
 <div>Si alguno de los valores está vacío devuelve un json "Missing credentials"</div>
 <div>Si el email no es un correo válido devuelve un json "Invalid Email"</div>
@@ -21,7 +22,7 @@
 <div>Devuelve true si es correcto o "You are not authorized" si es incorrecto;</div>
     </div>
   <div>
-    <div><h3 style={{color:"blue"}}>## Cambio de contraseña ##</h3></div>
+    <div><h3>## Cambio de contraseña ##</h3></div>
   <div> <h4>POST '/auth/forgot' = Recibe por body { "email" }</h4></div>
 <div>Verifica que el email esté registrado, de lo contrario devuelve "Email no registrado"</div>
 <div>Envía un correo con un código de 6 caracteres</div>
