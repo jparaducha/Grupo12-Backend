@@ -17,8 +17,15 @@
   <div>
     <div><h3>## Autorización ##</h3></div>
 <div><h4>GET '/auth/is-verify' = Recibe por body { "headers" : { "token" } }</h4></div>
+    <div><h4>Recibe por headers { "token" }  </h4></div>
 <div>Verifica que el jwt sea correcto</div>
 <div>Devuelve true si es correcto o "You are not authorized" si es incorrecto;</div>
+    
+ 
+<div><h4>POST '/dashboard' = Recibe por body { "headers" : { "token" } }</h4></div>
+    <div><h4>Recibe por headers { "token" }  </h4></div>
+<div>Verifica que el jwt sea correcto</div>
+<div>Devuelve un JSON con la información del usuario si es correcto o "You are not authorized" si es incorrecto;</div>
     </div>
   <div>
     <div><h3>## Cambio de contraseña ##</h3></div>
@@ -33,3 +40,9 @@
 <div>Si se encuentra el token pero ya expiró, lo elimina de la db y devuelve "Token expirado"</div>
 <div>Cambia la contraseña del email asociado al token</div>
 </div>
+
+<div> <h3> ## MISC ## </h3></div>
+<div><h4>GET '/dashboard' </h4></div>
+<div>Devuelve un arreglo con todos los usuarios</div>
+
+
