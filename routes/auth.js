@@ -32,7 +32,7 @@ router.post("/register", validInfo ,async (req,res)=>{
 
         const {  name, email, password } = req.body;
         
-        const user = await User.findOne({ where : { "user_email" : email}}); // busca en la db usuarios con el mismo email;
+        const user = await User.findOne({ where : { "email" : email}}); // busca en la db usuarios con el mismo email;
         
         if(user){ // si el email está en uso devuelve un error;
             return res.status(401).send("Email already in use");
@@ -44,9 +44,9 @@ router.post("/register", validInfo ,async (req,res)=>{
         //.4 enter new user in db;
 
         const newUser = await User.create({
-            "user_name"  : name,
-            "user_password" : hashedPassword,
-            "user_email" : email
+            "name"  : name,
+            "password" : hashedPassword,
+            "email" : email
         })
 
 
@@ -67,14 +67,14 @@ router.post("/login", validInfo, async (req,res)=>{
         const { email, password} = req.body;
 
         //.2 check if user doesn't exist;
-        const user = await User.findOne({ where : { "user_email" : email } });
+        const user = await User.findOne({ where : { "email" : email } });
 
         if(!user){
             res.status(401).send("Email is incorrect");
         }
         //.3 check if incoming password is the same as in the db;
 
-        let passwordIsValid = await bcrypt.compare(password, user.dataValues.user_password); //bcrypt.compare() compara la contraseña que le pasa el usuario y la que se encuentra en la db "user_password";
+        let passwordIsValid = await bcrypt.compare(password, user.dataValues.password); //bcrypt.compare() compara la contraseña que le pasa el usuario y la que se encuentra en la db "password";
 
         if(!passwordIsValid){
             res.status(401).send("Password is incorrect"); // si la contraseña no es la misma se devuelve un error;
@@ -82,7 +82,7 @@ router.post("/login", validInfo, async (req,res)=>{
 
         //.4 give them the jwt;
 
-        const token = jwtGenerator(user.dataValues.user_id, user.dataValues.user_email); // se genera un token JWT ligado al user_id y se devuelve al usuario;
+        const token = jwtGenerator(user.dataValues.user_id, user.dataValues.email); // se genera un token JWT ligado al user_id y se devuelve al usuario;
         res.json(token);
         
     } catch (error) {
@@ -105,7 +105,7 @@ router.post("/forgot", async (req,res)=>{
     try {
       const { email } = req.body;
   
-      let query = await User.findOne({ where : { "user_email" : email } })
+      let query = await User.findOne({ where : { "email" : email } })
       .then((res)=>{
           if(!res.dataValues){
               res.json("Email no registrado");
@@ -181,10 +181,10 @@ router.post("/forgot", async (req,res)=>{
     let hashedPassword = await bcrypt.hash(password, salt); // bcrypt hashea la contraseña;
 
 
-    let response = await User.findOne({ where : { "user_email" : query.dataValues.email }});
+    let response = await User.findOne({ where : { "email" : query.dataValues.email }});
 
     query.destroy();
-    response.user_password = hashedPassword;
+    response.password = hashedPassword;
 
     response.save();
 

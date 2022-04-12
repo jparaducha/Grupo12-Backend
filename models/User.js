@@ -7,18 +7,40 @@ sequelize.define('user', {
             defaultValue : DataTypes.UUIDV4,
             primaryKey : true,
         },
-        user_name : {
+        name : {
             type : DataTypes.STRING,
             allowNull : false
         },
-        user_password : {
+        password : {
             type : DataTypes.STRING,
             allowNull : false
         },
-        user_email : {
+        email : {
             type : DataTypes.STRING,
             allowNull : false,
             // unique : true
+        },
+        adress : {
+            type : DataTypes.STRING,
+            allowNull : false,
+        },
+        rating_as_buyer : {
+            type : DataTypes.FLOAT,
+        },
+        rating_as_seller : {
+            type : DataTypes.FLOAT,
+        },
+        active : {
+            type : DataTypes.BOOLEAN,
+            defaultValue : true,
+        },
+        admin : {
+            type : DataTypes.BOOLEAN,
+            defaultValue : false,
+        },
+        newsletter : {
+            type : DataTypes.BOOLEAN,
+            defaultValue : false,
         }
     }, { timestamps : false });
 }
