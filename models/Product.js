@@ -21,15 +21,17 @@ sequelize.define('product', {
             allowNull : false,
         },
         stock : {
-            type : DataTypes.NUMBER,
+            type : DataTypes.INTEGER,
             allowNull : false,
+            defaultValue : 1
         },
         rating : {
             type : DataTypes.FLOAT,
         },
-        amount_selled : {
-            type : DataTypes.NUMBER,
+        amount_sold : {
+            type : DataTypes.INTEGER,
             allowNull : false,
+            defaultValue : 0
         }
     });
 }
