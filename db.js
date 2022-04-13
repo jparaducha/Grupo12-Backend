@@ -41,9 +41,10 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 
-const { User, Reset } = sequelize.models;
+const { User, Reset, Product, Shopping_cart } = sequelize.models;
 
-
+User.hasMany(Shopping_cart);
+Shopping_cart.belongsTo(User);
 
 
 sequelize.sync( {alter: true} ).then((data)=>{
@@ -53,4 +54,4 @@ sequelize.sync( {alter: true} ).then((data)=>{
     console.log(err);
 })
 
-module.exports = {sequelize, User, Reset};
+module.exports = {sequelize, User, Reset, Product, Shopping_cart};
