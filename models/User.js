@@ -20,9 +20,9 @@ sequelize.define('user', {
             allowNull : false,
             // unique : true
         },
-        adress : {
+        address : {
             type : DataTypes.STRING,
-            allowNull : false,
+            // allowNull : false,
         },
         rating_as_buyer : {
             type : DataTypes.FLOAT,
