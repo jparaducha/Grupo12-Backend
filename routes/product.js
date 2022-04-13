@@ -1,11 +1,17 @@
 const router = require("express").Router();
 const { Op } = require("sequelize");
-const { Product, Shopping_cart } = require("../db");
+const { Product, Shopping_cart , User } = require("../db");
 
 router.get("/", async (req,res)=>{
     try {
         
-    const products = await Product.findAll();
+    const products = await Product.findAll({ 
+        include : {
+        model:  User,
+        attributes : ["name", "email", "address", "rating_as_buyer", "rating_as_seller"],
+        // through: {attributes: []}
+    }
+    });
 
     res.json(products);
     } catch (error) {
@@ -28,9 +34,19 @@ router.get("/search", async (req,res)=>{
 router.post("/", async (req,res)=>{
 
     try {
-        const { name, description, stock, rating } = req.body;
+        const { userId ,  name, description, stock, rating } = req.body;
+        const regexExp = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
 
-        if(![name, description].every(Boolean)) return res.json("Faltan datos");
+        
+        if(!regexExp.test(userId)) return res.json("Id de usuario no válida");
+
+        if(![name, description, userId].every(Boolean)) return res.json("Faltan datos");
+
+        const user = await User.findOne({ where: { "user_id" : userId } }).then((data)=>{
+            return data;
+        }).catch((e)=> console.log(e));
+
+        if(!user) return res.json("Usuario no encontrado");
 
         const response = await Product.create({
             "product_name" : name,
@@ -42,6 +58,7 @@ router.post("/", async (req,res)=>{
         })
         .catch((e)=> console.log(e));
 
+        user.addProduct(response);
 
         res.json(response);
     } catch (error) {

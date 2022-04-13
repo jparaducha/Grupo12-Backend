@@ -15,5 +15,7 @@ app.use("/dashboard", require("./routes/dashboard"));
 
 app.use("/products", require("./routes/product"));
 
+app.use("/cart", require("./routes/shoppingCart"));
+
 
 app.listen( APIPORT , ()=> console.log(`Server running on port ${APIPORT}`));

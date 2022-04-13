@@ -1,7 +1,7 @@
 const {DataTypes} = require('sequelize');
 
 module.exports = (sequelize) => {
-    sequelize.define('shopping_cart',{
+    sequelize.define('shoppingcart',{
         id: {
             type : DataTypes.UUID,
             defaultValue : DataTypes.UUIDV4,
@@ -12,6 +12,9 @@ module.exports = (sequelize) => {
         },
         unit_price : {
             type : DataTypes.FLOAT,
+        },
+        product : {
+            type : DataTypes.JSON,
         }
-    })
+    }, { timestamps : false })
 }

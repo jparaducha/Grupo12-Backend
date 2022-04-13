@@ -32,6 +32,9 @@ sequelize.define('product', {
             type : DataTypes.INTEGER,
             allowNull : false,
             defaultValue : 0
+        },
+        images : {
+            type : DataTypes.ARRAY(DataTypes.STRING),
         }
-    });
+    }, { timestamps : false });
 }
