@@ -57,6 +57,7 @@
 <div><h4><img height="10px" width="25px" src="https://www.ulsterceramicspotterysupplies.co.uk/wp-content/uploads/2017/10/4118.png"/> POST '/products' =  Recibe por body { "userId" , "name" , "description" , "stock" , "rating" }</h4></div>
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si name, description o userId tienen valores nulos devuelve un json "Faltan datos"</div>
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se encuentra un usuario con el userId devuelve un json "Usuario no encontrado"</div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si la userId no es del tipo "uuid" devuelve un json "Id de usuario no válida"</div>
 <div>Si no se pasa stock se agrega un valor por default (1)</div>
 <div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Guarda la información en la DB y devuelve un json con los datos del producto</div>
     
