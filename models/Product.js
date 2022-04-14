@@ -7,7 +7,7 @@ sequelize.define('product', {
             defaultValue : DataTypes.UUIDV4,
             primaryKey : true,
         },
-        product_name : {
+        name : {
             type : DataTypes.STRING,
             allowNull : false
         },
@@ -22,8 +22,6 @@ sequelize.define('product', {
         },
         stock : {
             type : DataTypes.INTEGER,
-            allowNull : false,
-            defaultValue : 1
         },
         rating : {
             type : DataTypes.FLOAT,
