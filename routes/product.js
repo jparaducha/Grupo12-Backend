@@ -32,34 +32,28 @@ router.get("/search", async (req,res)=>{
 })
 
 router.post("/", async (req,res)=>{
-
     try {
-        const { userId ,  name, description, stock, rating } = req.body;
-        const regexExp = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
-
+        const {  name, description } = req.body;
+        //const regexExp = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
+        console.log('posting')
         
-        if(!regexExp.test(userId)) return res.json("Id de usuario no válida");
+        //if(!regexExp.test(userId)) return res.json("Id de usuario no válida");
 
-        if(![name, description, userId].every(Boolean)) return res.json("Faltan datos");
+        if(![name, description,].every(Boolean)) return res.json("Faltan datos");
 
-        const user = await User.findOne({ where: { "user_id" : userId } }).then((data)=>{
+/*         const user = await User.findOne({ where: { "user_id" : userId } }).then((data)=>{
             return data;
         }).catch((e)=> console.log(e));
 
-        if(!user) return res.json("Usuario no encontrado");
+        if(!user) return res.json("Usuario no encontrado"); */
 
         const response = await Product.create({
-            "product_name" : name,
+            name,
             description,
-            stock,
-            rating
         }).then((response) => {
             return response;
         })
         .catch((e)=> console.log(e));
-
-        user.addProduct(response);
-
         res.json(response);
     } catch (error) {
         console.log(error.message);
