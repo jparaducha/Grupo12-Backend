@@ -1,19 +1,31 @@
 const router = require("express").Router();
 const { Op } = require("sequelize");
-const { Product, Shopping_cart , User } = require("../db");
+const { Product, Shopping_cart , User, stock } = require("../db");
 
 router.get("/", async (req,res)=>{
-    try {
-        
-    const products = await Product.findAll({ 
-        include : {
-        model:  User,
-        attributes : ["name", "email", "address", "rating_as_buyer", "rating_as_seller"],
-        // through: {attributes: []}
-    }
-    });
 
-    res.json(products);
+    const {product_id} = req.body;
+    let products
+    try {
+
+        if (product_id) {
+
+            products = await Product.findOne({
+                where: {
+                    product_id: product_id
+                },
+                include : { 
+                    model: User,
+                    attributes: ['user_id']
+                }
+            })
+
+        } else {
+
+            products = await Product.findAll();
+
+        }
+        return res.json(products);
     } catch (error) {
         console.log(error.message);
     }
@@ -23,7 +35,7 @@ router.get("/search", async (req,res)=>{
     try {
         const { search } = req.body
 
-        const products = await Product.findAll({ where: { "product_name" : {[Op.iLike]: `%${search}%`} }})
+        const products = await Product.findAll({ where: { "name" : {[Op.iLike]: `%${search}%`} }})
 
         res.json(products);
     } catch (error) {
@@ -34,18 +46,8 @@ router.get("/search", async (req,res)=>{
 router.post("/", async (req,res)=>{
     try {
         const {  name, description } = req.body;
-        //const regexExp = /^[0-9a-fA-F]{8}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{4}\b-[0-9a-fA-F]{12}$/gi;
-        console.log('posting')
-        
-        //if(!regexExp.test(userId)) return res.json("Id de usuario no válida");
 
         if(![name, description,].every(Boolean)) return res.json("Faltan datos");
-
-/*         const user = await User.findOne({ where: { "user_id" : userId } }).then((data)=>{
-            return data;
-        }).catch((e)=> console.log(e));
-
-        if(!user) return res.json("Usuario no encontrado"); */
 
         const response = await Product.create({
             name,
