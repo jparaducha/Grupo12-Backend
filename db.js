@@ -41,7 +41,7 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 
-const { User, Reset, Product, Shopping_cart , Stock} = sequelize.models;
+const { User, Reset, Product, Shopping_cart , Stock, Category} = sequelize.models;
 
 User.hasMany(Shopping_cart);
 Shopping_cart.belongsTo(User);
@@ -49,6 +49,8 @@ User.belongsToMany(Product , { through: Stock });
 Product.belongsToMany(User , { through: Stock });
 User.hasMany(Stock);
 
+Category.hasMany(Category, { as: 'children', foreignKey:'parent_id'})
+Category.hasMany(Product,  {foreignKey : 'category_id'})
 
 sequelize.sync( {alter: true} ).then((data)=>{
     console.log("DB synced");
@@ -57,4 +59,4 @@ sequelize.sync( {alter: true} ).then((data)=>{
     console.log(err);
 })
 
-module.exports = {sequelize, User, Reset, Product, Shopping_cart, Stock};
+module.exports = {sequelize, User, Reset, Product, Shopping_cart, Stock, Category};
