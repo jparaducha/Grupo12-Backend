@@ -19,5 +19,7 @@ app.use("/cart", require("./routes/shoppingCart"));
 
 app.use("/stock", require('./routes/stock'));
 
+app.use("/category", require('./routes/category'));
+
 
 app.listen( APIPORT , ()=> console.log(`Server running on port ${APIPORT}`));
