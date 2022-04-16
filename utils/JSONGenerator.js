@@ -1,8 +1,6 @@
 const fs = require('fs');
 const axios = require('axios');
 
-let objectToSave={}
-
 const get_data_API = async () =>{
     const url = await axios.get(`https://fakestoreapi.com/products`); 
     const info_api= await url.data.map(e=>{
@@ -18,7 +16,7 @@ const get_data_API = async () =>{
     })
     // console.log(info_api)
     // return info_api;
-    fs.writeFile('Products', JSON.stringify(info_api),'utf8',
+    fs.writeFile('products.json', JSON.stringify(info_api),'utf8',
     (err)=>{
         if(err) throw err;
         console.log('The file has been saved successfully')
@@ -26,6 +24,6 @@ const get_data_API = async () =>{
 };
 
 const info=get_data_API();
-console.log(info.length);
+
 
 
