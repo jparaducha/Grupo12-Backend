@@ -47,6 +47,7 @@ User.hasMany(Shopping_cart);
 Shopping_cart.belongsTo(User);
 User.belongsToMany(Product , { through: Stock });
 Product.belongsToMany(User , { through: Stock });
+User.hasMany(Stock);
 
 
 sequelize.sync( {alter: true} ).then((data)=>{

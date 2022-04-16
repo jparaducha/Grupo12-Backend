@@ -1,32 +1,17 @@
 const router = require("express").Router();
-const { Shoppingcart , User, Product, sequelize} = require("../db");
+const { Shopping_cart , User, Product, Stock, sequelize} = require("../db");
 
 router.get("/", async (req,res)=>{
     try {
         
     const { userId } = req.body;
 
-    const cart = await User.findOne({ where : { "user_id" : userId },
-    include : {
-        model : Shoppingcart,
-        attributes: ["product"]
-    },
-    // attributes : ["name"]
-}).then((data)=>{
+const cart = await Shopping_cart.findAll({ where : { "userUserId" : userId }}).then((data)=>{
     return data;
 }).catch((e)=> console.log(e));
 
-    // const cart2 = await Shoppingcart.findOne({ where: { "userUserId": userId } })
-    // .then((data)=>{
-    //     return data;
-    // }).catch((e)=>{
-    //     console.log(e);
-    // })
 
-
-    // console.log("DEBERIA DEVOLVER???",cart.dataValues);
-
-    res.json(cart.shoppingcarts.map((i)=> i.product));
+    res.json(cart);
     } catch (error) {
         console.log(error.message);
     }
@@ -41,73 +26,72 @@ router.post("/", async (req,res)=> {
 
     if(!productId) return res.json("Falta el product id");
 
-    const product  = await Product.findOne({ where : { "product_id" : productId } }).then((data)=>{
+    const product  = await Product.findOne({
+         where : {
+              "product_id" : productId
+             },
+        include : {
+            model : User,
+            attributes : ["name", "user_id"]
+        }
+        }).then((data)=>{
         return data;
     }).catch((e)=>{
         console.log(e);
     })
 
+
+    const price = await Stock.findOne({
+        where : {
+            "productProductId" : productId,
+            // "userUserId" :
+        },
+        attributes : ["unit_price"]
+    })
+
+
     const userC = await User.findOne({ where : { "user_id" : userId },
     include : {
-        model : Shoppingcart,
-        // attributes: ["products"]
+        model : Shopping_cart,
     }
     }).then((data)=>{
     return data;
     }).catch((e)=> console.log(e));
 
 
-    // if(!userC) console.log("No existe el usuario");
+    const cartU = await Shopping_cart.findOne({
+        where : {
+            "userUserId" : userId
+        }
+    }).then((data)=>{
+        return data;
+    }).catch((e)=>{
+        console.log(e);
+    })
 
-    // console.log("user", userC.dataValues.shoppingcart.products);
 
-    // if(!userC.dataValues.shoppingcart.products.length) {
-    //     console.log("no tiene productos en el carrito!!");
+    if(cartU && cartU.product.product_id === productId){
 
-    //     let nuevoCart = await Shoppingcart.create({
-    //         products : [product.dataValues]
-    //     }).then((data)=>{
-    //         // console.log("Carritoo!!.products", data.dataValues.products);
-    //         return data;
-    //     }).catch((e)=>{
-    //         console.log(e);
-    //     })
-    //     userC.addShoppingcarts(nuevoCart);
+        cartU.quantity++;
 
-    //     // console.log("69",userC.dataValues.shoppingcart.products);
-    //     return res.json("Carrito creado");
-    // }else{
-        // console.log("YA TIENE PRODUCTOS !!!!")
+        await cartU.save();
+        return res.json("Updated quantity");
+    }
 
-        const cart = await Shoppingcart.create(
-            { "product":  product.dataValues})
+
+
+        const cart = await Shopping_cart.create(
+            { "product":  product.dataValues,
+            "unit_price" : price.dataValues.unit_price,
+        quantity : 1})
         .then((data)=>{
-            // console.log("data", data.dataValues.products);
             return data;
         })
         .catch((e)=>{
             console.log(e);
         });
         
-        userC.addShoppingcart(cart);
-        // console.log("cart.dataValues.products", cart.dataValues.products);
-        // await cart.products.push(product.dataValues);
-        console.log("product pusheado: ", product.dataValues);
-
-        // await cart.save().then((data)=>{
-        //     return data;
-        // }).catch((e)=>{
-        //     console.log(e);
-        // })
-        // console.log("AGREGADO OTRO !!!");
-
-        // console.log("car 88", newcart.dataValues);
-    // }
-
-
-    // const cart = await Shopping_cart.create({
-    //     product=
-    // })
+        userC.addShopping_cart(cart);
 
     res.json(200);
     } catch (error) {
