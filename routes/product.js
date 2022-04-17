@@ -6,7 +6,7 @@ router.get("/", async (req,res)=>{
 
     try {
 
-        const { product_id } = req.body;
+        const { product_id, order } = req.body;
         if (product_id) {
 
             const products = await Product.findOne({
@@ -23,7 +23,70 @@ router.get("/", async (req,res)=>{
 
 
         const products = await Product.findAll();
-        console.log("devuelve ?? ", products);
+
+        if(order === "nameASC"){
+            return res.json(products.sort((a,b)=>{
+                if(a.name < b.name) return -1;
+                if(b.name < a.name) return 1;
+                return 0;
+            }))
+        }
+
+        if(order === "nameDESC"){
+            return res.json(products.sort((a,b)=>{
+                if(a.name > b.name) return -1;
+                if(b.name > a.name) return 1;
+                return 0;
+            }))
+        }
+
+        if(order === "priceASC"){
+            return res.json(products.sort((a,b)=>{
+                if(a.price < b.price) return -1;
+                if(b.price < a.price) return 1;
+                return 0;
+            }))
+        }
+
+        if(order === "priceDESC"){
+            return res.json(products.sort((a,b)=>{
+                if(a.price > b.price) return -1;
+                if(b.price > a.price) return 1;
+                return 0;
+            }))
+        }
+        if(order === "oldest"){
+            return res.json(products.sort((a,b)=>{
+                if(a.added < b.added) return -1;
+                if(b.added < a.added) return 1;
+                return 0;
+            }))
+        }
+
+        if(order === "newest"){
+            return res.json(products.sort((a,b)=>{
+                if(a.added > b.added) return -1;
+                if(b.added > a.added) return 1;
+                return 0;
+            }))
+        }
+        
+        if(order === "ratingASC"){
+            return res.json(products.sort((a,b)=>{
+                if(a.rating < b.rating) return -1;
+                if(b.rating < a.rating) return 1;
+                return 0;
+            }))
+        }
+
+        if(order === "ratingDESC"){
+            return res.json(products.sort((a,b)=>{
+                if(a.rating > b.rating) return -1;
+                if(b.rating > a.rating) return 1;
+                return 0;
+            }))
+        }
+
 
         return res.json(products);
     } catch (error) {
@@ -56,6 +119,7 @@ router.post("/", async (req,res)=>{
             description,
             category_id,
             image,
+            added : new Date(Date.now()),
             rating
         }).then((response) => {
             return response;
@@ -136,7 +200,9 @@ try{
             "description" : i.description,
             "rating" : i.rating,
             "images" : i.image,
-            "category" : i.category
+            "category" : i.category,
+            "price" : i.price,
+            "added" : new Date(Date.now())
         }).then((data)=>{
             return data;
         }).catch((e)=>{
@@ -162,7 +228,7 @@ try{
 
 router.get("/categories/", async (req,res)=>{
     try {
-        const { type } = req.body;
+        const { type , order } = req.body;
 
         if(!type){
 
@@ -176,6 +242,20 @@ router.get("/categories/", async (req,res)=>{
             let result = categoryList.map((i)=> i.category);
             return res.json([...new Set(result)]);
         }
+        if(!order)
+        {
+            const products = await Product.findAll({
+                where : {
+                    "category" : type
+                }
+            }).then((data)=>{
+                return data;
+            }).catch((e)=>{
+                console.log(e);
+            })
+
+            return res.json(products);
+        }
 
         const products = await Product.findAll({
             where : {
@@ -185,7 +265,70 @@ router.get("/categories/", async (req,res)=>{
             return data;
         }).catch((e)=>{
             console.log(e);
-        })
+        });
+
+        if(order === "nameASC"){
+            return res.json(products.sort((a,b)=>{
+                if(a.name < b.name) return -1;
+                if(b.name < a.name) return 1;
+                return 0;
+            }))
+        }
+
+        if(order === "nameDESC"){
+            return res.json(products.sort((a,b)=>{
+                if(a.name > b.name) return -1;
+                if(b.name > a.name) return 1;
+                return 0;
+            }))
+        }
+
+        if(order === "priceASC"){
+            return res.json(products.sort((a,b)=>{
+                if(a.price < b.price) return -1;
+                if(b.price < a.price) return 1;
+                return 0;
+            }))
+        }
+
+        if(order === "priceDESC"){
+            return res.json(products.sort((a,b)=>{
+                if(a.price > b.price) return -1;
+                if(b.price > a.price) return 1;
+                return 0;
+            }))
+        }
+        if(order === "oldest"){
+            return res.json(products.sort((a,b)=>{
+                if(a.added < b.added) return -1;
+                if(b.added < a.added) return 1;
+                return 0;
+            }))
+        }
+
+        if(order === "newest"){
+            return res.json(products.sort((a,b)=>{
+                if(a.added > b.added) return -1;
+                if(b.added > a.added) return 1;
+                return 0;
+            }))
+        }
+        
+        if(order === "ratingASC"){
+            return res.json(products.sort((a,b)=>{
+                if(a.rating < b.rating) return -1;
+                if(b.rating < a.rating) return 1;
+                return 0;
+            }))
+        }
+
+        if(order === "ratingDESC"){
+            return res.json(products.sort((a,b)=>{
+                if(a.rating > b.rating) return -1;
+                if(b.rating > a.rating) return 1;
+                return 0;
+            }))
+        }
 
         res.json(products);
     } catch (error) {

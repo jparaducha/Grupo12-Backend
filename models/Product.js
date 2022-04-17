@@ -39,6 +39,9 @@ module.exports = (sequelize) => {
         },
         category : {
             type : DataTypes.STRING
+        },
+        added : {
+            type : DataTypes.DATE
         }
     }, { timestamps : false });
 }
