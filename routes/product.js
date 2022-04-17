@@ -4,13 +4,12 @@ const { Product, Shopping_cart , User, image } = require("../db");
 
 router.get("/", async (req,res)=>{
 
-    const {product_id} = req.body;
-    let products
     try {
 
+        const { product_id } = req.body;
         if (product_id) {
 
-            products = await Product.findOne({
+            const products = await Product.findOne({
                 where: {
                     product_id: product_id,
                 },
@@ -19,12 +18,13 @@ router.get("/", async (req,res)=>{
                     attributes: ['user_id']
                 }
             })
-
-        } else {
-
-            products = await Product.findAll();
-
+            return res.json(products);
         }
+
+
+        const products = await Product.findAll();
+        console.log("devuelve ?? ", products);
+
         return res.json(products);
     } catch (error) {
         console.log(error.message);
@@ -128,26 +128,19 @@ try{
 
     }
 
-
-    // const response = await Promise.all(
         json.forEach(async (i)=>{
 
         const product = await Product.create({
             "name" : i.name,
             "description" : i.description,
             "rating" : i.rating,
-            "images" : i.image
+            "images" : i.image,
+            "category" : i.category
         }).then((data)=>{
             return data;
         }).catch((e)=>{
             console.log(e.message);
         })
-
-        // console.log("producto creado : ", product.dataValues.name);
-        
-        
-
-    // console.log("usuario:", user.dataValues.name);
 
     await user.addProducts(product,{ through : {quantity : 1, unit_price : i.price} })
     .then((data)=>{
@@ -158,27 +151,46 @@ try{
 
     }
     )
-    // ).then((data)=>{
-    //     return data;
-    // }).catch((e)=>{
-    //     console.log(e);
-    // })
-
-    // console.log(json);
-
-    // const loaded = await Product.bulkCreate(json);
-
-    // const user = await User.findOne();
-
-    // user.addProducts(loaded);
-
-    // console.log(response);
     return res.sendStatus(200);
 
 
 }catch(e){
     console.log(e.message);
 }
+})
+
+router.get("/categories/", async (req,res)=>{
+    try {
+        const { type } = req.body;
+
+        if(!type){
+
+            const categoryList = await Product.findAll({
+                attributes : ['category']
+            }).then((data)=>{
+                return data;
+            }).catch((e)=>{
+                console.log(e);
+            })
+            let result = categoryList.map((i)=> i.category);
+            return res.json([...new Set(result)]);
+        }
+
+        const products = await Product.findAll({
+            where : {
+                "category" : type
+            }
+        }).then((data)=>{
+            return data;
+        }).catch((e)=>{
+            console.log(e);
+        })
+
+        res.json(products);
+    } catch (error) {
+        console.log(error.message);
+    }
+
 })
 
 module.exports = router;
