@@ -119,7 +119,8 @@ router.post("/", async (req,res)=>{
             description,
             category_id,
             image,
-            added : new Date(Date.now())
+            added : new Date(Date.now()),
+            rating
         }).then((response) => {
             return response;
         })

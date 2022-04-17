@@ -32,14 +32,16 @@ router.post('/', async (req,res) => {
         //--------------------------------------------------------------------
         
         if (!stockEntry){
-            const stock = await user.addProduct(product, { through: { quantity : quantity , unit_price : unit_price}})
+            await user.addProduct(product, { through: { quantity : quantity , unit_price : unit_price}})
             .then((response) => {
                 res.json(response)
+            })
+            .catch((error) =>{
+                console.log(error.message)
             })
         } else {
             stockEntry.quantity= stockEntry.quantity + quantity;
             stockEntry.save();
-            console.log(stockEntry)
             res.json('Stock Agregado')
         }
         //--------------------------------------------------------------------

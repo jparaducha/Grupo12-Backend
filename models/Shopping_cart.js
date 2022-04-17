@@ -16,6 +16,10 @@ module.exports = (sequelize) => {
         unit_price : {
             type : DataTypes.FLOAT,
         },
+        product_id : {
+            type : DataTypes.UUID,
+            primaryKey : true
+        },
         product : {
             type : DataTypes.JSON,
         }

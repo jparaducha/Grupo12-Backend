@@ -47,6 +47,21 @@ router.post("/", async (req,res)=> {
             console.log(e);
     })
 
+    const shopping_cart = await Shopping_cart.findOne({
+        where : { 
+            'buyer_id' : buyer_id ,
+            'seller_id' : seller_id ,
+            'product_id' : product_id,
+            'unit_price' : stock.unit_price    
+        }
+    })
+
+    if(shopping_cart) {
+        shopping_cart.quantity = shopping_cart.quantity + quantity
+        shopping_cart.save()
+        return res.status(200).send(shopping_cart)
+    }
+
     const buyer = await User.findOne({ where : { "user_id" : buyer_id },
     include : {
         model : Shopping_cart,
@@ -56,27 +71,10 @@ router.post("/", async (req,res)=> {
     }).catch((e)=> console.log(e));
 
 
-    const buyerCart = await Shopping_cart.findOne({
-        where : {
-            "buyer_id" : buyer_id
-        }
-    }).then((data)=>{
-        return data;
-    }).catch((e)=>{
-        console.log(e);
-    })
-
-
-    if(buyerCart && buyerCart.product_id === product_id){
-
-        buyerCart.quantity++;
-
-        await buyerCart.save();
-        return res.json("Updated quantity");
-    }
-
         const cart = await Shopping_cart.create(
-            { "product":  product,
+            { 
+            "product":  product,
+            "product_id": product_id,
             "unit_price" : stock.dataValues.unit_price,
             "buyer_id": buyer_id,
             "quantity" : quantity,
