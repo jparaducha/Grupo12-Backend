@@ -71,6 +71,11 @@
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no encuentra un producto son la id suministrada devuelve un json "Producto no encontrado"</div>
 <div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Marca el producto como no aprobado</div>
 
+<div><h4><img width="25px" height="10px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1_PEAPdXyverhNPGppuIntV-fwM3EUYzVettELm6trP0QY9wsUNo4umN59cEPexJWvQ&usqp=CAU"/> GET '/products/categories' = Recibe por body { "type"  , "order" }</h4></div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si no se especifica un "type" devuelve un arreglo con todas las categorías en forma de string</div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si se especifica un "type" pero no un "order" devuelve un arreglo con todas los productos de la categoría</div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si se especifica un "type" y un "order" devuelve un arreglo con todas los productos de la categoría ordenados de la forma solicitada ( "nameASC" "nameDESC" "priceASC" "priceDESC" "dateASC" "dateDESC" "ratingASC" "ratingDESC" )</div>
+
  <div> <h3>## Stock ##</h3></div>
 
  <div><h4><img height="10px" width="25px" src="https://www.ulsterceramicspotterysupplies.co.uk/wp-content/uploads/2017/10/4118.png"/> POST '/stock' =  Recibe por body { "user_id" , "product_id" , "quantity" , "unit_price" }</h4></div>
