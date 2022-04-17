@@ -56,6 +56,7 @@ router.post("/", async (req,res)=>{
             description,
             category_id,
             image,
+            rating
         }).then((response) => {
             return response;
         })
