@@ -6,7 +6,7 @@ router.get("/", async (req,res)=>{
 
     try {
 
-        const { product_id, order } = req.body;
+        const { product_id, order } = req.query;
         if (product_id) {
 
             const products = await Product.findOne({
