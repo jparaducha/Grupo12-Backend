@@ -48,9 +48,10 @@
 
  <div> <h3>## Productos ##</h3></div>
     
-<div><h4><img width="25px" height="10px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1_PEAPdXyverhNPGppuIntV-fwM3EUYzVettELm6trP0QY9wsUNo4umN59cEPexJWvQ&usqp=CAU"/> GET '/products'</h4></div>
+<div><h4><img width="25px" height="10px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1_PEAPdXyverhNPGppuIntV-fwM3EUYzVettELm6trP0QY9wsUNo4umN59cEPexJWvQ&usqp=CAU"/> GET '/products' recibe por body = { "product_id" , "order" }</h4></div>
 <div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Devuelve un arreglo con todos los productos de la db</div>
 <div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si se le pasa por body "product_id" traeremos unicamente los datos de ese producto y un campo users con la informacion de los usuarios que publicaron stock de dicho producto</div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si se especifica un "order" devuelve un arreglo con todas los productos de la categoría ordenados de la forma solicitada ( "nameASC" "nameDESC" "priceASC" "priceDESC" "oldest" "newest" "ratingASC" "ratingDESC" )</div>
 
 <div><h4><img width="25px" height="10px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1_PEAPdXyverhNPGppuIntV-fwM3EUYzVettELm6trP0QY9wsUNo4umN59cEPexJWvQ&usqp=CAU"/> GET '/products/search' = Recibe por body { "search" }</h4></div>
 <div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Devuelve un arreglo con todos los productos de la db cuyo nombre matchee con search</div>
