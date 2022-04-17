@@ -43,8 +43,8 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const { User, Reset, Product, Shopping_cart , Stock, Category} = sequelize.models;
 
-User.hasMany(Shopping_cart , {foreignKey : "user_id"});
-Shopping_cart.belongsTo(User , {foreignKey : "user_id"});
+User.hasMany(Shopping_cart , {foreignKey : "buyer_id"});
+Shopping_cart.belongsTo(User , {foreignKey : "buyer_id"});
 User.belongsToMany(Product , { through: Stock , foreignKey:'user_id'});
 Product.belongsToMany(User , { through: Stock , foreignKey:'product_id'});
 

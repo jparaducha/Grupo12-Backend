@@ -6,9 +6,9 @@ router.get("/", async (req,res)=>{
         
     const { user_id } = req.body;
 
-const cart = await Shopping_cart.findAll({ where : { "user_id" : user_id }}).then((data)=>{
-    return data;
-}).catch((e)=> console.log(e));
+    const cart = await Shopping_cart.findAll({ where : { "buyer_id" : user_id }}).then((data)=>{
+        return data;
+    }).catch((e)=> console.log(e));
 
 
     res.json(cart);
@@ -26,16 +26,25 @@ router.post("/", async (req,res)=> {
 
     if(!product_id) return res.json("Falta el product id");
 
-    const product  = await Stock.findOne({
+    const stock  = await Stock.findOne({
         where : {
             "user_id" : seller_id,
             "product_id" : product_id,
-
             },
         }).then((data)=>{
         return data;
     }).catch((e)=>{
         console.log(e);
+    })
+
+    const product = await Product.findOne({
+        where : {
+            "product_id" : product_id
+        }
+        }).then((data)=>{
+            return data;
+        }).catch((e)=>{
+            console.log(e);
     })
 
     const buyer = await User.findOne({ where : { "user_id" : buyer_id },
@@ -49,7 +58,7 @@ router.post("/", async (req,res)=> {
 
     const buyerCart = await Shopping_cart.findOne({
         where : {
-            "user_id" : buyer_id
+            "buyer_id" : buyer_id
         }
     }).then((data)=>{
         return data;
@@ -66,13 +75,12 @@ router.post("/", async (req,res)=> {
         return res.json("Updated quantity");
     }
 
-
-        console.log(product_id)
         const cart = await Shopping_cart.create(
-            { "product_id":  product_id,
-            "unit_price" : product.dataValues.unit_price,
-            "user_id": buyer_id,
-            "quantity" : quantity
+            { "product":  product,
+            "unit_price" : stock.dataValues.unit_price,
+            "buyer_id": buyer_id,
+            "quantity" : quantity,
+            "seller_id" : seller_id
             })
         .then((data)=>{
             return data;
