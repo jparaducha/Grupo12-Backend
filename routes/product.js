@@ -12,7 +12,7 @@ router.get("/", async (req,res)=>{
 
             products = await Product.findOne({
                 where: {
-                    product_id: product_id
+                    product_id: product_id,
                 },
                 include : { 
                     model: User,
