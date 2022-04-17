@@ -18,6 +18,7 @@ module.exports = (sequelize) => {
         },
         product_id : {
             type : DataTypes.UUID,
+            primaryKey : true
         },
         product : {
             type : DataTypes.JSON,
