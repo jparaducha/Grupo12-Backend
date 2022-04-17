@@ -6,7 +6,13 @@ router.get("/", async (req,res)=>{
         
     const { userId } = req.body;
 
-const cart = await Shopping_cart.findAll({ where : { "userUserId" : userId }}).then((data)=>{
+const cart = await Shopping_cart.findAll({
+     where : {
+          "userUserId" : userId
+        },
+    attributes : ["quantity", "unit_price", "product"]
+    }
+    ).then((data)=>{
     return data;
 }).catch((e)=> console.log(e));
 
@@ -77,7 +83,6 @@ router.post("/", async (req,res)=> {
         await cartU.save();
         return res.json("Updated quantity");
     }
-
 
 
         const cart = await Shopping_cart.create(
