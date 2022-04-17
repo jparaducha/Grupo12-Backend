@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Product , User } = require('../db.js')
+const { Product , User , Stock } = require('../db.js')
 
 router.post('/', async (req,res) => {
     try{
@@ -11,22 +11,38 @@ router.post('/', async (req,res) => {
 
         if(!user) return res.json("Usuario no encontrado");
 
+        //--------------------------------------------------------------------
+
         const product = await Product.findOne({ where: { "product_id" : product_id } }).then((data)=>{
             return data;
         }).catch((e)=> console.log(e));
 
+        if(!product) return res.json("Producto no encontrado");
+
+        //--------------------------------------------------------------------
+
+        const stockEntry = await Stock.findOne({ where: { 'product_id' : product_id , 'user_id':user_id}}) 
+            
+        //--------------------------------------------------------------------
+        
         const currentStock = product.stock;
         product.stock = currentStock + quantity;
         await product.save();
 
-
-        if(!user) return res.json("Usuario no encontrado");
-
-        const stock = await user.addProduct(product, { through: { quantity : quantity , unit_price : unit_price}})
+        //--------------------------------------------------------------------
+        
+        if (!stockEntry){
+            const stock = await user.addProduct(product, { through: { quantity : quantity , unit_price : unit_price}})
             .then((response) => {
                 res.json(response)
             })
-
+        } else {
+            stockEntry.quantity= stockEntry.quantity + quantity;
+            stockEntry.save();
+            console.log(stockEntry)
+            res.json('Stock Agregado')
+        }
+        //--------------------------------------------------------------------
     } catch (error){
         console.log(error.message)
     }

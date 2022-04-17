@@ -12,7 +12,7 @@ router.get("/", async (req,res)=>{
 
             products = await Product.findOne({
                 where: {
-                    product_id: product_id
+                    product_id: product_id,
                 },
                 include : { 
                     model: User,
@@ -135,7 +135,8 @@ try{
         const product = await Product.create({
             "name" : i.name,
             "description" : i.description,
-            "rating" : i.rating
+            "rating" : i.rating,
+            "images" : i.image
         }).then((data)=>{
             return data;
         }).catch((e)=>{
