@@ -47,6 +47,8 @@ User.hasMany(Shopping_cart);
 Shopping_cart.belongsTo(User);
 User.belongsToMany(Product , { through: Stock });
 Product.belongsToMany(User , { through: Stock });
+User.hasMany(Stock);
+
 Category.hasMany(Category, { as: 'children', foreignKey:'parent_id'})
 Category.hasMany(Product,  {foreignKey : 'category_id'})
 
