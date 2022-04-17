@@ -47,6 +47,17 @@ router.post("/", async (req,res)=> {
             console.log(e);
     })
 
+    const shopping_cart = await Shopping_cart.findOne({
+        where : { 
+            'buyer_id' : buyer_id ,
+            'seller_id' : seller_id ,
+            'product_id' : product_id,
+            'unit_price' : stock.unit_price    
+        }
+    })
+
+    if(shopping_cart) return res.json('El producto ya se encuentra en el carrito')
+
     const buyer = await User.findOne({ where : { "user_id" : buyer_id },
     include : {
         model : Shopping_cart,
@@ -76,7 +87,9 @@ router.post("/", async (req,res)=> {
     }
 
         const cart = await Shopping_cart.create(
-            { "product":  product,
+            { 
+            "product":  product,
+            "product_id": product_id,
             "unit_price" : stock.dataValues.unit_price,
             "buyer_id": buyer_id,
             "quantity" : quantity,
