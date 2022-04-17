@@ -108,4 +108,76 @@ router.delete("/", async (req,res)=>{
     }
 })
 
+router.post("/load", async(req,res)=>{
+try{
+    const json = require("../utils/products.json");
+
+    const user = await User.findOne().then((data)=>{
+        return data;
+    }).catch((e)=>{
+        console.log(e.message);
+    });
+
+    if(!user){
+        const user = await User.create({
+            name : "Vendedor",
+            password : "password",
+            email : "email@correo.com"
+        })
+
+
+    }
+
+
+    // const response = await Promise.all(
+        json.forEach(async (i)=>{
+
+        const product = await Product.create({
+            "name" : i.name,
+            "description" : i.description,
+            "rating" : i.rating
+        }).then((data)=>{
+            return data;
+        }).catch((e)=>{
+            console.log(e.message);
+        })
+
+        // console.log("producto creado : ", product.dataValues.name);
+        
+        
+
+    // console.log("usuario:", user.dataValues.name);
+
+    await user.addProducts(product,{ through : {quantity : 1, unit_price : i.price} })
+    .then((data)=>{
+        return data;
+    }).catch((e)=>{
+        console.log(e.errors)
+    })
+
+    }
+    )
+    // ).then((data)=>{
+    //     return data;
+    // }).catch((e)=>{
+    //     console.log(e);
+    // })
+
+    // console.log(json);
+
+    // const loaded = await Product.bulkCreate(json);
+
+    // const user = await User.findOne();
+
+    // user.addProducts(loaded);
+
+    // console.log(response);
+    return res.sendStatus(200);
+
+
+}catch(e){
+    console.log(e.message);
+}
+})
+
 module.exports = router;
