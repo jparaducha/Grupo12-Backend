@@ -126,7 +126,7 @@ router.post("/", async (req,res)=>{
             name,
             description,
             category_id,
-            image,
+            images : image,
             added : new Date(Date.now()),
             rating
         }).then((response) => {
