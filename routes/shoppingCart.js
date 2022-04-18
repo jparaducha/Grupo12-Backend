@@ -25,6 +25,9 @@ router.post("/", async (req,res)=> {
     const { buyer_id , product_id , seller_id , quantity } = req.body;
 
     if(!product_id) return res.json("Falta el product id");
+    if(!buyer_id) return res.json("Falta el buyer id");
+    if(!seller_id) return res.json("Falta el seller id");
+    if(!quantity) return res.json("Falta la cantidad de unidades");
 
     const stock  = await Stock.findOne({
         where : {
