@@ -110,9 +110,17 @@ router.post("/", async (req,res)=>{
     try {
         const {  name, description, category_id, image } = req.body;
 
-        const rating = Math.random * 5;
+        const rating = (Math.random()*5).toFixed(2);
+
 
         if(![name, description,].every(Boolean)) return res.json("Faltan datos");
+
+        let productSearch = await Product.findOne({
+            where : {'name' : name}
+        });
+
+        if (productSearch) return res.json('El producto ya esta listado');
+
 
         const response = await Product.create({
             name,
@@ -133,7 +141,7 @@ router.post("/", async (req,res)=>{
 
 router.patch("/", async (req,res)=>{
     try {
-        const { id, name , description, approved } = req.body;
+        const { id, name , description, approved, price, image, category, category_id } = req.body;
 
         let product = await Product.findOne({ where: { "product_id" : id } });
 
@@ -144,6 +152,8 @@ router.patch("/", async (req,res)=>{
         if(image) product.image =  image;
         if(price) product.price = price;
         if(approved) product.approved = approved;
+        if(category) product.category = category;
+        if(category_id) product.category_id = category_id; 
 
         await product.save();
 
@@ -228,7 +238,7 @@ try{
 
 router.get("/categories/", async (req,res)=>{
     try {
-        const { type , order } = req.body;
+        const { type , order } = req.query;
 
         if(!type){
 
