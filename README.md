@@ -5,14 +5,22 @@
 <div><h4><img height="10px" width="25px" src="https://www.ulsterceramicspotterysupplies.co.uk/wp-content/uploads/2017/10/4118.png"/> POST '/auth/register' =  Recibe por body { "password" , "name" , "email" }</h4></div>
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si alguno de los valores está vacío devuelve un json "Missing credentials"</div>
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si el email no es un correo válido devuelve un json "Invalid Email"</div>
-<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Guarda la información en la DB (con la contraseña encriptada) y devuelve un jsonwebtoken;</div>
-    </div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Guarda la información en la DB (con la contraseña encriptada), envía un correo de confirmación y devuelve un json "Mail sent";</div>
+    
+<div><h4><img width="25px" height="10px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1_PEAPdXyverhNPGppuIntV-fwM3EUYzVettELm6trP0QY9wsUNo4umN59cEPexJWvQ&usqp=CAU"/> GET '/auth/verify' = Recibe por query { "token" }</h4></div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no existe el token  devuelve un json "Token not found"</div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se encuentra el usuario devuelve un json "User not found"</div> 
+    
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Verifica al usuario en la DB y devuelve un token con su información;</div>
+   
+    
 <div>
     <div><h3>## Login ##</h3></div>
 <div><h4><img height="10px" width="25px" src="https://www.ulsterceramicspotterysupplies.co.uk/wp-content/uploads/2017/10/4118.png"/> POST '/auth/login' = Recibe por body { "password" , "email" }</h4></div>
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si alguno de los valores está vacío devuelve un json "Missing credentials"</div>
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si el email no es un correo válido devuelve un json "Invalid Email"</div>
-<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Devuelve un jsonwebtoken;</div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si el email no está verificado devuelve un json "Inactive account"</div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Devuelve un jsonwebtoken con información del usuario;</div>
   </div>
   <div>
     <div><h3>## Autorización ##</h3></div>
