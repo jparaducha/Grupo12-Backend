@@ -76,7 +76,7 @@ router.post("/register", validInfo ,async (req,res)=>{
       }).catch((e)=>{
           console.log(e);
       })
-      console.log(newUser.dataValues);
+    //   console.log(newUser.dataValues);
       
       res.json("Mail sent");
 
