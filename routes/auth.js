@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { sequelize , User, Reset } = require("../db");
+const { sequelize , User, Reset, Signup } = require("../db");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
@@ -48,12 +48,86 @@ router.post("/register", validInfo ,async (req,res)=>{
             "password" : hashedPassword,
             "email" : email
         })
+        ////////*****//////////
 
+    let token = Crypto.randomBytes(8).toString('hex');
+        
+      let emailText = `Entre al siguiente enlace para verificar su correo electrónico http://localhost:5000/auth/verify?token=${token}`;
+      const options = {
+          from : `HUBAZAR<${NODEMAILERUSER}>`,
+          to : email,
+          subject : "Verificar correo",
+          text : emailText
+      }
+      transporter.sendMail(options, (err, info)=>{
+          if(err) {
+              console.log(err.message);
+              return
+          }
+          res.json(info.response);
+      });
+
+      const newcode = await Signup.create({
+          "token" : token,
+          "email" : email
+      })
+      .then((data)=>{
+          return data;
+      }).catch((e)=>{
+          console.log(e);
+      })
+      
+      res.json("Correo enviado");
+
+      ////////*****//////////
 
         //.5 generate jwt;
 
-        const token = jwtGenerator(newUser.dataValues.user_id); // se genera un JWT ligado al user_id;
-        res.json(token);
+        // const token = jwtGenerator(newUser.dataValues.user_id); // se genera un JWT ligado al user_id;
+        // res.json(token);
+
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+router.get("/verify", async (req,res)=>{
+    try {
+        const { token } = req.query; 
+
+        const email = await Signup.findOne({
+             where : {
+                  token : token
+                },
+            attributes : ["email"]
+
+            }).then((data)=>{
+                return data;
+            }).catch((e)=>{
+                console.log(e);
+            });
+
+            // console.log("email a verificaR ???" ,email.dataValues.email);
+
+        const verifiedUser = await User.findOne({
+            where : {
+                email : email.email
+            }
+        }).then((data)=>{
+            return data;
+        }).catch((e)=>{
+            console.log(e);
+        });
+
+        verifiedUser.active = true;
+
+        await verifiedUser.save();
+        // await email.destroy();
+
+        const tokenU = jwtGenerator(verifiedUser.dataValues.user_id); // se genera un JWT ligado al user_id;
+        res.json(tokenU);
+
+        // return res.json("Usuario verificado");
 
     } catch (error) {
         console.log(error.message);
@@ -119,19 +193,14 @@ router.post("/forgot", async (req,res)=>{
   
       let token = Crypto.randomBytes(3).toString('hex');
   
-      // (err,buff)=>{
-      //     if(err) throw new err;
-  
-      //     console.log(`${buff} buff;  buff to string: ${buff.toString('hex')}`);
-      // }
 
       let newQuery = await Reset.create({
-          token , email, "expiry" : new Date(Date.now() + 15000)
-      })
+          token , email, expiry : new Date(Date.now() + 15000*60)
+      });
   
       let emailText = `Este es el código para cambiar su contraseña ${token}`;
       const options = {
-          from : "Ecommerce mail",
+          from : `HUBAZAR<${NODEMAILERUSER}>`,
           to : email,
           subject : "Cambio de contraseña",
           text : emailText
@@ -163,7 +232,7 @@ router.post("/forgot", async (req,res)=>{
 
     let query = await Reset.findOne({ where : { "token": token } });
 
-    if(!query.dataValues){
+    if(!query || !query.dataValues){
         expired = true;
         res.json("token expirado");
     }
