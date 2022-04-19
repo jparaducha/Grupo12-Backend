@@ -107,6 +107,8 @@ router.get("/verify", async (req,res)=>{
                 console.log(e);
             });
 
+        if(!email) return res.json("Token no encontrado");
+
             // console.log("email a verificaR ???" ,email.dataValues.email);
 
         const verifiedUser = await User.findOne({
@@ -118,6 +120,8 @@ router.get("/verify", async (req,res)=>{
         }).catch((e)=>{
             console.log(e);
         });
+
+        if(!verifiedUser) return res.json("Usuario no encontrado"),
 
         verifiedUser.active = true;
 
