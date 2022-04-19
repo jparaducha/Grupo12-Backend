@@ -32,11 +32,15 @@ sequelize.define('user', {
         },
         active : {
             type : DataTypes.BOOLEAN,
-            defaultValue : true,
+            defaultValue : false,
         },
         admin : {
             type : DataTypes.BOOLEAN,
             defaultValue : false,
+        },
+        provider : {
+            type : DataTypes.BOOLEAN,
+            defaultValue : false
         },
         newsletter : {
             type : DataTypes.BOOLEAN,
