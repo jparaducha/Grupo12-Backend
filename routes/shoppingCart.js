@@ -4,10 +4,17 @@ const { Shopping_cart , User, Product, Stock, sequelize} = require("../db");
 router.get("/", async (req,res)=>{
     try {
         
-    const { user_id } = req.body;
+    const { id } = req.query;
 
-    const cart = await Shopping_cart.findAll({ where : { "buyer_id" : user_id }}).then((data)=>{
-        return data;
+    const cart = await Shopping_cart.findAll({ where : { "buyer_id" : id }}).then(
+            (data)=>{
+        let product = {};
+        product.name = data.product.name;
+        product.image = data.product.images[0];
+        product.inventoryQty = data.product.stock;
+        product.price = data.unit_price;
+        product.itemsToBuy = data.quantity;
+        product.product_id = data.product_id;
     }).catch((e)=> console.log(e));
 
 
@@ -31,7 +38,7 @@ router.post("/", async (req,res)=> {
 
     const stock  = await Stock.findOne({
         where : {
-            "user_id" : seller_id,
+            "id" : seller_id,
             "product_id" : product_id,
             },
         }).then((data)=>{
@@ -65,7 +72,7 @@ router.post("/", async (req,res)=> {
         return res.status(200).send(shopping_cart)
     }
 
-    const buyer = await User.findOne({ where : { "user_id" : buyer_id },
+    const buyer = await User.findOne({ where : { "id" : buyer_id },
     include : {
         model : Shopping_cart,
     }
