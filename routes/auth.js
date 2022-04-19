@@ -120,9 +120,10 @@ router.get("/verify", async (req,res)=>{
             return data;
         }).catch((e)=>{
             console.log(e);
+            return res.json("User not found");
         });
 
-        if(!verifiedUser) return res.json("User not found"),
+        if(!verifiedUser) return res.json("User not found")
 
         verifiedUser.active = true;
 
