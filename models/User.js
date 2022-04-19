@@ -38,6 +38,10 @@ sequelize.define('user', {
             type : DataTypes.BOOLEAN,
             defaultValue : false,
         },
+        provider : {
+            type : DataTypes.BOOLEAN,
+            defaultValue : false
+        },
         newsletter : {
             type : DataTypes.BOOLEAN,
             defaultValue : false,

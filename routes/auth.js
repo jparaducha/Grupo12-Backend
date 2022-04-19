@@ -76,8 +76,9 @@ router.post("/register", validInfo ,async (req,res)=>{
       }).catch((e)=>{
           console.log(e);
       })
+      console.log(newUser.dataValues);
       
-      res.json("Correo enviado");
+      res.json("Mail sent");
 
       ////////*****//////////
 
@@ -107,7 +108,7 @@ router.get("/verify", async (req,res)=>{
                 console.log(e);
             });
 
-        if(!email) return res.json("Token no encontrado");
+        if(!email) return res.json("Token not found");
 
             // console.log("email a verificaR ???" ,email.dataValues.email);
 
@@ -121,14 +122,14 @@ router.get("/verify", async (req,res)=>{
             console.log(e);
         });
 
-        if(!verifiedUser) return res.json("Usuario no encontrado"),
+        if(!verifiedUser) return res.json("User not found"),
 
         verifiedUser.active = true;
 
         await verifiedUser.save();
         // await email.destroy();
 
-        const tokenU = jwtGenerator(verifiedUser.dataValues.user_id); // se genera un JWT ligado al user_id;
+        const tokenU = jwtGenerator(verifiedUser.dataValues.user_id, verifiedUser.dataValues.email,verifiedUser.dataValues.admin, verifiedUser.dataValues.provider, verifiedUser.dataValues.name); // se genera un JWT ligado al user_id;
         res.json(tokenU);
 
         // return res.json("Usuario verificado");
@@ -148,20 +149,24 @@ router.post("/login", validInfo, async (req,res)=>{
         const user = await User.findOne({ where : { "email" : email } });
 
         if(!user){
-            res.status(401).send("Email is incorrect");
+            return res.status(401).send("Email is incorrect");
         }
         //.3 check if incoming password is the same as in the db;
+
+        if(!user.dataValues.active){
+            return res.status(403).send("Inactive account")
+        }
 
         let passwordIsValid = await bcrypt.compare(password, user.dataValues.password); //bcrypt.compare() compara la contraseña que le pasa el usuario y la que se encuentra en la db "password";
 
         if(!passwordIsValid){
-            res.status(401).send("Password is incorrect"); // si la contraseña no es la misma se devuelve un error;
+            return res.status(401).send("Password is incorrect"); // si la contraseña no es la misma se devuelve un error;
         }
 
         //.4 give them the jwt;
 
-        const token = jwtGenerator(user.dataValues.user_id, user.dataValues.email); // se genera un token JWT ligado al user_id y se devuelve al usuario;
-        res.json(token);
+        const token = jwtGenerator(user.dataValues.user_id, user.dataValues.email, user.dataValues.admin, user.dataValues.provider, user.dataValues.name); // se genera un token JWT ligado al user_id y se devuelve al usuario;
+        return res.json(token);
         
     } catch (error) {
         console.log(error);
@@ -186,7 +191,7 @@ router.post("/forgot", async (req,res)=>{
       let query = await User.findOne({ where : { "email" : email } })
       .then((res)=>{
           if(!res.dataValues){
-              res.json("Email no registrado");
+              res.json("Email not registered");
           }
 
           return res.dataValues;
@@ -217,7 +222,7 @@ router.post("/forgot", async (req,res)=>{
           res.json(info.response);
       })
       
-      res.json("Correo enviado");
+      res.json("Mail sent");
   
     } catch (error) {
         console.log(error.message);
@@ -238,7 +243,7 @@ router.post("/forgot", async (req,res)=>{
 
     if(!query || !query.dataValues){
         expired = true;
-        res.json("token expirado");
+        res.json("token expired");
     }
 
     if(today > query.dataValues.expiry){
@@ -248,7 +253,7 @@ router.post("/forgot", async (req,res)=>{
         expired = true;
     }
 
-    if(expired) res.json("Token expirado").status(304)
+    if(expired) res.json("Token expired").status(304)
     let saltRounds = 10;
     let salt = await bcrypt.genSalt(saltRounds); // genera una sal para el hasheo de bcrypt;
     let hashedPassword = await bcrypt.hash(password, salt); // bcrypt hashea la contraseña;
