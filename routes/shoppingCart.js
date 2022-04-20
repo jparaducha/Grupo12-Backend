@@ -8,7 +8,7 @@ router.get("/", async (req,res)=>{
 
     const cart = await Shopping_cart.findAll({ where : { "buyer_id" : id }});
     
-    if (!cart) return res.send('Este usuario no existe o no tiene productos en el carrito')
+    if (!cart) return res.send('Este usuario no tiene productos en el carrito')
 
     res.status(400).send(cart);
 
@@ -37,6 +37,8 @@ router.post("/", async (req,res)=> {
     });
 
     if(!stock) return res.send('Actualmente no hay stock de ese producto')
+
+    if (stock.quantity<quantity) return res.send('Actualmente hay menos stock a ese precio del solicitado')
 
     const product = await Product.findOne({
         where : {
@@ -76,9 +78,14 @@ router.post("/", async (req,res)=> {
         "seller_id" : seller_id
         });
     
-    await buyer.addShopping_cart(cart);
+    buyer.addShopping_cart(cart).then((cart)=>{
+        stock.quantity = stock.quantity - quantity;
+        stock.save();
+        product.stock = product.stock - quantity;
+        product.save();
+        res.status(200).send(cart);
+    });
 
-    res.status(200).send(cart);
     } catch (error) {
         console.log(error.message);
     }
@@ -99,6 +106,22 @@ router.delete('/' , async (req,res) =>{
     }).then((rowsDeleted) => {
         if (rowsDeleted === 1 ){
             console.log('Deleted succesfully')
+            const product = Product.findOne({
+                where : {
+                    'product_id' : product_id
+                }
+            })
+            product.stock = product.stock - quantity;
+            product.save();
+            
+            const stock = Stock.findOne({
+                where : {
+                    'product_id' : product_id,
+                    'seller_id' : seller_id
+                }
+            })
+            stock.quantity = stock.quantity - quantity;
+            stock.save();
             return res.status(200).send('Deleted succesfully');
         };
     }).catch ((e) => {
@@ -118,6 +141,13 @@ router.patch('/' , async (req,res) => {
             "product_id" : product_id
         }
     }).then((productInCart) => {
+        const stock = Stock.findOne({
+            where : {
+                'product_id' : product_id,
+                'seller_id' : seller_id
+            }
+        })
+        if (newQuantity>stock.quantity) return res.send('Actualmente hay menos stock a ese precio del solicitado')
         productInCart.quantity = newQuantity;
         productInCart.save()
         return productInCart;
