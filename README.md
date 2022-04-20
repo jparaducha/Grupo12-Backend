@@ -107,7 +107,7 @@
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si userId no es una UUID válida  devuelve un json "User ID must be an UUID"</div>
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se pasan valores en userId ni productId devuelve un json "Invalid inputs"</div>
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si el productId no pertenece a ningún producto devuelve un json "Product not found"</div>
-<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si el userId no pertenece a ningún producto devuelve un json "User not found"</div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si el userId no pertenece a ningún usuario devuelve un json "User not found"</div>
     
 <div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si productId y userId son válidos se desasocian el usuario y el producto</div>
 <div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si sólo se pasa productId y es válida se elimina el producto</div>
