@@ -109,9 +109,9 @@
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si el productId no pertenece a ningún producto devuelve un json "Product not found"</div>
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si el userId no pertenece a ningún usuario devuelve un json "User not found"</div>
     
-<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si productId y userId son válidos se desasocian el usuario y el producto</div>
-<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si sólo se pasa productId y es válida se elimina el producto</div>
-<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si sólo se pasa userId y es válida se borra el usuario</div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si productId y userId son válidos se desasocian el usuario y el producto y devuelve un json "User unassociated from product"</div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si sólo se pasa productId y es válida se elimina el producto y devuelve un json "Product deleted"</div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si sólo se pasa userId y es válida se borra el usuario y devuelve un json "User deleted"</div>
     
     
 <div><h4><img height="10px" width="25px" src="https://www.ulsterceramicspotterysupplies.co.uk/wp-content/uploads/2017/10/4118.png"/> POST '/admin/ban' =  Recibe por body {  "userId" }</h4></div>
