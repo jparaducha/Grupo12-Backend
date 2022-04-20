@@ -5,11 +5,15 @@ router.post('/', async (req,res) => {
     try{
 
         const { user_id , product_id , quantity , unit_price} = req.body;
+
+        if(![user_id, product_id, quantity, unit_price].every(Boolean)) return res.json("Faltan datos");
+        
         const user = await User.findOne({ where: { "user_id" : user_id } }).then((data)=>{
             return data;
         }).catch((e)=> console.log(e));
 
         if(!user) return res.json("Usuario no encontrado");
+        if(!user.active) return res.json("Usuario inactivo");
 
         //--------------------------------------------------------------------
 
