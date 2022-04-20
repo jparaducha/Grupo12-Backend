@@ -9,10 +9,10 @@ const {
     DB_PORT,
     DB_USER,
     DB_PASSWORD,
-    DB_DATABASE
+    DATABASE_URL
 } = process.env
 
-const sequelize = new Sequelize(DB_DATABASE, DB_USER, DB_PASSWORD, {
+const sequelize = new Sequelize(DATABASE_URL, DB_USER, DB_PASSWORD, {
     host : DB_HOST,
     port : DB_PORT,
     dialect : "postgres",
