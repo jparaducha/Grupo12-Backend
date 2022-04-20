@@ -21,5 +21,7 @@ app.use("/stock", require('./routes/stock'));
 
 app.use("/category", require('./routes/category'));
 
+app.use("/admin", require("./routes/admin"));
+
 
 app.listen( APIPORT , ()=> console.log(`Server running on port ${APIPORT}`));
