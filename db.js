@@ -48,7 +48,7 @@ Shopping_cart.belongsTo(User , {foreignKey : "buyer_id"});
 User.belongsToMany(Product , { through: Stock , foreignKey:'user_id'});
 Product.belongsToMany(User , { through: Stock , foreignKey:'product_id'});
 
-// Category.hasMany(Category, { as: 'children', foreignKey:'parent_id'})
+Category.hasMany(Category, { as: 'children', foreignKey:'parent_id'})
 // Category.hasMany(Product,  {foreignKey : 'category_id'})
 
 sequelize.sync( {alter: true} ).then((data)=>{
