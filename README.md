@@ -98,6 +98,25 @@
   <div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si no se le pasa "parent_id" crea una categoria de nivel 0 con el nombre "name". Si se le pasa "parent_id" crea una subcategoria de la categoria con el category_id "parent_id".</div>
   <div><h4><img width="25px" height="10px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1_PEAPdXyverhNPGppuIntV-fwM3EUYzVettELm6trP0QY9wsUNo4umN59cEPexJWvQ&usqp=CAU"/> GET '/category'</h4></div>
     <div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Devuelve todas las categorias {category_id , name , parent_id , timestamps}.</div>
-
+    
+    
+    
+<h3>## Admin ##</h3>
+    
+<div><h4><img height="10px" width="25px" src="https://www.ulsterceramicspotterysupplies.co.uk/wp-content/uploads/2017/10/4118.png"/> POST '/admin/delete' =  Recibe por body {  "userId", "productId" }</h4></div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si userId no es una UUID válida  devuelve un json "User ID must be an UUID"</div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se pasan valores en userId ni productId devuelve un json "Invalid inputs"</div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si el productId no pertenece a ningún producto devuelve un json "Product not found"</div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si el userId no pertenece a ningún usuario devuelve un json "User not found"</div>
+    
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si productId y userId son válidos se desasocian el usuario y el producto y devuelve un json "User unassociated from product"</div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si sólo se pasa productId y es válida se elimina el producto y devuelve un json "Product deleted"</div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si sólo se pasa userId y es válida se borra el usuario y devuelve un json "User deleted"</div>
+    
+    
+<div><h4><img height="10px" width="25px" src="https://www.ulsterceramicspotterysupplies.co.uk/wp-content/uploads/2017/10/4118.png"/> POST '/admin/ban' =  Recibe por body {  "userId" }</h4></div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si userId no es una UUID válida  devuelve un json "User ID must be an UUID"</div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se pasan valores en userId devuelve un json "Invalid inputs"</div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si se pasa una userId válida se cambia el estado "active" del usuario a false y devuelve un json "Account deactivated"</div>
 
 

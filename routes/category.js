@@ -22,9 +22,17 @@ router.post('/', async (req,res)=>{
     }
     const newCategory = await Category.create({
         name,
+    }).then((data)=>{
+        return data;
+    }).catch((e)=>{
+        console.log(e);
     });
     if (parent){
-        parent.addChildren(newCategory);
+        await parent.addChildren(newCategory).then((data)=>{
+            console.log(data);
+        }).catch((e)=>{
+            console.log(e);
+        })
     };
     res.send(newCategory);
 })

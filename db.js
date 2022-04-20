@@ -9,10 +9,10 @@ const {
     DB_PORT,
     DB_USER,
     DB_PASSWORD,
-    DB_DATABASE
+    DATABASE_URL
 } = process.env
 
-const sequelize = new Sequelize(DB_DATABASE, DB_USER, DB_PASSWORD, {
+const sequelize = new Sequelize(DATABASE_URL, DB_USER, DB_PASSWORD, {
     host : DB_HOST,
     port : DB_PORT,
     dialect : "postgres",
@@ -48,7 +48,7 @@ Shopping_cart.belongsTo(User , {foreignKey : "buyer_id"});
 User.belongsToMany(Product , { through: Stock , foreignKey:'user_id'});
 Product.belongsToMany(User , { through: Stock , foreignKey:'product_id'});
 
-// Category.hasMany(Category, { as: 'children', foreignKey:'parent_id'})
+Category.hasMany(Category, { as: 'children', foreignKey:'parent_id'})
 // Category.hasMany(Product,  {foreignKey : 'category_id'})
 
 sequelize.sync( {alter: true} ).then((data)=>{
