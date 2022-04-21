@@ -52,7 +52,7 @@ router.post("/register", validInfo ,async (req,res)=>{
 
     let token = Crypto.randomBytes(8).toString('hex');
         
-      let emailText = `Entre al siguiente enlace para verificar su correo electrónico http://localhost:5000/auth/verify?token=${token}`;
+      let emailText = `Please click on the following URL to verify your account http://localhost:3000/auth/verify?token=${token}`;
       const options = {
           from : `HUBAZAR<${NODEMAILERUSER}>`,
           to : email,
