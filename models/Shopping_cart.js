@@ -3,11 +3,11 @@ const {DataTypes} = require('sequelize');
 module.exports = (sequelize) => {
     sequelize.define('shopping_cart',{
         buyer_id: {
-            type : DataTypes.UUID,
+            type : DataTypes.INTEGER,
             primaryKey : true,
         },
         seller_id: {
-            type : DataTypes.UUID,
+            type : DataTypes.INTEGER,
             primaryKey : true
         },
         quantity : {
@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
             type : DataTypes.FLOAT,
         },
         product_id : {
-            type : DataTypes.UUID,
+            type : DataTypes.INTEGER,
             primaryKey : true
         },
         product : {

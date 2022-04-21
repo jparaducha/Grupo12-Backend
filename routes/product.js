@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Op } = require("sequelize");
-const { Product, Shopping_cart , User, image } = require("../db");
+const { Product, Shopping_cart , User, image , Category } = require("../db");
 
 router.get("/", async (req,res)=>{
 
@@ -15,6 +15,7 @@ router.get("/", async (req,res)=>{
                 },
                 include : { 
                     model: User,
+                    as: 'sellers',
                     attributes: ['user_id']
                 }
             })
@@ -22,7 +23,14 @@ router.get("/", async (req,res)=>{
         }
 
 
-        const products = await Product.findAll();
+        const products = await Product.findAll({
+            include : { 
+                model: User,
+                as: 'sellers',
+                attributes: ['user_id']
+                }
+            }
+        );
 
         if(order === "nameASC"){
             return res.json(products.sort((a,b)=>{
@@ -108,7 +116,7 @@ router.get("/search", async (req,res)=>{
 
 router.post("/", async (req,res)=>{
     try {
-        const {  name, description, category_id, image } = req.body;
+        const {  name, description, category_name, image } = req.body;
 
         const rating = (Math.random()*5).toFixed(2);
 
@@ -125,7 +133,7 @@ router.post("/", async (req,res)=>{
         const response = await Product.create({
             name,
             description,
-            category_id,
+            category_name,
             images : image,
             added : new Date(Date.now()),
             rating
@@ -141,7 +149,7 @@ router.post("/", async (req,res)=>{
 
 router.patch("/", async (req,res)=>{
     try {
-        const { id, name , description, approved, price, image, category, category_id } = req.body;
+        const { id, name , description, approved, price, image, category, category_name } = req.body;
 
         let product = await Product.findOne({ where: { "product_id" : id } });
 
@@ -153,7 +161,7 @@ router.patch("/", async (req,res)=>{
         if(price) product.price = price;
         if(approved) product.approved = approved;
         if(category) product.category = category;
-        if(category_id) product.category_id = category_id; 
+        if(category_name) product.category_name = category_name; 
 
         await product.save();
 

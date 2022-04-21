@@ -3,7 +3,7 @@ const {Product, Category} = require('../db');
 
 router.post('/', async (req,res)=>{
 
-    const {parent_id, name } = req.body;
+    const {parent_name, name } = req.body;
     let parent;
     let category = await Category.findOne({
         where: {
@@ -14,8 +14,12 @@ router.post('/', async (req,res)=>{
         return res.status(400).json("Category already exists")
     }
     
-    if ( parent_id ){
-        parent = await Category.findByPk(parent_id)
+    if ( parent_name ){
+        parent = await Category.findOne({
+            where : {
+                'name' : parent_name
+            }
+        })
         if (!parent){
             return res.status(400).json("Parent category not found")
         }
