@@ -96,10 +96,10 @@ router.post("/ban", async (req,res)=>{
     try {
         const { userId } = req.body;
 
-        const uuidRegex = /[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}/;
+        // const uuidRegex = /[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}/;
 
         if(!Boolean(userId)) return res.json("Invalid input");
-        if(!userId.match(uuidRegex)) return res.json("User ID must be an UUID");
+        // if(!userId.match(uuidRegex)) return res.json("User ID must be an UUID");
 
         
         const user = await User.findOne({
@@ -117,6 +117,36 @@ router.post("/ban", async (req,res)=>{
         await user.save();
 
         return res.json("Account deactivated");
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+router.post("/unban", async (req,res)=>{
+    try {
+        const { userId } = req.body;
+
+        // const uuidRegex = /[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}/;
+
+        if(!Boolean(userId)) return res.json("Invalid input");
+        // if(!userId.match(uuidRegex)) return res.json("User ID must be an UUID");
+
+        
+        const user = await User.findOne({
+            where : {
+                "user_id" : userId
+            }
+        }).then((data)=>{
+            return data;
+        }).catch((e)=>{
+            console.log(e);
+        });
+
+        user.active = true;
+
+        await user.save();
+
+        return res.json("Account activated");
     } catch (error) {
         console.log(error);
     }
