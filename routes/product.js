@@ -108,9 +108,9 @@ router.get("/", async (req,res)=>{
 
 router.get("/search", async (req,res)=>{
     try {
-        const { search } = req.body
+        const { search } = req.query;
 
-        const products = await Product.findAll({ where: { "name" : {[Op.iLike]: `%${search}%`} }})
+        const products = await Product.findAll({ where: { "name" : {[Op.iLike]: `%${search}%`} }});
 
         res.json(products);
     } catch (error) {
