@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
-const { APIPORT } = process.env;
+const { PORT } = process.env;
 
 const app = express();
 app.use(express.json());
@@ -31,6 +31,6 @@ app.use("/category", require('./routes/category'));
 app.use("/admin", require("./routes/admin"));
 
 
-app.listen( APIPORT , ()=> console.log(`Server running on port ${APIPORT}`));
+app.listen( PORT , ()=> console.log(`Server running on port ${PORT}`));
 
 module.exports = app;
