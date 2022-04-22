@@ -2,9 +2,6 @@ const Sequelize = require("sequelize");
 const fs = require('fs');
 const path = require('path');
 const { Server } = require("http");
-const express = require('express');
-
-const server = express();
 
 require("dotenv").config();
 
@@ -83,9 +80,7 @@ Category.hasMany(Category, { as: 'children', foreignKey:'parent_id'})
 // Category.hasMany(Product,  {foreignKey : 'category_id'})
 
 sequelize.sync( {force: false} ).then((data)=>{
-  server.listen(process.env.PORT, () => {
     console.log("DB synced");
-  })
 })
 .catch((err)=>{
     console.log(err);
