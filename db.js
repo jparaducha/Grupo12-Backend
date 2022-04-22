@@ -44,8 +44,8 @@ const { User, Reset, Product, Shopping_cart , Stock, Category, Signup, Wishlist,
 
 User.hasMany(Shopping_cart , {foreignKey : "buyer_id"});
 Shopping_cart.belongsTo(User , {foreignKey : "buyer_id"});
-User.belongsToMany(Product , { through: Stock , foreignKey:'user_id'});
-Product.belongsToMany(User , { through: Stock , foreignKey:'product_id'});
+User.belongsToMany(Product , { through: Stock , as : 'stocks' ,foreignKey:'user_id'});
+Product.belongsToMany(User , { through: Stock , as : 'sellers' ,foreignKey:'product_id'});
 User.hasOne(Product, { through : Movement, foreignKey : "buyer_id", as : "buyers"});
 User.belongsToMany(Product , { through: Wishlist , as : 'wishlists' , foreignKey:'user_id'});
 Product.belongsToMany(User , { through: Wishlist , as : 'userW' , foreignKey:'product_id'});
@@ -56,8 +56,6 @@ Product.belongsTo(Category, { targetKey: 'name' , foreignKey: 'category_name'})
 Product.belongsToMany(User, { through : Movement });
 // Movement.hasOne(User, { foreignKey : "seller_id"});
 // User.belongsTo(Movement);
-
-Category.hasMany(Category, { as: 'children', foreignKey:'parent_id'})
 // Category.hasMany(Product,  {foreignKey : 'category_id'})
 
 sequelize.sync( {alter: true} ).then((data)=>{
