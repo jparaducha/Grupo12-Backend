@@ -1,6 +1,10 @@
 const Sequelize = require("sequelize");
 const fs = require('fs');
 const path = require('path');
+const { Server } = require("http");
+const express = require('express');
+
+const server = express();
 
 require("dotenv").config();
 
@@ -9,18 +13,39 @@ const {
     DB_PORT,
     DB_USER,
     DB_PASSWORD,
-    DATABASE_URL
+    DATABASE_URL,
+    DB_NAME
 } = process.env
-
-const sequelize = new Sequelize(DATABASE_URL, DB_USER, DB_PASSWORD, {
+let sequelize =
+  process.env.NODE_ENV === "production"
+    ? new Sequelize({
+        database: DB_NAME,
+        dialect: "postgres",
+        host: DB_HOST,
+        port: 5432,
+        username: DB_USER,
+        password: DB_PASSWORD,
+        pool: {
+          max: 3,
+          min: 1,
+          idle: 10000,
+        },
+        dialectOptions: {
+          ssl: {
+            require: true,
+            // Ref.: https://github.com/brianc/node-postgres/issues/2009
+            rejectUnauthorized: false,
+          },
+          keepAlive: true,
+        },
+        ssl: true,
+      })
+    : new Sequelize(DATABASE_URL, DB_USER, DB_PASSWORD, {
     host : DB_HOST,
     port : DB_PORT,
     dialect : "postgres",
     logging : false
 })
-
-
-
 
 const basename = path.basename(__filename);
 
@@ -51,8 +76,10 @@ Product.belongsToMany(User , { through: Stock , foreignKey:'product_id'});
 Category.hasMany(Category, { as: 'children', foreignKey:'parent_id'})
 // Category.hasMany(Product,  {foreignKey : 'category_id'})
 
-sequelize.sync( {alter: true} ).then((data)=>{
+sequelize.sync( {force: false} ).then((data)=>{
+  server.listen(process.env.PORT, () => {
     console.log("DB synced");
+  })
 })
 .catch((err)=>{
     console.log(err);
