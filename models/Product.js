@@ -3,9 +3,9 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
     sequelize.define('product', {
         product_id : {
-            type : DataTypes.UUID,
-            defaultValue : DataTypes.UUIDV4,
-            primaryKey : true,
+            type : DataTypes.INTEGER,
+            autoIncrement : true,
+            primaryKey : true
         },
         name : {
             type : DataTypes.STRING,
@@ -36,9 +36,6 @@ module.exports = (sequelize) => {
         },
         images : {
             type : DataTypes.ARRAY(DataTypes.STRING),
-        },
-        category : {
-            type : DataTypes.STRING
         },
         added : {
             type : DataTypes.DATE
