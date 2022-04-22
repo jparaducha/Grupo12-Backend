@@ -13,7 +13,7 @@ router.post('/', async (req,res) => {
         }).catch((e)=> console.log(e));
 
         if(!user) return res.json("Usuario no encontrado");
-        if(!user.active) return res.json("Usuario inactivo");
+        //if(!user.active) return res.json("Usuario inactivo");
 
         //--------------------------------------------------------------------
 
@@ -36,7 +36,7 @@ router.post('/', async (req,res) => {
         //--------------------------------------------------------------------
         
         if (!stockEntry){
-            await user.addProduct(product, { through: { quantity : quantity , unit_price : unit_price}})
+            await user.addStocks(product, { through: { quantity : quantity , unit_price : unit_price}})
             .then((response) => {
                 res.json(response)
             })

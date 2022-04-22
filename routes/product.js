@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const { Op } = require("sequelize");
-const { Product, Shopping_cart , User, image } = require("../db");
+const { Product, Shopping_cart , User, image , Category } = require("../db");
+
+//------------------------------------------------------------------------------------------
 
 router.get("/", async (req,res)=>{
 
@@ -15,6 +17,7 @@ router.get("/", async (req,res)=>{
                 },
                 include : { 
                     model: User,
+                    as: 'sellers',
                     attributes: ['user_id']
                 }
             })
@@ -22,7 +25,14 @@ router.get("/", async (req,res)=>{
         }
 
 
-        const products = await Product.findAll();
+        const products = await Product.findAll({
+            include : { 
+                model: User,
+                as: 'sellers',
+                attributes: ['user_id']
+                }
+            }
+        );
 
         if(order === "nameASC"){
             return res.json(products.sort((a,b)=>{
@@ -94,6 +104,8 @@ router.get("/", async (req,res)=>{
     }
 })
 
+//------------------------------------------------------------------------------------------
+
 router.get("/search", async (req,res)=>{
     try {
         const { search } = req.query;
@@ -106,26 +118,33 @@ router.get("/search", async (req,res)=>{
     }
 })
 
+//------------------------------------------------------------------------------------------
+
 router.post("/", async (req,res)=>{
     try {
-        const {  name, description, category_id, image } = req.body;
+        const {  name, description, category_name, image } = req.body;
 
         const rating = (Math.random()*5).toFixed(2);
 
 
         if(![name, description,].every(Boolean)) return res.json("Faltan datos");
 
-        let productSearch = await Product.findOne({
+        const productSearch = await Product.findOne({
             where : {'name' : name}
         });
 
         if (productSearch) return res.json('El producto ya esta listado');
 
+        const category = await Category.findOne({
+            where : {'name' : category_name}
+        })
+
+        if (!category) return res.status(400).send('La categoria seleccionada no existe')
 
         const response = await Product.create({
             name,
             description,
-            category_id,
+            category_name,
             images : image,
             added : new Date(Date.now()),
             rating
@@ -139,9 +158,11 @@ router.post("/", async (req,res)=>{
     }
 })
 
+//------------------------------------------------------------------------------------------
+
 router.patch("/", async (req,res)=>{
     try {
-        const { id, name , description, approved, price, image, category, category_id } = req.body;
+        const { id, name , description, approved, price, image, category, category_name } = req.body;
 
         let product = await Product.findOne({ where: { "product_id" : id } });
 
@@ -153,7 +174,7 @@ router.patch("/", async (req,res)=>{
         if(price) product.price = price;
         if(approved) product.approved = approved;
         if(category) product.category = category;
-        if(category_id) product.category_id = category_id; 
+        if(category_name) product.category_name = category_name; 
 
         await product.save();
 
@@ -162,6 +183,8 @@ router.patch("/", async (req,res)=>{
         console.log(error.message);
     }
 })
+
+//------------------------------------------------------------------------------------------
 
 router.delete("/", async (req,res)=>{
     try {
@@ -182,6 +205,8 @@ router.delete("/", async (req,res)=>{
         console.log(error.message);
     }
 })
+
+//------------------------------------------------------------------------------------------
 
 router.post("/load", async(req,res)=>{
 try{
@@ -236,49 +261,56 @@ try{
 }
 })
 
+//------------------------------------------------------------------------------------------
+
 router.get("/categories/", async (req,res)=>{
     try {
-        const { type , order } = req.query;
+        let { name , order } = req.query;
 
-        if(!type){
-
-            const categoryList = await Product.findAll({
-                attributes : ['category']
-            }).then((data)=>{
-                return data;
-            }).catch((e)=>{
-                console.log(e);
-            })
-            let result = categoryList.map((i)=> i.category);
-            return res.json([...new Set(result)]);
+        if(!name){
+            return res.status(400).send('Missing category name')
         }
-        if(!order)
-        {
-            const products = await Product.findAll({
+
+        let result = [];
+
+        async function recursive(category_name){
+
+            var productsToReturn = [];
+            var categories = [];
+
+            await Product.findAll({
                 where : {
-                    "category" : type
+                    "category_name" : category_name
                 }
             }).then((data)=>{
-                return data;
+                data.forEach((product) => {
+                    result.push(product.dataValues);
+                })
             }).catch((e)=>{
                 console.log(e);
+            });
+            //-----------------------------------
+            await Category.findOne({
+                where : { 'name' : category_name}
+            }).then(async (category) =>{
+                    await category.getChildren()
+                    .then( async (children)=>{
+                        for (child of children){
+                            const argument = child.name
+                            const result = await recursive(argument);
+                            productsToReturn.push(result);
+                        }
+                    })
+            }).catch((e) => {
+                console.log(e);
+                res.status(400).send(e.message);
             })
-
-            return res.json(products);
         }
 
-        const products = await Product.findAll({
-            where : {
-                "category" : type
-            }
-        }).then((data)=>{
-            return data;
-        }).catch((e)=>{
-            console.log(e);
-        });
+        await recursive(name);
 
         if(order === "nameASC"){
-            return res.json(products.sort((a,b)=>{
+            return res.json(result.sort((a,b)=>{
                 if(a.name < b.name) return -1;
                 if(b.name < a.name) return 1;
                 return 0;
@@ -286,7 +318,7 @@ router.get("/categories/", async (req,res)=>{
         }
 
         if(order === "nameDESC"){
-            return res.json(products.sort((a,b)=>{
+            return res.json(result.sort((a,b)=>{
                 if(a.name > b.name) return -1;
                 if(b.name > a.name) return 1;
                 return 0;
@@ -294,7 +326,7 @@ router.get("/categories/", async (req,res)=>{
         }
 
         if(order === "priceASC"){
-            return res.json(products.sort((a,b)=>{
+            return res.json(result.sort((a,b)=>{
                 if(a.price < b.price) return -1;
                 if(b.price < a.price) return 1;
                 return 0;
@@ -302,14 +334,14 @@ router.get("/categories/", async (req,res)=>{
         }
 
         if(order === "priceDESC"){
-            return res.json(products.sort((a,b)=>{
+            return res.json(result.sort((a,b)=>{
                 if(a.price > b.price) return -1;
                 if(b.price > a.price) return 1;
                 return 0;
             }))
         }
         if(order === "oldest"){
-            return res.json(products.sort((a,b)=>{
+            return res.json(result.sort((a,b)=>{
                 if(a.added < b.added) return -1;
                 if(b.added < a.added) return 1;
                 return 0;
@@ -317,7 +349,7 @@ router.get("/categories/", async (req,res)=>{
         }
 
         if(order === "newest"){
-            return res.json(products.sort((a,b)=>{
+            return res.json(result.sort((a,b)=>{
                 if(a.added > b.added) return -1;
                 if(b.added > a.added) return 1;
                 return 0;
@@ -325,7 +357,7 @@ router.get("/categories/", async (req,res)=>{
         }
         
         if(order === "ratingASC"){
-            return res.json(products.sort((a,b)=>{
+            return res.json(result.sort((a,b)=>{
                 if(a.rating < b.rating) return -1;
                 if(b.rating < a.rating) return 1;
                 return 0;
@@ -333,14 +365,15 @@ router.get("/categories/", async (req,res)=>{
         }
 
         if(order === "ratingDESC"){
-            return res.json(products.sort((a,b)=>{
+            return res.json(result.sort((a,b)=>{
                 if(a.rating > b.rating) return -1;
                 if(b.rating > a.rating) return 1;
                 return 0;
             }))
         }
 
-        res.json(products);
+        return res.json(result)
+
     } catch (error) {
         console.log(error.message);
     }
