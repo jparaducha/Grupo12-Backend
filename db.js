@@ -40,17 +40,25 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-
-const { User, Reset, Product, Shopping_cart , Stock, Category, Signup, Wishlist} = sequelize.models;
+const { User, Reset, Product, Shopping_cart , Stock, Category, Signup, Wishlist, Movement} = sequelize.models;
 
 User.hasMany(Shopping_cart , {foreignKey : "buyer_id"});
 Shopping_cart.belongsTo(User , {foreignKey : "buyer_id"});
-User.belongsToMany(Product , { through: Stock , as : 'stocks' , foreignKey:'user_id'});
-Product.belongsToMany(User , { through: Stock , as : 'sellers' , foreignKey:'product_id'});
+User.belongsToMany(Product , { through: Stock , foreignKey:'user_id'});
+Product.belongsToMany(User , { through: Stock , foreignKey:'product_id'});
+User.hasOne(Product, { through : Movement, foreignKey : "buyer_id", as : "buyers"});
 User.belongsToMany(Product , { through: Wishlist , as : 'wishlists' , foreignKey:'user_id'});
 Product.belongsToMany(User , { through: Wishlist , as : 'userW' , foreignKey:'product_id'});
 Category.hasMany(Category, { as: 'children', foreignKey:'parent_name'})
 Product.belongsTo(Category, { targetKey: 'name' , foreignKey: 'category_name'})
+// User.belongsToMany(Product, { through : Movement, foreignKey : "seller_id", as : "sellers"});
+// Movement.hasOne(Product);
+Product.belongsToMany(User, { through : Movement });
+// Movement.hasOne(User, { foreignKey : "seller_id"});
+// User.belongsTo(Movement);
+
+Category.hasMany(Category, { as: 'children', foreignKey:'parent_id'})
+// Category.hasMany(Product,  {foreignKey : 'category_id'})
 
 sequelize.sync( {alter: true} ).then((data)=>{
     console.log("DB synced");
@@ -59,4 +67,4 @@ sequelize.sync( {alter: true} ).then((data)=>{
     console.log(err);
 })
 
-module.exports = {sequelize, User, Reset, Product, Shopping_cart, Stock, Category, Signup, Wishlist};
+module.exports = {sequelize, User, Reset, Product, Shopping_cart, Stock, Category, Signup, Movement, Wishlist};

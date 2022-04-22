@@ -25,5 +25,6 @@ app.use("/admin", require("./routes/admin"));
 
 app.use("/wishlist", require("./routes/wishlist"));
 
+app.use("/movement", require("./routes/movement"));
 
 app.listen( APIPORT , ()=> console.log(`Server running on port ${APIPORT}`));
