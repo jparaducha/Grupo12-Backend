@@ -41,12 +41,18 @@ let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].s
 sequelize.models = Object.fromEntries(capsEntries);
 
 
-const { User, Reset, Product, Shopping_cart , Stock, Category, Signup} = sequelize.models;
+const { User, Reset, Product, Shopping_cart , Stock, Category, Signup, Movement} = sequelize.models;
 
 User.hasMany(Shopping_cart , {foreignKey : "buyer_id"});
 Shopping_cart.belongsTo(User , {foreignKey : "buyer_id"});
 User.belongsToMany(Product , { through: Stock , foreignKey:'user_id'});
 Product.belongsToMany(User , { through: Stock , foreignKey:'product_id'});
+User.hasOne(Product, { through : Movement, foreignKey : "buyer_id", as : "buyers"});
+// User.belongsToMany(Product, { through : Movement, foreignKey : "seller_id", as : "sellers"});
+// Movement.hasOne(Product);
+Product.belongsToMany(User, { through : Movement });
+// Movement.hasOne(User, { foreignKey : "seller_id"});
+// User.belongsTo(Movement);
 
 Category.hasMany(Category, { as: 'children', foreignKey:'parent_id'})
 // Category.hasMany(Product,  {foreignKey : 'category_id'})
@@ -58,4 +64,4 @@ sequelize.sync( {alter: true} ).then((data)=>{
     console.log(err);
 })
 
-module.exports = {sequelize, User, Reset, Product, Shopping_cart, Stock, Category, Signup};
+module.exports = {sequelize, User, Reset, Product, Shopping_cart, Stock, Category, Signup, Movement};
