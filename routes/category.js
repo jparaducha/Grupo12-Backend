@@ -30,12 +30,14 @@ router.post('/', async (req,res)=>{
         return data;
     }).catch((e)=>{
         console.log(e);
+        return res.status(400).send(e.message)
     });
     if (parent){
         await parent.addChildren(newCategory).then((data)=>{
             console.log(data);
         }).catch((e)=>{
             console.log(e);
+            return res.status(400).send(e.message)
         })
     };
     res.send(newCategory);
@@ -43,8 +45,28 @@ router.post('/', async (req,res)=>{
 
 router.get('/', async (req,res)=> {
 
-    const categories = await Category.findAll();
-    return res.status(200).send(categories);
+    const {name} = req.query;
+
+    if (name){
+        Category.findOne({
+            where : {'name' : name}
+        }).then((category) => {
+            return res.status(200).send(category);
+        }).catch((error) => {
+            console.log(error);
+            return res.status(400).send(error.message)
+        })
+    }
+
+    const categories = Category.findAll()
+    .then((categories) => {
+        return res.status(200).send(categories);
+    })
+    .catch((error)=>{
+        console.log(error);
+        return res.status(400).send(error.message)
+    })
+    
 
 })
 

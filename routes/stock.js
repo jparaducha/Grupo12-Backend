@@ -36,7 +36,7 @@ router.post('/', async (req,res) => {
         //--------------------------------------------------------------------
         
         if (!stockEntry){
-            await user.addStock(product, { through: { quantity : quantity , unit_price : unit_price}})
+            await user.addStocks(product, { through: { quantity : quantity , unit_price : unit_price}})
             .then((response) => {
                 res.json(response)
             })
