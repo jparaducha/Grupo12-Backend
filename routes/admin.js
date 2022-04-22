@@ -120,6 +120,50 @@ router.post("/ban", async (req,res)=>{
     } catch (error) {
         console.log(error);
     }
+});
+
+router.post("/approve/:productId" , async (req,res)=>{
+    try {
+        const { productId } = req.params;
+
+        const product = await Product.findOne({
+            where : {
+                "product_id" : productId
+            }
+        });
+
+        if(!product) return res.json("Product not found");
+
+        product.approved = true;
+
+        await product.save();
+
+        return res.json("Product approved");
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+router.post("/disapprove/:productId" , async (req,res)=>{
+    try {
+        const { productId } = req.params;
+
+        const product = await Product.findOne({
+            where : {
+                "product_id" : productId
+            }
+        });
+
+        if(!product) return res.json("Product not found");
+
+        product.approved = false;
+
+        await product.save();
+
+        return res.json("Product disapproved");
+    } catch (error) {
+        console.log(error);
+    }
 })
 
 module.exports = router;
