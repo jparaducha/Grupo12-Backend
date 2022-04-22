@@ -119,4 +119,15 @@
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se pasan valores en userId devuelve un json "Invalid inputs"</div>
 <div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si se pasa una userId válida se cambia el estado "active" del usuario a false y devuelve un json "Account deactivated"</div>
 
+<div><h4><img height="10px" width="25px" src="https://www.ulsterceramicspotterysupplies.co.uk/wp-content/uploads/2017/10/4118.png"/> POST '/admin/unban' =  Recibe por body {  "userId" }</h4></div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se pasan valores en userId devuelve un json "Invalid inputs"</div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si se pasa una userId válida se cambia el estado "active" del usuario a true y devuelve un json "Account activated"</div>
+    
+<div><h4><img height="10px" width="25px" src="https://www.ulsterceramicspotterysupplies.co.uk/wp-content/uploads/2017/10/4118.png"/> POST '/admin/approve/:productId' =  Recibe por params {  "productId" }</h4></div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se encuentra el producto devuelve un json "Product not found"</div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si se pasa una productId válida se cambia el estado "approved" del producto a true y devuelve un json "Product approved"</div>
+    
+<div><h4><img height="10px" width="25px" src="https://www.ulsterceramicspotterysupplies.co.uk/wp-content/uploads/2017/10/4118.png"/> POST '/admin/disapprove/:productId' =  Recibe por params {  "productId" }</h4></div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se encuentra el producto devuelve un json "Product not found"</div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si se pasa una productId válida se cambia el estado "approved" del producto a false y devuelve un json "Product disapproved"</div>
 
