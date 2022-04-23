@@ -12,7 +12,7 @@ const {
     DATABASE_URL,
     DB_NAME
 } = process.env
-
+ 
 let sequelize =
   process.env.NODE_ENV === "production"
     ? new Sequelize({
