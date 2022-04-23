@@ -24,6 +24,31 @@ router.post('/', async (req,res)=>{
             return res.status(400).json("Parent category not found")
         }
     }
+
+
+    if(Array.isArray(name) && parent){
+        name.forEach(async (i)=>{
+            const newCategory = await Category.create({
+        "name" :i,
+        }).then((data)=>{
+        return data;
+        }).catch((e)=>{
+        console.log(e);
+        return res.status(400).send(e.message)
+        });
+
+
+        await parent.addChildren(newCategory).then((data)=>{
+            // console.log(data);
+        }).catch((e)=>{
+            console.log(e);
+            return res.status(400).send(e.message)
+        })
+
+        })
+
+        return res.json("Multiple categories created");
+    }
     const newCategory = await Category.create({
         name,
     }).then((data)=>{
