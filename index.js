@@ -14,7 +14,7 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
   });
-
+ 
 app.use("/auth", require("./routes/auth"));
 
 app.use("/dashboard", require("./routes/dashboard"));
