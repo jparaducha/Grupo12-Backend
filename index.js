@@ -28,4 +28,6 @@ app.use("/movement", require("./routes/movement"));
 
 app.use("/relations", require("./routes/relations"));
 
+app.use("/recent", require("./routes/recentlySearched"));
+
 app.listen(APIPORT, () => console.log(`Server running on port ${APIPORT}`));
