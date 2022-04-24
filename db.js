@@ -93,7 +93,7 @@ Product.belongsToMany(Product, {
 // Category.hasMany(Product,  {foreignKey : 'category_id'})
 
 sequelize
-  .sync({ alter: true })
+  .sync({ force: true })
   .then((data) => {
     console.log("DB synced");
   })
