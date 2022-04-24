@@ -225,6 +225,7 @@ router.post("/load", async(req,res)=>{
 try{
     const json = require("../utils/products.json");
 
+    const user = await User.findOne();
 
         json.forEach(async (i)=>{
 
@@ -233,8 +234,7 @@ try{
             "description" : i.description,
             "rating" : i.rating,
             "images" : i.image,
-            "category" : i.category,
-            "price" : i.price,
+            // "category" : i.category_name,
             "added" : new Date(Date.now())
         }).then((data)=>{
             return data;
@@ -242,7 +242,27 @@ try{
             console.log(e.message);
         })
 
-    await user.addProducts(product,{ through : {quantity : 1, unit_price : i.price} })
+        /// ????????????????????????????? ///////
+        /// ????????????????????????????? ///////
+
+        const category = await Category.findOne({
+            where : {
+                name : i.category_name
+            }
+        })
+        .then((data)=>{
+            return data;
+        })
+        .catch((e)=>{
+            console.log(e);
+        });
+
+        product.setCategories(category);
+
+        /// ????????????????????????????? ///////
+        /// ????????????????????????????? ///////
+
+    user.addStocks(product,{ through : {quantity : 1, unit_price : i.price} })
     .then((data)=>{
         return data;
     }).catch((e)=>{
