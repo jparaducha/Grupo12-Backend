@@ -48,7 +48,7 @@ const {
   Wishlist,
   Movement,
   Products_relations,
-  RecentlySearched,
+  Recently_searched,
 } = sequelize.models;
 
 User.hasMany(Shopping_cart, { foreignKey: "buyer_id" });
@@ -79,9 +79,7 @@ Product.belongsToMany(User, {
   foreignKey: "product_id",
 });
 Category.hasMany(Category, { as: "children", foreignKey: "parent_name" });
-Product.belongsTo(Category);
-Category.hasMany(Product, { as: "categories", foreignKey: "category_name" });
-/* Category.hasMany(Category, { sourceKey: "name", foreignKey: "category_name" }); */
+Product.belongsTo(Category, { targetKey: "name", foreignKey: "category_name" });
 // User.belongsToMany(Product, { through : Movement, foreignKey : "seller_id", as : "sellers"});
 // Movement.hasOne(Product);
 Product.belongsToMany(User, { through: Movement });
@@ -111,5 +109,5 @@ module.exports = {
   Movement,
   Wishlist,
   Products_relations,
-  RecentlySearched,
+  Recently_searched,
 };
