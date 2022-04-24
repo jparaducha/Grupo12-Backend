@@ -52,7 +52,7 @@ router.post("/register", validInfo ,async (req,res)=>{
 
     let token = Crypto.randomBytes(8).toString('hex');
         
-      let emailText = `Please click on the following URL to verify your account http://localhost:3000/verify/${token}`;
+      let emailText = `Please click on the following URL to verify your account https://hubazar.vercel.app/verify/${token}`;
       const options = {
           from : `HUBAZAR<${NODEMAILERUSER}>`,
           to : email,
