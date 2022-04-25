@@ -79,7 +79,7 @@ Product.belongsToMany(User, {
   foreignKey: "product_id",
 });
 Category.hasMany(Category, { as: "children", foreignKey: "parent_name" });
-Product.belongsTo(Category, { targetKey: "name", foreignKey: "category_name" });
+Product.belongsTo(Category, { as: "categories" ,targetKey: "name", foreignKey: "category_name" });
 // User.belongsToMany(Product, { through : Movement, foreignKey : "seller_id", as : "sellers"});
 // Movement.hasOne(Product);
 Product.belongsToMany(User, { through: Movement });
