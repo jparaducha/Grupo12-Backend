@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Op } = require("sequelize");
-const { Product, Shopping_cart , User, image , Category } = require("../db");
+const { Product, Shopping_cart , User, image , Category, Stock, sequelize } = require("../db");
 
 //------------------------------------------------------------------------------------------
 
@@ -33,6 +33,19 @@ router.get("/", async (req,res)=>{
                 }
             }
         );
+
+        products.forEach(async (i)=>{
+            const lowestPrice = await Stock.findAll({
+                attributes: ['unit_price'],
+                where : {
+                        "product_id"  : i.product_id
+                }
+              });
+              let prices = lowestPrice.map((i)=> i.dataValues.unit_price);
+
+              i.price = Math.min(...prices);
+              await i.save();
+        });
 
         if(order === "nameASC"){
             return res.json(products.sort((a,b)=>{
@@ -212,21 +225,7 @@ router.post("/load", async(req,res)=>{
 try{
     const json = require("../utils/products.json");
 
-    const user = await User.findOne().then((data)=>{
-        return data;
-    }).catch((e)=>{
-        console.log(e.message);
-    });
-
-    if(!user){
-        const user = await User.create({
-            name : "Vendedor",
-            password : "password",
-            email : "email@correo.com"
-        })
-
-
-    }
+    const user = await User.findOne();
 
         json.forEach(async (i)=>{
 
@@ -235,8 +234,7 @@ try{
             "description" : i.description,
             "rating" : i.rating,
             "images" : i.image,
-            "category" : i.category,
-            "price" : i.price,
+            // "category" : i.category_name,
             "added" : new Date(Date.now())
         }).then((data)=>{
             return data;
@@ -244,7 +242,27 @@ try{
             console.log(e.message);
         })
 
-    await user.addProducts(product,{ through : {quantity : 1, unit_price : i.price} })
+        /// ????????????????????????????? ///////
+        /// ????????????????????????????? ///////
+
+        const category = await Category.findOne({
+            where : {
+                name : i.category_name
+            }
+        })
+        .then((data)=>{
+            return data;
+        })
+        .catch((e)=>{
+            console.log(e);
+        });
+
+        product.setCategories(category);
+
+        /// ????????????????????????????? ///////
+        /// ????????????????????????????? ///////
+
+    user.addStocks(product,{ through : {quantity : 1, unit_price : i.price} })
     .then((data)=>{
         return data;
     }).catch((e)=>{

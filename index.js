@@ -15,6 +15,7 @@ app.use((req, res, next) => {
     next();
   });
  
+
 app.use("/auth", require("./routes/auth"));
 
 app.use("/dashboard", require("./routes/dashboard"));
@@ -23,9 +24,9 @@ app.use("/products", require("./routes/product"));
 
 app.use("/cart", require("./routes/shoppingCart"));
 
-app.use("/stock", require('./routes/stock'));
+app.use("/stock", require("./routes/stock"));
 
-app.use("/category", require('./routes/category'));
+app.use("/category", require("./routes/category"));
 
 app.use("/admin", require("./routes/admin"));
 
@@ -33,4 +34,6 @@ app.use("/wishlist", require("./routes/wishlist"));
 
 app.use("/movement", require("./routes/movement"));
 
-app.listen( PORT , ()=> console.log(`Server running on port ${PORT}`));
+app.use("/relations", require("./routes/relations"));
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
