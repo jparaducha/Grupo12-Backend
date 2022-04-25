@@ -125,7 +125,7 @@
     "price" : 119.99,
     "rating" : 5,
     "image" : ["https://m.media-amazon.com/images/I/81EgWeEzUDL._AC_UX342_.jpg"],
-    "category_name" : "Soccer"
+    "category_name" : "Football"
 },
 {
     "id" : 26,
@@ -224,7 +224,7 @@
     "price" : 22.49,
     "rating" : 5,
     "image" : ["https://images-na.ssl-images-amazon.com/images/I/41-n-3hZMeL._SX325_BO1,204,203,200_.jpg"],
-    "category_name" :  "Politics & Social Sciences"
+    "category_name" :  "Politics and Social Sciences"
 },
 {
     "id" : 37,
@@ -233,7 +233,7 @@
     "price" : 19.74,
     "rating" : 4,
     "image" : ["https://images-na.ssl-images-amazon.com/images/I/51eeAWItwbL._SX281_BO1,204,203,200_.jpg"],
-    "category_name" :"Politics & Social Sciences"
+    "category_name" :"Politics and Social Sciences"
 },
 {
     "id" : 38,
@@ -242,7 +242,7 @@
     "price" : 19.84,
     "rating" : 4.2,
     "image" : ["https://images-na.ssl-images-amazon.com/images/I/41t+5gUqXYL._SX277_BO1,204,203,200_.jpg"],
-    "category_name" :  "Politics & Social Sciences"
+    "category_name" :  "Politics and Social Sciences"
 },
 {
     "id" : 39,
