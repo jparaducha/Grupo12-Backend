@@ -79,25 +79,41 @@ const {
   Wishlist,
   Movement,
   Products_relations,
+  Recently_searched,
 } = sequelize.models;
 
-User.hasMany(Shopping_cart , {foreignKey : "buyer_id"});
-Shopping_cart.belongsTo(User , {foreignKey : "buyer_id"});
-User.belongsToMany(Product , { through: Stock , as : 'stocks' ,foreignKey:'user_id'});
-Product.belongsToMany(User , { through: Stock , as : 'sellers' ,foreignKey:'product_id'});
-User.hasOne(Product, { through : Movement, foreignKey : "buyer_id", as : "buyers"});
-User.belongsToMany(Product , { through: Wishlist , as : 'wishlists' , foreignKey:'user_id'});
-Product.belongsToMany(User , { through: Wishlist , as : 'userW' , foreignKey:'product_id'});
-Category.hasMany(Category, { as: 'children', foreignKey:'parent_name'})
-Product.belongsTo(Category, { as: "categories" , targetKey: 'name' , foreignKey: 'category_name'})
+User.hasMany(Shopping_cart, { foreignKey: "buyer_id" });
+Shopping_cart.belongsTo(User, { foreignKey: "buyer_id" });
+User.belongsToMany(Product, {
+  through: Stock,
+  as: "stocks",
+  foreignKey: "user_id",
+});
+Product.belongsToMany(User, {
+  through: Stock,
+  as: "sellers",
+  foreignKey: "product_id",
+});
+User.hasOne(Product, {
+  through: Movement,
+  foreignKey: "buyer_id",
+  as: "buyers",
+});
+User.belongsToMany(Product, {
+  through: Wishlist,
+  as: "wishlists",
+  foreignKey: "user_id",
+});
+Product.belongsToMany(User, {
+  through: Wishlist,
+  as: "userW",
+  foreignKey: "product_id",
+});
+Category.hasMany(Category, { as: "children", foreignKey: "parent_name" });
+Product.belongsTo(Category, { as: "categories" ,targetKey: "name", foreignKey: "category_name" });
 // User.belongsToMany(Product, { through : Movement, foreignKey : "seller_id", as : "sellers"});
 // Movement.hasOne(Product);
 Product.belongsToMany(User, { through: Movement });
-Product.belongsToMany(Product, {
-  through: "Product_relations",
-  as: "related_products",
-  foreignKey: "product_1_id",
-});
 //Product.belongsToMany(Product, { through: "Product_relations", as: "relations", foreignKey: "other_product_id",});
 // Movement.hasOne(User, { foreignKey : "seller_id"});
 // User.belongsTo(Movement);
@@ -122,4 +138,5 @@ module.exports = {
   Movement,
   Wishlist,
   Products_relations,
+  Recently_searched,
 };

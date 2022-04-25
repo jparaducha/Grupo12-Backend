@@ -43,9 +43,9 @@ router.get("/", async (req,res)=>{
               });
               let prices = lowestPrice.map((i)=> i.dataValues.unit_price);
 
-              i.price = Math.min(...prices);
+              i.price = Math.min(...prices)|| 00;
               await i.save();
-        });
+        })
 
         if(order === "nameASC"){
             return res.json(products.sort((a,b)=>{
@@ -211,9 +211,9 @@ router.delete("/", async (req,res)=>{
         if(!product) return res.json("Producto no encontrado");
 
         product.approved = false;
-        await product.save();
+        await product.destroy();
 
-        res.send(product);
+        res.send("product deleted");
     } catch (error) {
         console.log(error.message);
     }

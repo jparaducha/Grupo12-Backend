@@ -1,4 +1,3 @@
-const { promise } = require("bcrypt/promises");
 const { Products_relations, Product } = require("../db");
 
 const router = require("express").Router();
