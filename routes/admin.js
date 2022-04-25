@@ -5,11 +5,11 @@ router.post("/delete", async (req,res)=>{
     try {
         const { userId, productId } = req.body;
 
-        const uuidRegex = /[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}/;
+        // const uuidRegex = /[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}/;
 
         // const uuidv4 = /^[0-9A-F]{8}-[0-9A-F]{4}-[4][0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i
 
-        if(userId && !userId.match(uuidRegex)) return res.json("User ID must be an UUID");
+        // if(userId && !userId.match(uuidRegex)) return res.json("User ID must be an UUID");
 
         if(!Boolean(userId) && !Boolean(productId)) return res.json("Invalid inputs");
 
