@@ -18,7 +18,7 @@ router.get("/", async (req,res)=>{
                 include : { 
                     model: User,
                     as: 'sellers',
-                    attributes: ['user_id']
+                    attributes: ['user_id', "name", "rating_as_seller"]
                 }
             })
             return res.json(products);
