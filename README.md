@@ -56,7 +56,6 @@
  <div><h4><img height="10px" width="25px" src="https://www.ulsterceramicspotterysupplies.co.uk/wp-content/uploads/2017/10/4118.png"/> POST '/products/load'</h4></div>
 <div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Agrega productos a la DB con un usuario previamente creado</div>
 
-
  <div> <h3>## Productos ##</h3></div>
     
 <div><h4><img width="25px" height="10px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1_PEAPdXyverhNPGppuIntV-fwM3EUYzVettELm6trP0QY9wsUNo4umN59cEPexJWvQ&usqp=CAU"/> GET '/products' recibe por body = { "product_id" , "order" }</h4></div>
@@ -131,3 +130,21 @@
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se encuentra el producto devuelve un json "Product not found"</div>
 <div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si se pasa una productId válida se cambia el estado "approved" del producto a false y devuelve un json "Product disapproved"</div>
 
+<h3>## Shopping Cart ##</h3>
+<div><h4><img width="25px" height="10px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1_PEAPdXyverhNPGppuIntV-fwM3EUYzVettELm6trP0QY9wsUNo4umN59cEPexJWvQ&usqp=CAU"/> GET '/cart' = Recibe por query { id } del usuario </h4></div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se encuentra el usuario devuelve un json "User not found"</div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se encuentran productos en el carrito del usuario devuelve un json "User's cart is empty"</div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si se pasa una id válida y el usuario tiene productos en el carrito se devuelve un array con todos los productos en el carrito
+<div>
+<h4><img height="10px" width="25px" src="https://www.ulsterceramicspotterysupplies.co.uk/wp-content/uploads/2017/10/4118.png"/> POST '/cart' =  Recibe por body {  "buyer_id" , "products" } donde products es un array de productos de la forma {product_id,seller_id,quantity}</h4></div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se encuentra el usuario comprador devuelve un json "Error : Missing buyer_id in request"</div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se encuentra products devuelve un json "Error : Missing products in request"</div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si products no es un array devuelve un json "Error : products is not an array"</div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si se cumplen las condiciones retorna un JSON con una propiedad "added" que consiste en un array de los productos que se añadieron exitosamente al carrito, y otra propiedad "not added" que consiste en un array de los productos que ya sea porque no se encontro el producto o no hay stock no se pudieron añadir al carro  //// si se pasa un producto repetido(que ya es encuentra en el carro) se sobreescribira la cantidad, es decir se cambiara la cantidad vieja por la nueva
+<div>
+
+<div><h4><img width="25px" height="10px" src="https://w7.pngwing.com/pngs/898/809/png-transparent-rectangle-area-red-product-button-miscellaneous-rectangle-area.png"/>DELETE '/cart' = Recibe por body { "buyer_id" , "seller_id" , "product_id" }</h4></div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Elimina el producto especificado del carrito</div>
+
+<h3>## Wishlist ##</h3>
+<div><h4><img width="25px" height="10px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1_PEAPdXyverhNPGppuIntV-fwM3EUYzVettELm6trP0QY9wsUNo4umN59cEPexJWvQ&usqp=CAU"/> GET '/cart' = Recibe por query { id } del usuario </h4></div>
