@@ -1,6 +1,10 @@
 const router = require("express").Router();
 
-const { User, Product, Movement, Stock} = require("../db");
+const { crearOrden } = require("../utils/MPcontroller");
+
+const { User, Product, Movement, Stock, Shopping_cart} = require("../db");
+
+router.post("/prueba", crearOrden);
 
 
 router.post("/sold", async(req,res)=>{

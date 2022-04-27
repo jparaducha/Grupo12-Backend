@@ -101,3 +101,14 @@ router.get("/", async (req, res) => {
 });
 
 module.exports = router;
+// const categories = await Category.findAll({
+//     where : {
+//         parent_name : null
+//     },
+//     include : {
+//         model : Category,
+//         as : 'children',
+//         attributes : ['name']
+//     },
+//     attributes : ['name']
+// })
