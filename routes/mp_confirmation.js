@@ -3,14 +3,13 @@ const { Shopping_cart, Movement } = require("../db");
 const router = require("express").Router();
 
 
-router.get("/", async (req,res)=>{
+router.post("/", async (req,res)=>{
     try {
         const { body , query } = req;
 
         const { collection_id , collection_status , preference_id , status, payment_type } = query;
 
         const { external_reference, ...nuevoObj } = query
-
 
         const cart = await Shopping_cart.findAll({
             where : {
