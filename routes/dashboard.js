@@ -26,9 +26,10 @@ router.get("/", async(req,res)=>{
 
         if(users) res.json(users);
 
-        res.send("error");
+        if(!users || !users.length) return res.json("No users found")
     } catch (error) {
         console.log(error.message);
+        res.send("error");
     }
 })
 
