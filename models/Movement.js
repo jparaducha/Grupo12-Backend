@@ -27,6 +27,6 @@ module.exports = (sequelize) => {
         },
         notes : {
             type : DataTypes.TEXT
-        }
-    },{ timestamps : false});
+        },
+    })
 }
