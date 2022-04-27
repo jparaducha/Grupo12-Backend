@@ -7,6 +7,8 @@ router.get("/", async (req, res) => {
   try {
     const { id } = req.query;
 
+    if(!id) return res.json("Must provide a valid id");
+
     const user = await User.findOne({
       where: {
         user_id: id,
@@ -41,7 +43,7 @@ router.post("/", async (req, res) => {
 
   const buyer = await User.findOne({ where: { user_id: buyer_id } });
 
-  if (!buyer) return res.send.status(404).send("Buyer not found ");
+  if (!buyer) return res.send("Buyer not found ").status(404);
 
   for (let productToAdd of products) {
     var product = await Product.findOne({
@@ -52,7 +54,7 @@ router.post("/", async (req, res) => {
       console.log(e);
       return res.status(400).send(e.message);
     });
-    if (!product) return res.send.status(404).send("Product not found ");
+    if (!product) return res.send("Product not found ").status(404);
 
     //------------------------------
 
@@ -212,5 +214,32 @@ router.patch("/", async (req, res) => {
 });
 
 //--------------------------------------------------------------------------------------------
+
+
+
+router.delete("/all/:id" , async (req,res)=>{
+    try {
+        const { params } = req;
+        const { id } = params;
+
+        if(!id) return res.json("Must provide a valid id").status(422);
+        
+        const carts = await Shopping_cart.findAll({
+            where : {
+                buyer_id : id
+            }
+        });
+
+        if(!carts) return res.json("No carts found").status(404);
+
+        carts.forEach( async (i) => {
+            await i.destroy();
+        });
+
+        return res.json("Carts deleted");
+    } catch (error) {
+        console.log(error.message);
+    }
+})
 
 module.exports = router;
