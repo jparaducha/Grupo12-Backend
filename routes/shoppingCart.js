@@ -8,9 +8,11 @@ router.get("/", async (req,res)=>{
         
     const { id } = req.query;
 
+    if(!id) return res.json("Must provide a valid id");
+
     const cart = await Shopping_cart.findAll({ where : { "buyer_id" : id }});
     
-    if (!cart) return res.send('Este usuario no tiene productos en el carrito')
+    if (!cart || !cart.length) return res.sendStatus(204);
 
     res.status(400).send(cart);
 
@@ -59,10 +61,10 @@ router.post("/", async (req,res)=> {
 
         //------------------------------
 
-        stock.quantity = stock.quantity - productToAdd.quantity;
-        stock.save();
-        product.stock = product.stock - productToAdd.quantity;
-        product.save();
+        // stock.quantity = stock.quantity - productToAdd.quantity;
+        // stock.save();
+        // product.stock = product.stock - productToAdd.quantity;
+        // product.save();
         
         //------------------------------
 
