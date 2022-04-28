@@ -1,4 +1,4 @@
-const { Shopping_cart, Movement } = require("../db");
+const { Shopping_cart, Movement, Stock } = require("../db");
 
 const router = require("express").Router();
 
@@ -29,6 +29,16 @@ router.post("/", async (req,res)=>{
                 notes : status,
                 productImg : i.product.images[0]
             });
+
+            let product = await Stock.findOne({
+                where : {
+                    product_id : i.product_id,
+                    user_id : i.seller_id
+                }
+            });
+
+            product.quantity -= i.quantity;
+            await product.save();
         });
 
         
