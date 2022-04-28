@@ -792,5 +792,85 @@
     "image" : ["https://m.media-amazon.com/images/I/81O7GFyhdcL._AC_SY741_.jpg" ,"https://m.media-amazon.com/images/I/81ZtyfziytL._AC_SY741_.jpg" ,"https://m.media-amazon.com/images/I/91ncM7WufML._AC_SY606_.jpg"],
     "category_name" : "Tennis"
 
+},
+{
+    "name" : "Emma (Wordsworth Classics)",
+    "description": "Emma by Jane Austen. Jane Austen teased readers with the idea of a 'heroine whom no one but myself will much like', but Emma is irresistible. 'Handsome, clever, and rich', Emma is also an 'imaginist', 'on fire with speculation and foresight'. She sees the signs of romance all around her, but thinks she will never be married. Her matchmaking maps out relationships that Jane Austen ironically tweaks into a clearer perspective. Judgement and imagination are matched in games the reader too can enjoy, and the end is a triumph of understanding.",
+    "price" : 6.31,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/41sVvrH24tL._SX317_BO1,204,203,200_.jpg" , "https://images-na.ssl-images-amazon.com/images/I/81+n4G-ebAL.jpg"],
+    "category_name" : "Romance"
+},
+{
+    "name" : "Sense and Sensibility (Penguin Classics)",
+    "description": "Marianne Dashwood wears her heart on her sleeve, and when she falls in love with the dashing but unsuitable John Willoughby she ignores her sister Elinor's warning that her impulsive behaviour leaves her open to gossip and innuendo. Meanwhile Elinor, always sensitive to social convention, is struggling to conceal her own romantic disappointment, even from those closest to her. Through their parallel experience of love - and its threatened loss - the sisters learn that sense must mix with sensibility if they are to find personal happiness in a society where status and money govern the rules of love. This edition also includes explanatory notes and textual variants between first and second edition.",
+    "price" : 7.99,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/41dTfpdTZXL._SX324_BO1,204,203,200_.jpg", "https://images-na.ssl-images-amazon.com/images/I/514bxujDxUL.jpg"],
+    "category_name" : "Romance"
+},
+{
+    "name" : "Wuthering Heights (Royal Collector's Edition) (Case Laminate Hardcover with Jacket)",
+    "description": "Wuthering Heights is Emily Brontë's only novel. Although it is now widely regarded as a classic of English literature, contemporary reviews for the novel were deeply polarised; it was considered controversial because its depiction of mental and physical cruelty was unusually stark, and it challenged strict Victorian ideals of the day, including religious hypocrisy, morality, social classes and gender inequality. In the second half of the 19th century, Charlotte Brontë's Jane Eyre was considered the best of the Brontë sisters' works, but following later re-evaluation, critics began to argue that Wuthering Heights was superior. The book has inspired adaptations, including film, radio and television dramatisations, a musical, a ballet, any several operas. Much of the novels continued appeal lies in its assured demonstration of the finite and tragically self-consuming nature of passion. This case laminate collector's edition includes a Victorian inspired dust-jacket.",
+    "price" : 39.95,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/51OhnzPY3JL._SX346_BO1,204,203,200_.jpg" , "https://images-na.ssl-images-amazon.com/images/I/815icoDFkOL.jpg"],
+    "category_name" : "Romance"
+},
+{
+    "name" : "The Great Gatsby",
+    "description": "The Great Gatsby is a 1925 novel by American writer F. Scott Fitzgerald. Set in the Jazz Age on Long Island, the novel depicts narrator Nick Carraway's interactions with mysterious millionaire Jay Gatsby and Gatsby's obsession to reunite with his former lover, Daisy Buchanan.    A youthful romance Fitzgerald had with socialite Ginevra King, and the riotous parties he attended on Long Island's North Shore in 1922 inspired the novel. Following a move to the French Riviera, he completed a rough draft in 1924. He submitted the draft to editor Maxwell Perkins, who persuaded Fitzgerald to revise the work over the following winter. After his revisions, Fitzgerald was satisfied with the text, but remained ambivalent about the book's title and considered several alternatives. The final title he desired was Under the Red, White, and Blue. Painter Francis Cugat's final cover design impressed Fitzgerald who incorporated a visual element from the art into the novel. Gatsby continues to attract popular and scholarly attention. The novel was most recently adapted to film in 2013 by director Baz Luhrmann, while contemporary scholars emphasize the novel's treatment of social class, inherited wealth compared to those who are self-made, race, environmentalism, and its cynical attitude towards the American dream. The Great Gatsby is widely considered to be a literary masterpiece and a contender for the title of the Great American Novel.",
+    "price" : 12.99,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/41fFMnuszWL._SX331_BO1,204,203,200_.jpg" , "https://images-na.ssl-images-amazon.com/images/I/6186J1ru6uL.jpg"],
+    "category_name" : "Classic Literature"
+},
+{
+    "name" : "Do Androids Dream of Electric Sheep? 1",
+    "description": "'The most consistent of all series in terms of language control, length, and quality of story.' -David R. Hill, Director of the Edinburgh Project on Extensive Reading.",
+    "price" : 36.70,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/81YsfJUZL-L.jpg", "https://images-na.ssl-images-amazon.com/images/I/51nryV52GpL.jpg"],
+    "category_name" : "Sci-Fi"
+},
+{
+    "name" : "Do Androids Dream of Electric Sheep? 2",
+    "description": "'The most consistent of all series in terms of language control, length, and quality of story.' -David R. Hill, Director of the Edinburgh Project on Extensive Reading.",
+    "price" : 36.00,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/81zd5JEGJyL.jpg"],
+    "category_name" : "Sci-Fi"
+},
+{
+    "name" : "The Man In The High Castle",
+    "description": "'Dick's best work, and the most memorable alternative world tale...ever written' SCIENCE FICTION: THE 100 BEST NOVELS. It is 1962 and the Second World War has been over for seventeen years: people have now had a chance to adjust to the new order. But it's not been easy. The Mediterranean has been drained to make farmland, the population of Africa has virtually been wiped out and America has been divided between the Nazis and the Japanese. In the neutral buffer zone that divides the two superpowers lives the man in the high castle, the author of an underground bestseller, a work of fiction that offers an alternative theory of world history in which the Axis powers didn't win the war. The novel is a rallying cry for all those who dream of overthrowing the occupiers. But could it be more than that?  Subtle, complex and beautifully characterized, The Man in the High Castle remains the finest alternative world novel ever written, and a work of profundity and significance.",
+    "price" : 19.88,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/51yEaW9yqGL._SX322_BO1,204,203,200_.jpg"],
+    "category_name" : "Sci-Fi"
+},
+{
+    "name" : "The Nine Billion Names of God : The Collected Stories of Arthur C. Clarke, 1951-1956",
+    "description": "Arthur C. Clarke is one of the greatest science fiction writers of the century, and surely the most celebrated science fiction writer alive. He is -- with H. G. Wells, Isaac Asimov and Robert A. Heinlein -- one of the writers who define the genre. Now, at the dawn of the year 2001, Sir Arthur C. Clarke has cooperated in the preparation of a massive definitive edition of his collected shorter works, which will be made available on audio in five chronological volumes, followed by a 10 CD volume of favorite selection and a 30 cassette gift set...the most ambitious science fiction audio project in history.",
+    "price" : 18.69,
+    "rating" : 4,
+    "image" : ["https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/5745/9781574534474.jpg"],
+    "category_name" : "Sci-Fi"
+},
+{
+    "name" : "2001: A Space Odyssey (Space Odyssey Series)",
+    "description": "From the savannas of Africa at the dawn of mankind to the rings of Saturn as man ventures to the outer rim of our solar system, 2001: A Space Odyssey is a journey unlike any other.    This allegory about humanity’s exploration of the universe—and the universe’s reaction to humanity—is a hallmark achievement in storytelling that follows the crew of the spacecraft Discovery as they embark on a mission to Saturn. Their vessel is controlled by HAL 9000, an artificially intelligent supercomputer capable of the highest level of cognitive functioning that rivals—and perhaps threatens—the human mind.",
+    "price" : 18.76,
+    "rating" : 4,
+    "image" : ["https://m.media-amazon.com/images/I/51pHccoWLdL.jpg"],
+    "category_name" : "Sci-Fi"
+},
+{
+    "name" : "And Then There Were None",
+    "description": "Ten people, each with something to hide and something to fear, are invited to an isolated mansion on Indian Island by a host who, surprisingly, fails to appear. On the island they are cut off from everything but each other and the inescapable shadows of their own past lives. One by one, the guests share the darkest secrets of their wicked pasts. And one by one, they die…   Which among them is the killer and will any of them survive?",
+    "price" : 7.99,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/51MlxNgCsyL._SX308_BO1,204,203,200_.jpg", "https://images-na.ssl-images-amazon.com/images/I/71zqva1H+pL.jpg"],
+    "category_name" : "Mystery"
 }
 ]

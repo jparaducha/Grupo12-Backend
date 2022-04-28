@@ -33,6 +33,7 @@ router.get("/", async (req,res)=>{
                 }
             }
         );
+        if(!products || !products.length) return res.json("No products found").status(204)
 
         products.forEach(async (i)=>{
             const lowestPrice = await Stock.findAll({
