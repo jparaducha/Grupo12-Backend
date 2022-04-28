@@ -147,4 +147,12 @@
 <div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Elimina el producto especificado del carrito</div>
 
 <h3>## Wishlist ##</h3>
-<div><h4><img width="25px" height="10px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1_PEAPdXyverhNPGppuIntV-fwM3EUYzVettELm6trP0QY9wsUNo4umN59cEPexJWvQ&usqp=CAU"/> GET '/cart' = Recibe por query { id } del usuario </h4></div>
+<div><h4><img width="25px" height="10px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1_PEAPdXyverhNPGppuIntV-fwM3EUYzVettELm6trP0QY9wsUNo4umN59cEPexJWvQ&usqp=CAU"/> GET '/wishlist' = Recibe por query { user_id } del usuario </h4></div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Retorna todos los productos en la wishlist del usuario</div>
+<h4><img height="10px" width="25px" src="https://www.ulsterceramicspotterysupplies.co.uk/wp-content/uploads/2017/10/4118.png"/> POST '/wishlist' =  Recibe por body {  "user_id" , "product_id", "seller_id" } </h4></div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Agrega el producto especificado a la wishlist del usuario</div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se encuentra un usuario activo con la user_id pasada por body devuelve un json "Error : User not found"</div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se encuentra un producto activo con la product_id pasada por body devuelve un json "Error : Product not found"</div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se encuentra un usuario activo la seller_id pasada por body devuelve un json "Error : Seller not found"</div>
+<div><h4><img width="25px" height="10px" src="https://w7.pngwing.com/pngs/898/809/png-transparent-rectangle-area-red-product-button-miscellaneous-rectangle-area.png"/>DELETE '/wishlist' = Recibe por body { "user_id" , "seller_id" , "target" }</h4></div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si target es "all" se eliminaran todos los productos en la wishlist del usuario especificado</div>
