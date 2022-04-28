@@ -27,6 +27,9 @@ module.exports = (sequelize) => {
         },
         notes : {
             type : DataTypes.TEXT
+        },
+        productImg : {
+            type : DataTypes.STRING
         }
     },{ timestamps : false});
-}
+    }

@@ -90,14 +90,30 @@ router.get("/", async (req, res) => {
       });
   }
 
-  const categories = Category.findAll()
+  const categories = await Category.findAll()
     .then((categories) => {
-      return res.status(200).send(categories);
+      return categories;
     })
     .catch((error) => {
       console.log(error);
       return res.status(400).send(error.message);
     });
+
+  if(!categories.length) return res.json("No categories found").status(204);
+
+  return res.json(categories);
 });
 
+
 module.exports = router;
+// const categories = await Category.findAll({
+//     where : {
+//         parent_name : null
+//     },
+//     include : {
+//         model : Category,
+//         as : 'children',
+//         attributes : ['name']
+//     },
+//     attributes : ['name']
+// })
