@@ -90,7 +90,7 @@ router.get("/", async (req, res) => {
       });
   }
 
-  const categories = Category.findAll()
+  const categories = await Category.findAll()
     .then((categories) => {
       return categories;
     })
