@@ -42,6 +42,9 @@ module.exports = (sequelize) => {
       added: {
         type: DataTypes.DATE,
       },
+      featured_seller: {
+        type: DataTypes.JSON,
+      },
     },
     { timestamps: false }
   );

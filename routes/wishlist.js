@@ -76,6 +76,7 @@ router.get("/", async (req, res) => {
       return user.getWishlists();
     })
     .then((user_wishlist) => {
+      console.log(user_wishlist);
       user_wishlist.forEach((object) => {
         result.push(object.wishlist.product);
       });
