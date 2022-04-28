@@ -63,6 +63,7 @@ router.get("/", async (req, res) => {
             stock: product.stock,
             price: product.price,
             featured_seller: final_featured_seller,
+            sellers: product.sellers,
           };
         })
         .then((result) => {
@@ -114,7 +115,6 @@ router.get("/", async (req, res) => {
           stock: product.stock,
           price: product.price,
           featured_seller: final_featured_seller,
-          sellers: product.sellers,
         };
         result.push(product_to_return);
       });

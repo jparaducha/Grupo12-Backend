@@ -1,9 +1,27 @@
-const { Products_relations, Product } = require("../db");
+const { Products_relations, Product, User } = require("../db");
 
 const router = require("express").Router();
 
 router.post("/", async (req, res) => {
   const { product_1_id, type, product_2_id } = req.body;
+
+  if (!product_1_id || !type || !product_2_id)
+    return res.status(400).send("Error : Missing data in request");
+  if (type != "SIMILAR") {
+    if (type != "COMPLEMENTARY") {
+      return res.status(404).send("Error : type of relation unknown");
+    }
+  }
+
+  const relation = await Products_relations.findOne({
+    where: {
+      product_1_id,
+      type,
+      product_2_id,
+    },
+  });
+
+  if (relation) return res.status(400).send("Error : relation already exists");
 
   await Product.findOne({ where: { product_id: product_2_id } }).then(
     (product) => {
@@ -37,39 +55,125 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   const { product_id, type } = req.query;
   const result = [];
+  var promise1, promise2;
+  const product = await Product.findOne({ where: { product_id: product_id } });
+  if (!product) return res.status(404).send("Error : Product not found ");
 
-  await Product.findOne({ where: { product_id: product_id } }).then(
-    (product) => {
-      if (!product) return res.send.status(404).send("Product not found ");
+  if (!type) {
+    promise1 = Products_relations.findAll({
+      where: {
+        product_1_id: product_id,
+      },
+    });
+    promise2 = Products_relations.findAll({
+      where: {
+        product_2_id: product_id,
+      },
+    });
+  } else {
+    if (type != "SIMILAR") {
+      if (type != "COMPLEMENTARY") {
+        return res.status(404).send("Error : type of relation unknown");
+      }
     }
-  );
-  const promise1 = Products_relations.findAll({
-    where: {
-      product_1_id: product_id,
-    },
-  });
-  const promise2 = Products_relations.findAll({
-    where: {
-      product_2_id: product_id,
-    },
-  });
-
+    promise1 = Products_relations.findAll({
+      where: {
+        product_1_id: product_id,
+        type: type,
+      },
+    });
+    promise2 = Products_relations.findAll({
+      where: {
+        product_2_id: product_id,
+        type: type,
+      },
+    });
+  }
   await Promise.all([promise1, promise2])
     .then((promise_result) => {
+      const product_promises = [];
       promise_result.forEach((array) => {
         array.forEach((element) => {
-          result.push(element);
+          var toSearch = {};
+          if (element.dataValues.product_1_id == product_id) {
+            toSearch.related_product_id = element.dataValues.product_2_id;
+          } else {
+            toSearch.related_product_id = element.dataValues.product_1_id;
+          }
+          const product_promise = Product.findOne({
+            where: { product_id: toSearch.related_product_id },
+            include: {
+              model: User,
+              as: "sellers",
+              attributes: ["user_id", "name", "rating_as_seller"],
+            },
+          }).then((promise) => {
+            return {
+              type: element.dataValues.type,
+              product_promise_result: promise,
+            };
+          });
+          product_promises.push(product_promise);
         });
+      });
+      Promise.all(product_promises).then((promises_snapshot) => {
+        const result = [];
+        if (promises_snapshot.length === 0)
+          return res.status(404).send("No products found");
+        promises_snapshot.forEach(async (product) => {
+          console.log(product.product_promise_result.sellers);
+          let totalStock = 0;
+          product.product_promise_result.sellers.map((seller) => {
+            if (!product.product_promise_result.featured_seller) {
+              product.product_promise_result.featured_seller = seller;
+            }
+            if (
+              seller.rating_as_seller >
+              product.product_promise_result.featured_seller.rating_as_seller
+            ) {
+              product.product_promise_result.featured_seller = seller;
+            }
+            totalStock += seller.stock.quantity;
+          });
+          product.product_promise_result.stock = totalStock;
+          product.product_promise_result.price =
+            product.product_promise_result.featured_seller.stock.unit_price;
+          const final_featured_seller_stock = {
+            quantity:
+              product.product_promise_result.featured_seller.stock.quantity,
+            unit_price:
+              product.product_promise_result.featured_seller.stock.unit_price,
+          };
+          const final_featured_seller = {
+            user_id: product.product_promise_result.featured_seller.user_id,
+            name: product.product_promise_result.featured_seller.name,
+            rating_as_seller:
+              product.product_promise_result.featured_seller.rating_as_seller,
+            stock: final_featured_seller_stock,
+          };
+          product.product_promise_result.save();
+          const product_to_return = {
+            product_id: product.product_promise_result.product_id,
+            name: product.product_promise_result.name,
+            rating: product.product_promise_result.rating,
+            images: product.product_promise_result.images,
+            category_name: product.product_promise_result.category_name,
+            stock: product.product_promise_result.stock,
+            price: product.product_promise_result.price,
+            featured_seller: final_featured_seller,
+          };
+          result.push(product_to_return);
+        });
+        return res.send(result);
       });
     })
     .catch((e) => {
       console.log(e);
       return res.status(400).send(e.message);
     });
-
-  return res.send(result);
 });
 
 //--------------------------------------------------------
 
+router.delete("/", (req, res) => {});
 module.exports = router;
