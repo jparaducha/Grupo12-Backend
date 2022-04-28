@@ -23,16 +23,17 @@ router.post("/", async (req, res) => {
 
   if (relation) return res.status(400).send("Error : relation already exists");
 
-  await Product.findOne({ where: { product_id: product_2_id } }).then(
-    (product) => {
-      if (!product) return res.send.status(404).send("Product 2 not found ");
-    }
-  );
-  await Product.findOne({ where: { product_id: product_1_id } }).then(
-    (product) => {
-      if (!product) return res.send.status(404).send("Product 1 not found ");
-    }
-  );
+  const product_2 = await Product.findOne({
+    where: { product_id: product_2_id },
+  });
+
+  if (!product_2) return res.status(404).send("Product 2 not found ");
+
+  const product_1 = await Product.findOne({
+    where: { product_id: product_1_id },
+  });
+
+  if (!product_1) return res.send.status(404).send("Product 1 not found ");
 
   Products_relations.create({
     product_1_id,
@@ -119,50 +120,65 @@ router.get("/", async (req, res) => {
       Promise.all(product_promises).then((promises_snapshot) => {
         const result = [];
         if (promises_snapshot.length === 0)
-          return res.status(404).send("No products found");
+          return res.status(404).send("Error : No related products found");
         promises_snapshot.forEach(async (product) => {
-          console.log(product.product_promise_result.sellers);
           let totalStock = 0;
-          product.product_promise_result.sellers.map((seller) => {
-            if (!product.product_promise_result.featured_seller) {
-              product.product_promise_result.featured_seller = seller;
-            }
-            if (
-              seller.rating_as_seller >
-              product.product_promise_result.featured_seller.rating_as_seller
-            ) {
-              product.product_promise_result.featured_seller = seller;
-            }
-            totalStock += seller.stock.quantity;
-          });
-          product.product_promise_result.stock = totalStock;
-          product.product_promise_result.price =
-            product.product_promise_result.featured_seller.stock.unit_price;
-          const final_featured_seller_stock = {
-            quantity:
-              product.product_promise_result.featured_seller.stock.quantity,
-            unit_price:
-              product.product_promise_result.featured_seller.stock.unit_price,
-          };
-          const final_featured_seller = {
-            user_id: product.product_promise_result.featured_seller.user_id,
-            name: product.product_promise_result.featured_seller.name,
-            rating_as_seller:
-              product.product_promise_result.featured_seller.rating_as_seller,
-            stock: final_featured_seller_stock,
-          };
-          product.product_promise_result.save();
-          const product_to_return = {
-            product_id: product.product_promise_result.product_id,
-            name: product.product_promise_result.name,
-            rating: product.product_promise_result.rating,
-            images: product.product_promise_result.images,
-            category_name: product.product_promise_result.category_name,
-            stock: product.product_promise_result.stock,
-            price: product.product_promise_result.price,
-            featured_seller: final_featured_seller,
-          };
-          result.push(product_to_return);
+          if (product.product_promise_result.sellers.length !== 0) {
+            product.product_promise_result.sellers.map((seller) => {
+              if (!product.product_promise_result.featured_seller) {
+                product.product_promise_result.featured_seller = seller;
+              }
+              if (
+                seller.rating_as_seller >
+                product.product_promise_result.featured_seller.rating_as_seller
+              ) {
+                product.product_promise_result.featured_seller = seller;
+              }
+              totalStock += seller.stock.quantity;
+            });
+            product.product_promise_result.stock = totalStock;
+            product.product_promise_result.price =
+              product.product_promise_result.featured_seller.stock.unit_price;
+            const final_featured_seller_stock = {
+              quantity:
+                product.product_promise_result.featured_seller.stock.quantity,
+              unit_price:
+                product.product_promise_result.featured_seller.stock.unit_price,
+            };
+            const final_featured_seller = {
+              user_id: product.product_promise_result.featured_seller.user_id,
+              name: product.product_promise_result.featured_seller.name,
+              rating_as_seller:
+                product.product_promise_result.featured_seller.rating_as_seller,
+              stock: final_featured_seller_stock,
+            };
+            product.product_promise_result.save();
+            const product_to_return = {
+              product_id: product.product_promise_result.product_id,
+              name: product.product_promise_result.name,
+              rating: product.product_promise_result.rating,
+              images: product.product_promise_result.images,
+              category_name: product.product_promise_result.category_name,
+              stock: product.product_promise_result.stock,
+              price: product.product_promise_result.price,
+              featured_seller: final_featured_seller,
+              typeof_relation: product.type,
+            };
+            result.push(product_to_return);
+          } else {
+            const product_to_return = {
+              product_id: product.product_promise_result.product_id,
+              name: product.product_promise_result.name,
+              rating: product.product_promise_result.rating,
+              images: product.product_promise_result.images,
+              category_name: product.product_promise_result.category_name,
+              stock: 0,
+              price: null,
+              typeof_relation: product.product_promise_result.type,
+            };
+            result.push(product_to_return);
+            console.log(result);
+          }
         });
         return res.send(result);
       });
@@ -175,5 +191,44 @@ router.get("/", async (req, res) => {
 
 //--------------------------------------------------------
 
-router.delete("/", (req, res) => {});
+router.delete("/", async (req, res) => {
+  const { product_1_id, type, product_2_id } = req.body;
+
+  if (!product_1_id || !product_2_id || !type)
+    return res.status(400).send("Error : Missing data in request");
+  const product_1 = await Product.findOne({
+    where: {
+      product_id: product_1_id,
+    },
+  });
+
+  const product_2 = await Product.findOne({
+    where: {
+      product_id: product_2_id,
+    },
+  });
+
+  if (!product_1) return res.status(404).send("Error: Product 1 not found");
+  if (!product_2) return res.status(404).send("Error: Product 2 not found");
+
+  if (type !== "SIMILAR") {
+    if (type !== "COMPLEMENTARY") {
+      return res.status(400).send("Error: type of relation unknown");
+    }
+  }
+
+  const relation = await Products_relations.findOne({
+    where: {
+      product_1_id: product_1_id,
+      type: type,
+      product_2_id: product_2_id,
+    },
+  });
+  if (!relation) return res.status(404).send("Error: relation not found");
+
+  await relation.destroy();
+
+  return res.status(200).send("Relation succesfully deleted");
+});
+
 module.exports = router;

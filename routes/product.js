@@ -82,41 +82,54 @@ router.get("/", async (req, res) => {
         return res.status(404).send("No products found");
       products.forEach(async (product) => {
         let totalStock = 0;
-        product.sellers.map((seller) => {
-          if (!product.featured_seller) {
-            product.featured_seller = seller;
-          }
-          if (
-            seller.rating_as_seller > product.featured_seller.rating_as_seller
-          ) {
-            product.featured_seller = seller;
-          }
-          totalStock += seller.stock.quantity;
-        });
-        product.stock = totalStock;
-        product.price = product.featured_seller.stock.unit_price;
-        const final_featured_seller_stock = {
-          quantity: product.featured_seller.stock.quantity,
-          unit_price: product.featured_seller.stock.unit_price,
-        };
-        const final_featured_seller = {
-          user_id: product.featured_seller.user_id,
-          name: product.featured_seller.name,
-          rating_as_seller: product.featured_seller.rating_as_seller,
-          stock: final_featured_seller_stock,
-        };
-        product.save();
-        const product_to_return = {
-          product_id: product.product_id,
-          name: product.name,
-          rating: product.rating,
-          images: product.images,
-          category_name: product.category_name,
-          stock: product.stock,
-          price: product.price,
-          featured_seller: final_featured_seller,
-        };
-        result.push(product_to_return);
+        if (product.sellers.length !== 0) {
+          product.sellers.map((seller) => {
+            if (!product.featured_seller) {
+              product.featured_seller = seller;
+            }
+            if (
+              seller.rating_as_seller > product.featured_seller.rating_as_seller
+            ) {
+              product.featured_seller = seller;
+            }
+            totalStock += seller.stock.quantity;
+          });
+          product.stock = totalStock;
+          product.price = product.featured_seller.stock.unit_price;
+          const final_featured_seller_stock = {
+            quantity: product.featured_seller.stock.quantity,
+            unit_price: product.featured_seller.stock.unit_price,
+          };
+          const final_featured_seller = {
+            user_id: product.featured_seller.user_id,
+            name: product.featured_seller.name,
+            rating_as_seller: product.featured_seller.rating_as_seller,
+            stock: final_featured_seller_stock,
+          };
+          product.save();
+          const product_to_return = {
+            product_id: product.product_id,
+            name: product.name,
+            rating: product.rating,
+            images: product.images,
+            category_name: product.category_name,
+            stock: product.stock,
+            price: product.price,
+            featured_seller: final_featured_seller,
+          };
+          result.push(product_to_return);
+        } else {
+          const product_to_return = {
+            product_id: product.product_id,
+            name: product.name,
+            rating: product.rating,
+            images: product.images,
+            category_name: product.category_name,
+            stock: 0,
+            price: null,
+          };
+          result.push(product_to_return);
+        }
       });
 
       if (order === "nameASC") {
