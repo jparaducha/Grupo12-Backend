@@ -474,7 +474,7 @@
     "description" : "The QN85A upgrades your home entertainment experience with super charged 4K, an anti-glare screen, and an ultra-high contrast picture. These Advanced-Premium Samsung models feature a breakthrough matrix of Quantum Mini LEDs that focus light precisely where needed for breathtaking contrast. With the QN85A, our most advanced Samsung 4K TV processor powers Next-Gen Gaming capabilities, a new generation of apps, and sound that moves with the onscreen action. And with HDR10+, colors are adjusted scene-by-scene to enhance what you watch.",
     "price": 2699.99,
     "rating" : 4.5,
-    "image" : ["https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6451/6451491cv12d.jpg","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6451/6451491_sd.jpg"],
+    "image" : ["https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6451/6451491_sd.jpg","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6451/6451491cv12d.jpg"],
     "category_name" : "TVs"
 
 },
@@ -483,7 +483,7 @@
     "description" : "iPhone XS features a 5.8-inch Super Retina display with custom-built OLED panels for an HDR display that provides the industry’s best color accuracy, true blacks, and remarkable brightness.¹ Advanced Face ID lets you securely unlock your iPhone, log in to apps, and pay with just a glance. The A12 Bionic chip with next-generation Neural Engine uses real-time machine learning to transform the way you experience photos, gaming, augmented reality, and more. A breakthrough 12MP dual-camera system takes your portraits to the next level with Portrait mode, Portrait Lighting, enhanced bokeh, and all-new Depth Control. Water resistance.² And iOS 12—the most advanced mobile operating system—with powerful new tools that make iPhone more personal than ever.",
     "price": 1049.99,
     "rating" : 4.5,
-    "image" : ["https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6009/6009869_bd.jpg","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6009/6009869_sd.jpg"],
+    "image" : ["https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6009/6009869_sd.jpg","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6009/6009869_bd.jpg"],
     "category_name" : "Cellphones"
 
 },
@@ -872,5 +872,77 @@
     "rating" : 4,
     "image" : ["https://images-na.ssl-images-amazon.com/images/I/51MlxNgCsyL._SX308_BO1,204,203,200_.jpg", "https://images-na.ssl-images-amazon.com/images/I/71zqva1H+pL.jpg"],
     "category_name" : "Mystery"
+},
+{
+    "name" : "The Girl with the Dragon Tattoo (Millennium Series)",
+    "description": "It’s about the disappearance forty years ago of Harriet Vanger, a young scion of one of the wealthiest families in Sweden . . . and about her octogenarian uncle, determined to know the truth about what he believes was her murder.   It’s about Mikael Blomkvist, a crusading journalist recently at the wrong end of a libel case, hired to get to the bottom of Harriet’s disappearance . . . and about Lisbeth Salander, a twenty-four-year-old pierced and tattooed genius hacker possessed of the hard-earned wisdom of someone twice her age—and a terrifying capacity for ruthlessness to go with it—who assists Blomkvist with the investigation. This unlikely team discovers a vein of nearly unfathomable iniquity running through the Vanger family, astonishing corruption in the highest echelons of Swedish industrialism—and an unexpected connection between themselves.    It’s a contagiously exciting, stunningly intelligent novel about society at its most hidden, and about the intimate lives of a brilliantly realized cast of characters, all of them forced to face the darker aspects of their world and of their own lives.",
+    "price" : 31.83,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/51PIFMGO7YL._SX334_BO1,204,203,200_.jpg"],
+    "category_name" : "Mystery"
+},
+{
+    "name" : "Rebecca",
+    "description": "'Last Night I Dreamt I went to Manderley Again...'     With these words, the reader is ushered into an isolated gray stone mansion on the windswept Cornish coast, as the second Mrs. Maxim de Winter recalls the chilling events that transpired as she began her new life as the young bride of a husband she barely knew. For in every corner of every room were phantoms of a time dead but not forgotten—a past devotedly preserved by the sinister housekeeper, Mrs. Danvers: a suite immaculate and untouched, clothing laid out and ready to be worn, but not by any of the great house's current occupants. With an eerie presentiment of evil tightening her heart, the second Mrs. de Winter walked in the shadow of her mysterious predecessor, determined to uncover the darkest secrets and shattering truths about Maxim's first wife—the late and hauntingly beautiful Rebecca.",
+    "price" : 10.19,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/51lJtCKRBoL._SX330_BO1,204,203,200_.jpg"],
+    "category_name" : "Mystery"
+},
+{
+    "name" : "The Hound of the Baskervilles & The Valley of Fear (Macmillan Collector's Library)",
+    "description": "The Hound of the Baskervilles is one of Doyle's best-known Holmes novels, frequently adapted for film and television, which is not surprising given the highly dramatic scenes of mist-wrapped moors echoing to the horrific howls of a supernatural hound. Is this a genuinely devilish apparition or is there a cunning murderer at work? Only Sherlock Holmes can solve the mystery. This volume also contains The Valley of Fear, a dark, powerful tale in which Holmes confronts the evil Professor Moriarty once more.",
+    "price" : 12.99,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/51WDyjmanqL._SX307_BO1,204,203,200_.jpg"],
+    "category_name" : "Mystery"
+},
+{
+    "name" : "Journey to the Center of the Earth (Dover Thrift Editions)",
+    "description": "'The reason Verne is still read by millions today is simply that he was one of the best storytellers who ever lived.'' — Arthur C. Clarke.      An adventurous geology professor chances upon a manuscript in which a 16th-century explorer claims to have found a route to the earth's core. Professor Lidenbrock can't resist the opportunity to investigate, and with his nephew Axel, he sets off across Iceland in the company of Hans Bjelke, a native guide. The expedition descends into an extinct volcano toward a sunless sea, where they encounter a subterranean world of luminous rocks, antediluvian forests, and fantastic marine life — a living past that holds the secrets to the origins of human existence.        Originally published in 1864, Jules Verne's classic remains critically acclaimed for its style and imaginative visions. Verne wrote many fantasy stories that later proved remarkably prescient, and his distinctive combination of realism and romanticism exercised a lasting influence on writers as diverse as Mark Twain, Arthur Conan Doyle, and Jean-Paul Sartre. In addition to the excitement of an action novel, Journey to the Center of the Earth has the added appeal of a psychological quest, in which the sojourn itself is as significant as the ultimate destination.",
+    "price" : 4.95,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/51wZ2nibiSL._SX311_BO1,204,203,200_.jpg"],
+    "category_name" : "Adventure"
+},
+{
+    "name" : "20,000 Leagues Under the Sea and Other Classic Novels (Fall River Classics)",
+    "description": "Writing in France in the nineteenth century, Jules Verne captured his era’s fascination with adventure and exploration in a series of novels he referred to as his Voyages extraordinaires. 20,000 Leagues Under the Sea and Other Classic Novels is a unique compilation of six of Verne’s best-known novels that extrapolate developing technology and scientific inquisitiveness into rousing adventures as exciting and provocative today as when they were first written.",
+    "price" : 11.74,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/51Qil91GhZL._SX325_BO1,204,203,200_.jpg"],
+    "category_name" : "Adventure"
+},
+{
+    "name" : "Amazon Basics Mesh, Mid-Back, Adjustable, Swivel Office Desk Chair with Armrests, Black",
+    "description" : "Comfortable office chair with contoured mesh back for breathability",
+    "price" : 76.98,
+    "rating" : 3.8,
+    "image" : ["https://m.media-amazon.com/images/I/91vH3ZqS2sL._AC_SY355_.jpg"],
+    "category_name" : "Furniture"
+},
+{
+    "name" : "Hasegawa Ladders Lucano Step Stool, 2-Step White",
+    "description" : "Design forward so no need to hide it away!. Stands on its own when folded. Steps with integrated grooves for a firm grip. Designed by Chiaki Murata of the world famous Metaphys Studio. Designed and Made in Japan",
+    "price" : 150.73,
+    "rating" : 3.8,
+    "image" : ["https://m.media-amazon.com/images/I/618yyXWLuIL._AC_SY355_.jpg", "https://m.media-amazon.com/images/I/81n0Ythq5+L._AC_SX355_.jpg"],
+    "category_name" : "Furniture"
+},
+{
+    "name" : "FDP SoftScape 14'' Square Bean Bag Poufs for Kids, Multipurpose Decorative Ottoman, Seat or Footrest, Great for Small Spaces, Living Room, Playroom, Classroom, Library (2-Piece Set) - Navy/Powder Blue",
+    "description" : "DECORATIVE AND FLEXIBLE— 2-piece set of versatile, lightweight square poufs can be used as seats, ottomans, surfaces and even footrests for a flexible seating option. GREAT FOR SMALL SPACES — comfy, colorful poufs add a decorative accent to any space, big or small - playrooms, living rooms, bedrooms, classrooms, libraries and more. SOFT AND STURDY — filled with shape-retaining foam beads that form to your body while you sit, then return to their original shape for a comfy seat every time",
+    "price" : 95.16,
+    "rating" : 3.8,
+    "image" : ["https://m.media-amazon.com/images/I/71pQI1J1u7L._SX342_.jpg", "https://m.media-amazon.com/images/I/81wheaGSLRS._SX342_.jpg"],
+    "category_name" : "Furniture"
+},
+{
+    "name" : "Office Gaming Chair - Ergonomic Computer Desk Chairs with Footrest, Executive Swivel Chair, PU Leather, Thick Padding",
+    "description" : "Chair with Footrest - This racing style gaming chair is equipped with footrest for position reinforcement. The armrests can flip up when they’re not in use, ideal if you want to get something more compact or want a little bit of freedom in your movements. Also keeping you comfy for long hours of game or work.",
+    "price" : 86.48,
+    "rating" : 3.8,
+    "image" : ["https://m.media-amazon.com/images/I/611sou-FOaL._AC_SY450_.jpg"],
+    "category_name" : "Furniture"
 }
 ]
