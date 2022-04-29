@@ -26,8 +26,28 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
       },
       rating: {
-        type: DataTypes.FLOAT,
-      },
+        type : DataTypes.ARRAY(DataTypes.FLOAT),
+
+        set(value) {
+            const rawValue = this.getDataValue('rating')
+            
+            if(!rawValue) return this.setDataValue("rating", [value]);
+            
+            return this.setDataValue("rating" , [...rawValue, value])
+        },
+
+        get(){
+            const rawValue = this.getDataValue("rating");
+
+            if(!rawValue) return null;
+            
+            const average = rawValue.reduce((acc,curr)=>{
+                return acc+curr;
+            }, 0);
+
+            return average/rawValue.length;
+        }
+    },
       amount_sold: {
         type: DataTypes.INTEGER,
         allowNull: false,
