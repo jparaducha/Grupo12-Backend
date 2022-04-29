@@ -103,6 +103,8 @@ router.post("/review", async (req,res)=>{
         }
         );
 
+        if(!move) return res.json("Movement not found");
+
         move.notes = review;
         move.rated = true;
 
