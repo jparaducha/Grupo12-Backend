@@ -111,6 +111,7 @@ router.post("/review", async (req,res)=>{
         return res.json("Review saved");
     } catch (error) { 
         console.log(error.message);
+        return res.sendStatus(500);
     }
 });
 
@@ -144,6 +145,7 @@ router.patch("/notification", async (req,res)=>{
 
     } catch (error) {
         console.log(error.message);
+        return res.sendStatus(500);
     }
 })
 
