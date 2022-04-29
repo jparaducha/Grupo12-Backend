@@ -179,3 +179,11 @@
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si type no es "SIMILAR" o "COMPLEMENTARY" devuelve un JSON 'Error : Type of relation unknown'</div>
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se encuentra toda la informacion necesaria en la request devuelve un JSON 'Error : Missing data in request'</div>
 <div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si se elimino exitosamente la relacion devolvera un JSON "Relation succesfully deleted" </div>
+<h3>## Recent ##</h3>
+
+<h4><img height="10px" width="25px" src="https://www.ulsterceramicspotterysupplies.co.uk/wp-content/uploads/2017/10/4118.png"/> POST '/recent' =  Recibe por body {  "product_id" , "user_id" }
+</h4></div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Almacena los ultimos 5 product_ids pasados por cada user_id </div>
+
+<div><h4><img width="25px" height="10px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1_PEAPdXyverhNPGppuIntV-fwM3EUYzVettELm6trP0QY9wsUNo4umN59cEPexJWvQ&usqp=CAU"/> GET '/recent' = Recibe por query { user_id } Devuelve un array de los productos </h4></div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Devuelve un array de los productos asociados al usuario especificado </div>
