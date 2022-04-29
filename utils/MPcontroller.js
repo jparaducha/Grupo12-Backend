@@ -47,12 +47,12 @@ const crearOrden = async (req,res, next)=>{
           }
         });
 
-        console.log(Array.isArray(carts));
+        // console.log(Array.isArray(carts));
         const totalPrice = carts.reduce((acc, curr)=>{
             return acc + (curr.unit_price * curr.quantity);
         }, 0);
 
-        console.log("\n\n\TOTAL PRICE: ", totalPrice, "\n\n\n\n\n\n");
+        // console.log("\n\n\TOTAL PRICE: ", totalPrice, "\n\n\n\n\n\n");
 
         if(!totalPrice) return res.json("Empty cart");
       
@@ -106,8 +106,8 @@ const crearOrden = async (req,res, next)=>{
             //     order_id : response.body
 
             // })
-            console.log("ID: ",body.id, "\nITEMS: ", body.items, "\nOPERATION_TYPE: ", body.operation_type,"\nPAYER: ", body.payer,"\nSANDBOX INIT POINT: ", body.sandbox_init_point,"\nTOTAL AMOUNT: ", body.total_amount, "\nEXTERNAL REFERENCE: ", body.external_reference);
-            console.log("\n\nasí de cheto");
+            // console.log("ID: ",body.id, "\nITEMS: ", body.items, "\nOPERATION_TYPE: ", body.operation_type,"\nPAYER: ", body.payer,"\nSANDBOX INIT POINT: ", body.sandbox_init_point,"\nTOTAL AMOUNT: ", body.total_amount, "\nEXTERNAL REFERENCE: ", body.external_reference);
+            // console.log("\n\nasí de cheto");
             res.json(response.body.init_point);
           })
           .catch(function (error) {
