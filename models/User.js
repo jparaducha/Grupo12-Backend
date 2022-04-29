@@ -28,7 +28,27 @@ sequelize.define('user', {
             type : DataTypes.FLOAT,
         },
         rating_as_seller : {
-            type : DataTypes.FLOAT,
+            type : DataTypes.ARRAY(DataTypes.FLOAT),
+
+            set(value) {
+                const rawValue = this.getDataValue('rating_as_seller')
+                
+                if(!rawValue) return this.setDataValue("rating_as_seller", [value]);
+                
+                return this.setDataValue("rating_as_seller" , [...rawValue, value])
+            },
+
+            get(){
+                const rawValue = this.getDataValue("rating_as_seller");
+
+                if(!rawValue) return null;
+                
+                const average = rawValue.reduce((acc,curr)=>{
+                    return acc+curr;
+                }, 0);
+
+                return average/rawValue.length;
+            }
         },
         active : {
             type : DataTypes.BOOLEAN,

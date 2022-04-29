@@ -527,4 +527,31 @@ router.get("/categories/", async (req, res) => {
   }
 });
 
+
+router.patch("/rating", async (req,res)=>{
+  try {
+      const { productId } = req.query;
+      const { rating } = req.body;
+
+      if(typeof(rating)!=="number" || rating > 5 || rating < 0) return res.json("Rating must be a number between 0 and 5");
+
+  const product = await Product.findOne({
+      where : {
+          product_id:  productId
+      }
+  }).then((data)=> data).catch(console.log);
+
+
+  product.rating = rating;
+
+  await product.save();
+
+
+  return res.json(product);
+
+  } catch (error) {
+      console.log(error.message)
+  }
+})
+
 module.exports = router;
