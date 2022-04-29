@@ -10,6 +10,8 @@ const jwtGenerator = require("../utils/jwtGenerator");
 const validInfo = require("../middleware/validInfo");
 const authorization = require("../middleware/authorization");
 
+// const { loginGoogle } = require("./controller/googleLogin");
+
 
 const { 
     NODEMAILERUSER,
@@ -188,7 +190,7 @@ router.get("/is-verify",authorization, async (req,res)=> {
 router.post("/forgot", async (req,res)=>{
     try {
       const { email } = req.body;
-  
+
       let query = await User.findOne({ where : { "email" : email } })
       .then((res)=>{
           if(!res.dataValues){
@@ -232,6 +234,32 @@ router.post("/forgot", async (req,res)=>{
   
   });
 
+  router.post('/loginGoogle' ,async (req,res)=> {
+        console.log('entre a la ruta')
+        const { name, email, tokenId,googleId } = req.body;
+        console.log(name,'soy name')
+        console.log(email,'soy email')
+        console.log(tokenId,'soy token')
+        try {
+            let usuario = await User.findOne({
+                where: { email },
+            });
+            console.log(usuario,'soy usuario existente')
+            if (!usuario) {
+                usuario = await User.create({
+                name,
+                email,
+                password:googleId.toString(),
+                active: true
+                });
+                console.log(usuario,'soy usuario en creacion')
+            }
+            res.send(usuario);
+            } catch (err) {
+            res.send(err);
+            }
+    });
+
   router.post("/changePassword", async (req,res)=>{
     try {
         
@@ -270,7 +298,9 @@ router.post("/forgot", async (req,res)=>{
     res.json(response.dataValues);
     } catch (error) {
         console.log(error.message);
-    }
+    };
+
+    
 })
 
 
