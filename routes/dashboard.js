@@ -20,7 +20,7 @@ router.post("/", authorization,async (req,res)=>{
 router.get("/", async(req,res)=>{
     try {
         const users = await User.findAll().then((data)=>{
-            return data.map(i => i.dataValues)
+            return data
         })
         .catch((err)=> console.log(err));
 
@@ -29,6 +29,30 @@ router.get("/", async(req,res)=>{
     } catch (error) {
         console.log(error.message);
         res.send("error");
+    }
+})
+
+router.patch("/rating", async (req,res)=>{
+    try {
+        const { userId } = req.query;
+        const { rating } = req.body;
+
+    const user = await User.findOne({
+        where : {
+            user_id:  userId
+        }
+    }).then((data)=> data).catch(console.log);
+
+
+    user.rating_as_seller = rating;
+
+    await user.save();
+
+
+    return res.json(user);
+
+    } catch (error) {
+        console.log(error.message)
     }
 })
 
