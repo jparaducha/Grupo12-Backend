@@ -87,4 +87,66 @@ router.get("/:userId", async (req,res)=>{
     return res.json(moves);
 })
 
+router.post("/review", async (req,res)=>{
+    try {
+        const { orderId } = req.query;
+        const { review } = req.body;
+
+        if(!orderId) return res.json("An order id must be provided");
+        if(!review) return res.json("Missing review");
+
+        let move = await Movement.findOne(
+            {
+            where : {
+                order_id : orderId
+            }
+        }
+        );
+
+        move.notes = review;
+        move.rated = true;
+
+        await move.save();
+
+        return res.json("Review saved");
+    } catch (error) { 
+        console.log(error.message);
+        return res.sendStatus(500);
+    }
+});
+
+
+router.patch("/notification", async (req,res)=>{
+    try {
+        const { userId } = req.query;
+
+        if(!userId) return res.json("Missing user id");
+
+        const moves = await Movement.findAll({
+            where : {
+                buyer_id : userId
+            }
+        })
+        .then((data)=>{
+            return data;
+        })
+        .catch(console.log);
+
+
+        if(!moves || !moves.length) return res.json("User has no moves");
+
+        moves.forEach(async (ele) => {
+            ele.seen= true;
+
+            await ele.save();
+        });
+
+        return res.json("Movements seen");
+
+    } catch (error) {
+        console.log(error.message);
+        return res.sendStatus(500);
+    }
+})
+
 module.exports = router;
