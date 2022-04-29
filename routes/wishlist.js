@@ -76,11 +76,44 @@ router.get("/", async (req, res) => {
       return user.getWishlists();
     })
     .then((user_wishlist) => {
-      console.log(user_wishlist);
+      const product_promises = [];
       user_wishlist.forEach((object) => {
-        result.push(object.wishlist.product);
+        product_promises.push(
+          Product.findOne({
+            where: {
+              product_id: object.wishlist.product.product_id,
+            },
+            include: {
+              model: User,
+              as: "sellers",
+              attributes: ["user_id", "name", "rating_as_seller"],
+            },
+          }).then((product) => {
+            return {
+              product_data: product,
+              seller_id: object.wishlist.seller_id,
+            };
+          })
+        );
       });
-      return res.send(result);
+      Promise.all(product_promises).then((result_snapshots) => {
+        const user_promises = [];
+        result_snapshots.forEach((doc) => {
+          let toPush = {
+            product_id: doc.product_data.product_id,
+            name: doc.product_data.name,
+            rating: doc.product_data.rating,
+            stock: doc.product_data.stock,
+            price: doc.product_data.price,
+            images: doc.product_data.images,
+          };
+          doc.product_data.sellers.map((seller) => {
+            if (seller.user_id === doc.seller_id) toPush.seller = seller;
+          });
+          result.push(toPush);
+        });
+        return res.status(200).send(result);
+      });
     })
     .catch((e) => {
       console.log(e);
