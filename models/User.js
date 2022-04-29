@@ -1,6 +1,4 @@
-const { raw } = require('express');
 const { DataTypes } = require('sequelize');
-const { get } = require('../routes/mp_confirmation');
 
 module.exports = (sequelize) => {
 sequelize.define('user', {
