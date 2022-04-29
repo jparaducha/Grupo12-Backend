@@ -474,7 +474,7 @@
     "description" : "The QN85A upgrades your home entertainment experience with super charged 4K, an anti-glare screen, and an ultra-high contrast picture. These Advanced-Premium Samsung models feature a breakthrough matrix of Quantum Mini LEDs that focus light precisely where needed for breathtaking contrast. With the QN85A, our most advanced Samsung 4K TV processor powers Next-Gen Gaming capabilities, a new generation of apps, and sound that moves with the onscreen action. And with HDR10+, colors are adjusted scene-by-scene to enhance what you watch.",
     "price": 2699.99,
     "rating" : 4.5,
-    "image" : ["https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6451/6451491cv12d.jpg","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6451/6451491_sd.jpg"],
+    "image" : ["https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6451/6451491_sd.jpg","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6451/6451491cv12d.jpg"],
     "category_name" : "TVs"
 
 },
@@ -483,7 +483,7 @@
     "description" : "iPhone XS features a 5.8-inch Super Retina display with custom-built OLED panels for an HDR display that provides the industry’s best color accuracy, true blacks, and remarkable brightness.¹ Advanced Face ID lets you securely unlock your iPhone, log in to apps, and pay with just a glance. The A12 Bionic chip with next-generation Neural Engine uses real-time machine learning to transform the way you experience photos, gaming, augmented reality, and more. A breakthrough 12MP dual-camera system takes your portraits to the next level with Portrait mode, Portrait Lighting, enhanced bokeh, and all-new Depth Control. Water resistance.² And iOS 12—the most advanced mobile operating system—with powerful new tools that make iPhone more personal than ever.",
     "price": 1049.99,
     "rating" : 4.5,
-    "image" : ["https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6009/6009869_bd.jpg","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6009/6009869_sd.jpg"],
+    "image" : ["https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6009/6009869_sd.jpg","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6009/6009869_bd.jpg"],
     "category_name" : "Cellphones"
 
 },
@@ -578,6 +578,15 @@
 
 },
 {
+    "name" : "Boca Juniors 2021/22 Home Player Jersey HEAT.RDY - Genuine Adidas",
+    "description" : "New with tags: A brand-new, unused, and unworn item (including handmade items) in the original packaging (such as the original box or bag) and/or with the original tags attached.",
+    "price": 152.90,
+    "rating" : 5,
+    "image" : ["https://i.ebayimg.com/images/g/Rn4AAOSwKDZhdDNA/s-l1600.jpg","https://i.ebayimg.com/images/g/94sAAOSwlTZhdDNC/s-l1600.jpg"],
+    "category_name" : "Football"
+
+},
+{
     "name" : "Ronaldo #7 Man United Home Men's Soccer Jersey- 2021/22",
     "description" : "RONALDO #7 heat pressed on the back. Made from 100% Polyester. Embroidered club crest and brand logo on the chest. Back neck taping. Tagless collar. This item is in Adult sizes.",
     "price": 77.77,
@@ -585,5 +594,355 @@
     "image" : ["https://m.media-amazon.com/images/I/51-GjkhGJJL._AC_UY445_.jpg"],
     "category_name" : "Football"
 
+},
+{
+    "name" : "Boca Juniors 22/23 Third Shorts - Genuine Adidas",
+    "description" : "Wear the adidas Boca Juniors Shorts with the eye-catching third uniform shirt to look like your idols on the pitch. Mesh gusset in the crotch and AEROREADY wicking technology work to keep you comfortable no matter if you're playing or cheering. Woven club crest above hem highlights your loyalty to the club Made from 100% recycled materials, this product represents just one of our solutions to end plastic waste.",
+    "price": 1.2,
+    "rating" : 4.5,
+    "image" : ["https://i.ebayimg.com/images/g/afoAAOSwY0ZiMndr/s-l1600.jpg","https://i.ebayimg.com/images/g/~0AAAOSwadNiMndv/s-l1600.jpg"],
+    "category_name" : "Football"
+
+},
+{
+    "name" : "Adidas Jabulani soccer | SOUTH AFRICA Official Match Ball | FIFA WORLD CUP 2010",
+    "description" : "High quality materials used in this official Soccer ball  ·   Seamless surface of the official match ball    ·    100% polyurethane    ·      Weight, rebound & water absorption passed    ·     Vintage football for match & practice    ·    Handmade Stitch First Grade Replica Ball    ·       High quality bladder   ·     Jabulani very rare football since 2010 world cup South Africa    ·     OFFICIAL WEIGHT    ·     OFFICIAL SIZE 5",
+    "price": 299.99,
+    "rating" : 4.5,
+    "image" : ["https://i.ebayimg.com/images/g/XlMAAOSwx8ZgzO0W/s-l300.jpg","https://i.ebayimg.com/images/g/ofoAAOSwpU9gzO1E/s-l300.jpg"],
+    "category_name" : "Football"
+
+},
+{
+    "name" : "Adidas Brazuca Official Match Ball FIFA World Cup 2014 Soccer Ball Size 5",
+    "description" : "The ball is a developmental successor to the Adidas Tango 12 series of balls, with the same bladder and carcass but a different surface structure. The ball weighs 437 grams and has a circumference of 69 centimetres. The ball has been made of six polyurethane panels which have been thermally bonded; the reduction in the number of panels is claimed to increase the consistency in the ball. The Brazuca ball has been stated to avoid aerodynamic problems with the Jabulani ball used in South Africa for the previous World Cup. It is textured to feel more like the Adidas Finale 13, the official UEFA Champions League ball, than the Jabulani.",
+    "price": 158.99,
+    "rating" : 4.5,
+    "image" : ["https://i.ebayimg.com/images/g/Vz0AAOSwz5JgTkbI/s-l300.jpg", "https://i.ebayimg.com/images/g/rSAAAOSwf-5gTkbW/s-l300.jpg"],
+    "category_name" : "Football"
+
+},
+{
+    "name" : "Nike Men's Alpha Menace Pro 2 Mid Football Cleats",
+    "description" : "Show the competition your big play potential in the NikeAlpha Menace Pro 2 D football cleats The snug locked down fit foam cushioning and responsive traction combine to enhance your game changing play",
+    "price": 119.99,
+    "rating" : 4.5,
+    "image" : ["https://m.media-amazon.com/images/I/71JkKcLsO1L._AC_UY395_.jpg", "https://m.media-amazon.com/images/I/61taijhkQ6L._AC_UY395_.jpg" , "https://m.media-amazon.com/images/I/71PCmZ3u+-L._AC_UY395_.jpg"],
+    "category_name" : "Shoes"
+
+},
+{
+    "name" : "Nike Mens Vapor Untouchable 3 Pro Football Cleats (10.5, Yellow/Black)",
+    "description" : "Lightweight and highly breathable proposition for the player that is looking for control. UPPER: Utilizing the breathe tech innovation, it combines enhanced breathability with superior comfort and support. MIDSOLE: Full-length Phylon with encapsulated Air-Sole unit in the heel for impact protection. OUTSOLE: GDR with an outrigger for lateral protection and traditional herringbone for all court traction.",
+    "price": 119.99,
+    "rating" : 4.5,
+    "image" : ["https://m.media-amazon.com/images/I/711TBN9B+GL._AC_UY395_.jpg", "https://m.media-amazon.com/images/I/71o21dGJdvL._AC_UX395_.jpg" , "https://m.media-amazon.com/images/I/61FycaqFeTL._AC_UX395_.jpg"],
+    "category_name" : "Shoes"
+
+},
+{
+    "name" : "Nike Mens Air Jordan 1 Mid Chicago Black Toe Basketball Sneakers (10)",
+    "description" : "The Air Jordan series by Jordan Brand is considered the greatest signature shoe collection ever. The Air Jordan Retro line is at the forefront of modern sneaker collecting culture. Jordan Brand’s flagship model is the Air Jordan 1, a timeless retro basketball shoe first released in 1985 and now offered in three popular silhouettes: high-top, mid-top, and low-top, all of which are consistently the most in-demand sneakers on the market, whether it be the re-release of beloved original colorways, all-new looks, or part of limited edition sneaker collaborations with artists and musicians. Other perennial favorite Air Jordan sneakers are the Air Jordan 3, Air Jordan 4, Air Jordan 6, and Air Jordan 11, just to name a few. Each of Michael Jordan’s sneakers offer plenty of ‘80s and ‘90s basketball nostalgia, as well as a glimpse into the personal life of the greatest basketball player ever. Sneaker culture simply would not be what it is today without the Air Jordan series. Jordan Brand also offers a wide range of high-performance modern day basketball footwear, as well as other lifestyle and performance footwear outside of the Retro Air Jordan line.",
+    "price": 295.00,
+    "rating" : 4.5,
+    "image" : ["https://m.media-amazon.com/images/I/61F4wnmjlJL._AC_UY395_.jpg" , "https://m.media-amazon.com/images/I/61weWZLvS7L._AC_UY395_.jpg" , "https://m.media-amazon.com/images/I/51WUvnxeMqL._AC_UY395_.jpg"],
+    "category_name" : "Shoes"
+
+},
+{
+    "name" : "Converse Men's Chuck Taylor Sneakers",
+    "description" : "The iconic, timeless chuck taylor all star sneaker. Perfect in its simplicity since 1917. Lightweight, breathable canvas construction. Vulcanized rubber sole delivers durable traction. An ortholite insole cushions each and every step. Versatile, fashionable, and they keep looking better every time you wear them. Ortholite is a trademark of O2 partners, llc.",
+    "price": 39.99,
+    "rating" : 4.5,
+    "image" : ["https://m.media-amazon.com/images/I/61rcuSiXp4L._AC_UX395_.jpg" , "https://m.media-amazon.com/images/I/61eNN2j0jBL._AC_SX395._SX._UX._SY._UY_.jpg" , "https://m.media-amazon.com/images/I/81w3BXp2BgL._AC_SX395._SX._UX._SY._UY_.jpg"],
+    "category_name" : "Shoes"
+
+},
+{
+    "name" : "Timberland PRO Men's Direct Attach 6 Inch Soft Toe Insulated Waterproof Work Boot, Marigold",
+    "description" : "Men's Timberland Pro, 6 In Direct Attach Soft Toe Insulated 200g Boot. Inspired by our original yellow boot, this waterproof and insulated, soft-toe boot features an oil-resistant, non-marking rubber lug outsole for traction and our exclusive anti-fatigue technology footbed for shock absorption and energy return. Waterproof leather with seam-sealed waterproof construction Electrical hazard protection Contoured shock-diffusion plate for structural support Anti-Fatigue Technology polyurethane footbed for shock absorption and energy return Padded top collar for comfort Breathable and moisture-wicking lining Direct-inject construction for durability Heat-, oil-, slip-, and abrasion-resistan rubber outsole 200G Insulation",
+    "price": 95.44,
+    "rating" : 4.5,
+    "image" : ["https://m.media-amazon.com/images/I/91ebmBHLvML._AC_UY395_.jpg", "https://m.media-amazon.com/images/I/91-eLvu4pYL._AC_UY395_.jpg", "https://m.media-amazon.com/images/I/91AWqScvvtL._AC_UY395_.jpg"],
+    "category_name" : "Shoes"
+
+},
+{
+    "name" : "adidas Originals Men's Stan Smith Sneaker",
+    "description" : "Timeless appeal. Effortless style. Everyday versatility. For over 50 years and counting, adidas Stan Smith shoes have continue to hold their place as an icon.",
+    "price": 50.18,
+    "rating" : 4.5,
+    "image" : ["https://m.media-amazon.com/images/I/51F5MtideYL._AC_UY395_.jpg" , "https://m.media-amazon.com/images/I/51ews+cLMvL._AC_UY395_.jpg" , "https://m.media-amazon.com/images/I/51NXIVsZ8GL._AC_UY395_.jpg"],
+    "category_name" : "Shoes"
+
+},
+{
+    "name" : "Nike Air Force 1 Low W Sp Mens Style : Dn1555",
+    "description" : "The Nike Air Force 1 remains a popular retro shoe to this day. The Air Force 1 features an upper that is most frequently dressed in leather, a large Swoosh across the lateral and medial sides, perforated toe boxes, metal lace dubraes, and an Air-encapsulated midsole with signature “AIR” text near the rear.",
+    "price": 265.00,
+    "rating" : 4.5,
+    "image" : ["https://m.media-amazon.com/images/I/61HFNtfHLlL._AC_UY395_.jpg" , "https://m.media-amazon.com/images/I/61ds8pilwEL._AC_UY395_.jpg" ,"https://m.media-amazon.com/images/I/61KHUTAsImL._AC_UY395_.jpg"],
+    "category_name" : "Shoes"
+
+},
+{
+    "name" : "adidas Originals Unisex-Child Superstar Sneaker",
+    "description" : "The adidas Superstar is a low-top basketball shoe that first released in 1969. It features a rubber shell toe with a mix of leather and a herring-bone patterned outsole. The shoe was made famous by basketball legend Kareem Abdul-Jabbar and Queens hip-hop group Run DMC.",
+    "price": 133.46,
+    "rating" : 4.5,
+    "image" : ["https://m.media-amazon.com/images/I/6120r7EfG8L._AC_UX395_.jpg" ,"https://m.media-amazon.com/images/I/51JyxzIDHzL._AC_UY395_.jpg" ,"https://m.media-amazon.com/images/I/61vpAo8DwDL._AC_UY500_.jpg"],
+    "category_name" : "Shoes"
+
+},
+{
+    "name" : "Vans Authentic Men's Sneaker, OSFA",
+    "description" : "Born in Anaheim, California in 1966, the Authentic is the original Vans heritage style. Originally know as Vans #44 Deck Shoes, the Authentic became an immediate cult icon, and has embodied our “Off The Wall” attitude ever since. Constructed with a simple low top, lace-up profile, this classic shoe also features sturdy canvas uppers, metal eyelets, and signature rubber waffle outsoles.",
+    "price": 1.2,
+    "rating" : 4.5,
+    "image" : ["https://m.media-amazon.com/images/I/71kUscQzV2L._AC_UX395_.jpg", "https://m.media-amazon.com/images/I/61dO3lpzlsL._AC_UY500_.jpg" ,"https://m.media-amazon.com/images/I/61oopMfUKKL._AC_UY500_.jpg"],
+    "category_name" : "Shoes"
+
+},
+{
+    "name" : "Crocs Unisex-Adult Men's and Women's Classic Clog (Neutral Colors)",
+    "description" : "Original. Versatile. Comfortable. It’s the iconic clog that started a comfort revolution around the world! The irreverent go-to comfort shoe that you're sure to fall deeper in love with day after day. Crocs Classic Clogs offer lightweight Iconic Crocs Comfort™, a color for every personality, and an ongoing invitation to be comfortable in your own shoes.",
+    "price": 33.47,
+    "rating" : 4.5,
+    "image" : ["https://m.media-amazon.com/images/I/81WnMBnbWSL._AC_UX395_.jpg" , "https://m.media-amazon.com/images/I/61Xm6GGOliL._AC_UY395_.jpg" , "https://m.media-amazon.com/images/I/51BFyizt7oL._AC_UY395_.jpg"],
+    "category_name" : "Shoes"
+
+},
+{
+    "name" : "Flexzilla Garden Hose, 3/4 in. x 100 ft., Heavy Duty, Lightweight, Drinking Water Safe - HFZG6100YW",
+    "description" : "Extremely flexible – Our distinctive ZillaGreen hoses are built from a flexible hybrid polymer material that allows for all-weather flexibility, even in subzero temperatures, making it easy to use in the harshest conditions. Extremely durable – Purpose built to handle any industry and environment. Durable outer cover resists abrasion and UV. Crush resistant anodized aircraft aluminum fittings means this hose is always ready to work",
+    "price": 99.64,
+    "rating" : 4.5,
+    "image" : ["m.media-amazon.com/images/I/61T6p-51zEL._AC_SX425_.jpg" ,"https://m.media-amazon.com/images/I/714d66Ez8XL._AC_SX425_.jpg" ,"https://m.media-amazon.com/images/I/615aiW6SXCL._AC_SX425_.jpg"],
+    "category_name" : "Garden"
+
+},
+{
+    "name" : "Fiskars 384490-1001 Ergo Garden Tool Set, Regular Package, Black/Orange",
+    "description" : "Ideal for a variety of tasks, including digging, loosening soil, aerating, planting, weeding and more. Set includes one trowel, transplanter and cultivator",
+    "price": 30.43,
+    "rating" : 4.5,
+    "image" : ["https://m.media-amazon.com/images/I/71-Qz4eAl1L._AC_SX425_.jpg" , "https://m.media-amazon.com/images/I/71+4A4+q3gL._AC_SX425_.jpg" ,"https://m.media-amazon.com/images/I/61nbpDwGOaL._AC_SX425_.jpg"],
+    "category_name" : "Garden"
+
+},
+{
+    "name" : "EasyFlex Decorative No-Dig Landscape Edging Kit - 15 ft., Black Wrought Iron-Look",
+    "description" : "Simple installation, no digging required - suitable for all soil types. Classic arched wrought iron fence look complements any garden. Interlocking anchoring tabs reinforce connection points, flexible spines conform to curved border designs.",
+    "price": 61.14,
+    "rating" : 4.5,
+    "image" : ["https://m.media-amazon.com/images/I/91K5-L8LJJL._AC_SX425_.jpg" , "https://m.media-amazon.com/images/I/811zblF3BRL._AC_SX425_.jpg" , "https://m.media-amazon.com/images/I/71KZ0LVqnKL._AC_SX425_.jpg"],
+    "category_name" : "Garden"
+
+},
+{
+    "name" : "LZRS 96x24x10 inches Raised Garden Bed Elevated Planter Garden Box for Herbs,Vegetables,Flowers,Great for Outdoor Patio, Deck,Natural",
+    "description" : "Superior Fir Wood: LZRS raised planter bed is made of high quality fir wood with non-paint , which is durable enough to provide strong support to your plants, and it can be used for a long time.Fir wood is known for its strength and dimensional stability，it has a natural texture and color and a unique fragrance, it is a good material to be used as a flower pot. Open Bottom Design： The open bottom design allows the planter box maintain sufficient water and nutrients for plants without water accumulation, your plants will have more space for roots it is convenient for your planting.",
+    "price": 44.99,
+    "rating" : 3.1,
+    "image" : ["https://m.media-amazon.com/images/I/81R0L5d9UhL._AC_SY450_.jpg" , "https://m.media-amazon.com/images/I/81pycU3B7KL._AC_SY450_.jpg" , "https://m.media-amazon.com/images/I/71+8ifPc2bL._AC_SY450_.jpg"],
+    "category_name" : "Garden"
+
+},
+{
+    "name" : "G & F Products MiniGardenn 10027 Fairy Garden Miniature, Cardinal Birdbath Pick",
+    "description" : "Miniature Fairy Garden Cardinal Birdbath Pick",
+    "price": 5.48,
+    "rating" : 4.5,
+    "image" : ["https://m.media-amazon.com/images/I/81L2ySP0xaL._AC_SY606_.jpg" , "https://m.media-amazon.com/images/I/61okTC5UcKL._AC_SX425_.jpg" ,"https://m.media-amazon.com/images/I/91yzgL1nMoL._AC_SX425_.jpg" ],
+    "category_name" : "Garden"
+
+},
+{
+    "name" : "Spalding Ultimate Hybrid® 54'' Tempered Glass Portable Basketball Hoop",
+    "description" : "Backboard size: 54'' Tempered glass board with arena-style padding 16'' offset.Arena Slam breakaway rim. 7.5' to 10' height adjustment",
+    "price": 1138.00,
+    "rating" : 4.5,
+    "image" : ["https://m.media-amazon.com/images/I/61kb9n0DTQS._AC_SX425_.jpg" , "https://m.media-amazon.com/images/I/61H1XBRW0XS._AC_SX425_.jpg" , "https://m.media-amazon.com/images/I/81pRz-s8UzS._AC_SX425_.jpg"],
+    "category_name" : "Basketball"
+
+},
+{
+    "name" : "SKLZ Pro Mini Basketball Hoop",
+    "description" : "The Pro Mini Hoop isn’t just similar to real hoops, it’s got the same soul. Listen closely and you can hear the heavy-duty net swish when you hit nothing but the bottom of the net. And its pro-style replica graphics give it the look of a winner.",
+    "price": 29.99,
+    "rating" : 4.5,
+    "image" : ["https://m.media-amazon.com/images/I/51vJe512YKL._AC_SX425_.jpg", "https://m.media-amazon.com/images/I/91PFLXfTynL._AC_SY550_.jpg" ,"https://m.media-amazon.com/images/I/81L+cCgH2cL._AC_SX425_.jpg"],
+    "category_name" : "Basketball"
+
+},
+{
+    "name" : "SKLZ Pro Mini Hoop Basketball System with Adjustable-Height Pole and 7-Inch Ball",
+    "description" : "Indoor, outdoor, court-side or poolside, bring the Pro Mini Hoop System anywhere. It adjusts from 7 feet for court-side play to 3.5 feet for junior or poolside play and moves around easily on it's built-in wheels. The Pro Mini Hoop System offers the same durability and pro-grade look as our best-selling Pro Mini Hoops including the spring action break-away rim. Fill the base with sand or water to get your hoop set up and let the dunking commence.",
+    "price": 129.99,
+    "rating" : 4.5,
+    "image" : ["https://m.media-amazon.com/images/I/61sofOQF11L._AC_SX425_.jpg" , "https://m.media-amazon.com/images/I/913mwcDL5CL._AC_SY606_.jpg" ,"https://m.media-amazon.com/images/I/71doIJLeZVL._AC_SX425_.jpg"],
+    "category_name" : "Basketball"
+
+},
+{
+    "name" : "WILSON Tennis Ball Pick Up Hopper -75 Balls",
+    "description" : "It all comes down to our passion and commitment to elevate the game of tennis for millions of players everywhere and you can't argue with results. Our innovations have helped Wilson lead on tour with more Grand Slams being won with a Wilson racquet than any other brand. Our future is built on the foundation of grassroots and it fuels the next generation of tennis players. This is more than just a game. This is who we are.",
+    "price": 37.99,
+    "rating" : 4.5,
+    "image" : ["https://m.media-amazon.com/images/I/81O7GFyhdcL._AC_SY741_.jpg" ,"https://m.media-amazon.com/images/I/81ZtyfziytL._AC_SY741_.jpg" ,"https://m.media-amazon.com/images/I/91ncM7WufML._AC_SY606_.jpg"],
+    "category_name" : "Tennis"
+
+},
+{
+    "name" : "Emma (Wordsworth Classics)",
+    "description": "Emma by Jane Austen. Jane Austen teased readers with the idea of a 'heroine whom no one but myself will much like', but Emma is irresistible. 'Handsome, clever, and rich', Emma is also an 'imaginist', 'on fire with speculation and foresight'. She sees the signs of romance all around her, but thinks she will never be married. Her matchmaking maps out relationships that Jane Austen ironically tweaks into a clearer perspective. Judgement and imagination are matched in games the reader too can enjoy, and the end is a triumph of understanding.",
+    "price" : 6.31,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/41sVvrH24tL._SX317_BO1,204,203,200_.jpg" , "https://images-na.ssl-images-amazon.com/images/I/81+n4G-ebAL.jpg"],
+    "category_name" : "Romance"
+},
+{
+    "name" : "Sense and Sensibility (Penguin Classics)",
+    "description": "Marianne Dashwood wears her heart on her sleeve, and when she falls in love with the dashing but unsuitable John Willoughby she ignores her sister Elinor's warning that her impulsive behaviour leaves her open to gossip and innuendo. Meanwhile Elinor, always sensitive to social convention, is struggling to conceal her own romantic disappointment, even from those closest to her. Through their parallel experience of love - and its threatened loss - the sisters learn that sense must mix with sensibility if they are to find personal happiness in a society where status and money govern the rules of love. This edition also includes explanatory notes and textual variants between first and second edition.",
+    "price" : 7.99,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/41dTfpdTZXL._SX324_BO1,204,203,200_.jpg", "https://images-na.ssl-images-amazon.com/images/I/514bxujDxUL.jpg"],
+    "category_name" : "Romance"
+},
+{
+    "name" : "Wuthering Heights (Royal Collector's Edition) (Case Laminate Hardcover with Jacket)",
+    "description": "Wuthering Heights is Emily Brontë's only novel. Although it is now widely regarded as a classic of English literature, contemporary reviews for the novel were deeply polarised; it was considered controversial because its depiction of mental and physical cruelty was unusually stark, and it challenged strict Victorian ideals of the day, including religious hypocrisy, morality, social classes and gender inequality. In the second half of the 19th century, Charlotte Brontë's Jane Eyre was considered the best of the Brontë sisters' works, but following later re-evaluation, critics began to argue that Wuthering Heights was superior. The book has inspired adaptations, including film, radio and television dramatisations, a musical, a ballet, any several operas. Much of the novels continued appeal lies in its assured demonstration of the finite and tragically self-consuming nature of passion. This case laminate collector's edition includes a Victorian inspired dust-jacket.",
+    "price" : 39.95,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/51OhnzPY3JL._SX346_BO1,204,203,200_.jpg" , "https://images-na.ssl-images-amazon.com/images/I/815icoDFkOL.jpg"],
+    "category_name" : "Romance"
+},
+{
+    "name" : "The Great Gatsby",
+    "description": "The Great Gatsby is a 1925 novel by American writer F. Scott Fitzgerald. Set in the Jazz Age on Long Island, the novel depicts narrator Nick Carraway's interactions with mysterious millionaire Jay Gatsby and Gatsby's obsession to reunite with his former lover, Daisy Buchanan.    A youthful romance Fitzgerald had with socialite Ginevra King, and the riotous parties he attended on Long Island's North Shore in 1922 inspired the novel. Following a move to the French Riviera, he completed a rough draft in 1924. He submitted the draft to editor Maxwell Perkins, who persuaded Fitzgerald to revise the work over the following winter. After his revisions, Fitzgerald was satisfied with the text, but remained ambivalent about the book's title and considered several alternatives. The final title he desired was Under the Red, White, and Blue. Painter Francis Cugat's final cover design impressed Fitzgerald who incorporated a visual element from the art into the novel. Gatsby continues to attract popular and scholarly attention. The novel was most recently adapted to film in 2013 by director Baz Luhrmann, while contemporary scholars emphasize the novel's treatment of social class, inherited wealth compared to those who are self-made, race, environmentalism, and its cynical attitude towards the American dream. The Great Gatsby is widely considered to be a literary masterpiece and a contender for the title of the Great American Novel.",
+    "price" : 12.99,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/41fFMnuszWL._SX331_BO1,204,203,200_.jpg" , "https://images-na.ssl-images-amazon.com/images/I/6186J1ru6uL.jpg"],
+    "category_name" : "Classic Literature"
+},
+{
+    "name" : "Do Androids Dream of Electric Sheep? 1",
+    "description": "'The most consistent of all series in terms of language control, length, and quality of story.' -David R. Hill, Director of the Edinburgh Project on Extensive Reading.",
+    "price" : 36.70,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/81YsfJUZL-L.jpg", "https://images-na.ssl-images-amazon.com/images/I/51nryV52GpL.jpg"],
+    "category_name" : "Sci-Fi"
+},
+{
+    "name" : "Do Androids Dream of Electric Sheep? 2",
+    "description": "'The most consistent of all series in terms of language control, length, and quality of story.' -David R. Hill, Director of the Edinburgh Project on Extensive Reading.",
+    "price" : 36.00,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/81zd5JEGJyL.jpg"],
+    "category_name" : "Sci-Fi"
+},
+{
+    "name" : "The Man In The High Castle",
+    "description": "'Dick's best work, and the most memorable alternative world tale...ever written' SCIENCE FICTION: THE 100 BEST NOVELS. It is 1962 and the Second World War has been over for seventeen years: people have now had a chance to adjust to the new order. But it's not been easy. The Mediterranean has been drained to make farmland, the population of Africa has virtually been wiped out and America has been divided between the Nazis and the Japanese. In the neutral buffer zone that divides the two superpowers lives the man in the high castle, the author of an underground bestseller, a work of fiction that offers an alternative theory of world history in which the Axis powers didn't win the war. The novel is a rallying cry for all those who dream of overthrowing the occupiers. But could it be more than that?  Subtle, complex and beautifully characterized, The Man in the High Castle remains the finest alternative world novel ever written, and a work of profundity and significance.",
+    "price" : 19.88,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/51yEaW9yqGL._SX322_BO1,204,203,200_.jpg"],
+    "category_name" : "Sci-Fi"
+},
+{
+    "name" : "The Nine Billion Names of God : The Collected Stories of Arthur C. Clarke, 1951-1956",
+    "description": "Arthur C. Clarke is one of the greatest science fiction writers of the century, and surely the most celebrated science fiction writer alive. He is -- with H. G. Wells, Isaac Asimov and Robert A. Heinlein -- one of the writers who define the genre. Now, at the dawn of the year 2001, Sir Arthur C. Clarke has cooperated in the preparation of a massive definitive edition of his collected shorter works, which will be made available on audio in five chronological volumes, followed by a 10 CD volume of favorite selection and a 30 cassette gift set...the most ambitious science fiction audio project in history.",
+    "price" : 18.69,
+    "rating" : 4,
+    "image" : ["https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/5745/9781574534474.jpg"],
+    "category_name" : "Sci-Fi"
+},
+{
+    "name" : "2001: A Space Odyssey (Space Odyssey Series)",
+    "description": "From the savannas of Africa at the dawn of mankind to the rings of Saturn as man ventures to the outer rim of our solar system, 2001: A Space Odyssey is a journey unlike any other.    This allegory about humanity’s exploration of the universe—and the universe’s reaction to humanity—is a hallmark achievement in storytelling that follows the crew of the spacecraft Discovery as they embark on a mission to Saturn. Their vessel is controlled by HAL 9000, an artificially intelligent supercomputer capable of the highest level of cognitive functioning that rivals—and perhaps threatens—the human mind.",
+    "price" : 18.76,
+    "rating" : 4,
+    "image" : ["https://m.media-amazon.com/images/I/51pHccoWLdL.jpg"],
+    "category_name" : "Sci-Fi"
+},
+{
+    "name" : "And Then There Were None",
+    "description": "Ten people, each with something to hide and something to fear, are invited to an isolated mansion on Indian Island by a host who, surprisingly, fails to appear. On the island they are cut off from everything but each other and the inescapable shadows of their own past lives. One by one, the guests share the darkest secrets of their wicked pasts. And one by one, they die…   Which among them is the killer and will any of them survive?",
+    "price" : 7.99,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/51MlxNgCsyL._SX308_BO1,204,203,200_.jpg", "https://images-na.ssl-images-amazon.com/images/I/71zqva1H+pL.jpg"],
+    "category_name" : "Mystery"
+},
+{
+    "name" : "The Girl with the Dragon Tattoo (Millennium Series)",
+    "description": "It’s about the disappearance forty years ago of Harriet Vanger, a young scion of one of the wealthiest families in Sweden . . . and about her octogenarian uncle, determined to know the truth about what he believes was her murder.   It’s about Mikael Blomkvist, a crusading journalist recently at the wrong end of a libel case, hired to get to the bottom of Harriet’s disappearance . . . and about Lisbeth Salander, a twenty-four-year-old pierced and tattooed genius hacker possessed of the hard-earned wisdom of someone twice her age—and a terrifying capacity for ruthlessness to go with it—who assists Blomkvist with the investigation. This unlikely team discovers a vein of nearly unfathomable iniquity running through the Vanger family, astonishing corruption in the highest echelons of Swedish industrialism—and an unexpected connection between themselves.    It’s a contagiously exciting, stunningly intelligent novel about society at its most hidden, and about the intimate lives of a brilliantly realized cast of characters, all of them forced to face the darker aspects of their world and of their own lives.",
+    "price" : 31.83,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/51PIFMGO7YL._SX334_BO1,204,203,200_.jpg"],
+    "category_name" : "Mystery"
+},
+{
+    "name" : "Rebecca",
+    "description": "'Last Night I Dreamt I went to Manderley Again...'     With these words, the reader is ushered into an isolated gray stone mansion on the windswept Cornish coast, as the second Mrs. Maxim de Winter recalls the chilling events that transpired as she began her new life as the young bride of a husband she barely knew. For in every corner of every room were phantoms of a time dead but not forgotten—a past devotedly preserved by the sinister housekeeper, Mrs. Danvers: a suite immaculate and untouched, clothing laid out and ready to be worn, but not by any of the great house's current occupants. With an eerie presentiment of evil tightening her heart, the second Mrs. de Winter walked in the shadow of her mysterious predecessor, determined to uncover the darkest secrets and shattering truths about Maxim's first wife—the late and hauntingly beautiful Rebecca.",
+    "price" : 10.19,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/51lJtCKRBoL._SX330_BO1,204,203,200_.jpg"],
+    "category_name" : "Mystery"
+},
+{
+    "name" : "The Hound of the Baskervilles & The Valley of Fear (Macmillan Collector's Library)",
+    "description": "The Hound of the Baskervilles is one of Doyle's best-known Holmes novels, frequently adapted for film and television, which is not surprising given the highly dramatic scenes of mist-wrapped moors echoing to the horrific howls of a supernatural hound. Is this a genuinely devilish apparition or is there a cunning murderer at work? Only Sherlock Holmes can solve the mystery. This volume also contains The Valley of Fear, a dark, powerful tale in which Holmes confronts the evil Professor Moriarty once more.",
+    "price" : 12.99,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/51WDyjmanqL._SX307_BO1,204,203,200_.jpg"],
+    "category_name" : "Mystery"
+},
+{
+    "name" : "Journey to the Center of the Earth (Dover Thrift Editions)",
+    "description": "'The reason Verne is still read by millions today is simply that he was one of the best storytellers who ever lived.'' — Arthur C. Clarke.      An adventurous geology professor chances upon a manuscript in which a 16th-century explorer claims to have found a route to the earth's core. Professor Lidenbrock can't resist the opportunity to investigate, and with his nephew Axel, he sets off across Iceland in the company of Hans Bjelke, a native guide. The expedition descends into an extinct volcano toward a sunless sea, where they encounter a subterranean world of luminous rocks, antediluvian forests, and fantastic marine life — a living past that holds the secrets to the origins of human existence.        Originally published in 1864, Jules Verne's classic remains critically acclaimed for its style and imaginative visions. Verne wrote many fantasy stories that later proved remarkably prescient, and his distinctive combination of realism and romanticism exercised a lasting influence on writers as diverse as Mark Twain, Arthur Conan Doyle, and Jean-Paul Sartre. In addition to the excitement of an action novel, Journey to the Center of the Earth has the added appeal of a psychological quest, in which the sojourn itself is as significant as the ultimate destination.",
+    "price" : 4.95,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/51wZ2nibiSL._SX311_BO1,204,203,200_.jpg"],
+    "category_name" : "Adventure"
+},
+{
+    "name" : "20,000 Leagues Under the Sea and Other Classic Novels (Fall River Classics)",
+    "description": "Writing in France in the nineteenth century, Jules Verne captured his era’s fascination with adventure and exploration in a series of novels he referred to as his Voyages extraordinaires. 20,000 Leagues Under the Sea and Other Classic Novels is a unique compilation of six of Verne’s best-known novels that extrapolate developing technology and scientific inquisitiveness into rousing adventures as exciting and provocative today as when they were first written.",
+    "price" : 11.74,
+    "rating" : 4,
+    "image" : ["https://images-na.ssl-images-amazon.com/images/I/51Qil91GhZL._SX325_BO1,204,203,200_.jpg"],
+    "category_name" : "Adventure"
+},
+{
+    "name" : "Amazon Basics Mesh, Mid-Back, Adjustable, Swivel Office Desk Chair with Armrests, Black",
+    "description" : "Comfortable office chair with contoured mesh back for breathability",
+    "price" : 76.98,
+    "rating" : 3.8,
+    "image" : ["https://m.media-amazon.com/images/I/91vH3ZqS2sL._AC_SY355_.jpg"],
+    "category_name" : "Furniture"
+},
+{
+    "name" : "Hasegawa Ladders Lucano Step Stool, 2-Step White",
+    "description" : "Design forward so no need to hide it away!. Stands on its own when folded. Steps with integrated grooves for a firm grip. Designed by Chiaki Murata of the world famous Metaphys Studio. Designed and Made in Japan",
+    "price" : 150.73,
+    "rating" : 3.8,
+    "image" : ["https://m.media-amazon.com/images/I/618yyXWLuIL._AC_SY355_.jpg", "https://m.media-amazon.com/images/I/81n0Ythq5+L._AC_SX355_.jpg"],
+    "category_name" : "Furniture"
+},
+{
+    "name" : "FDP SoftScape 14'' Square Bean Bag Poufs for Kids, Multipurpose Decorative Ottoman, Seat or Footrest, Great for Small Spaces, Living Room, Playroom, Classroom, Library (2-Piece Set) - Navy/Powder Blue",
+    "description" : "DECORATIVE AND FLEXIBLE— 2-piece set of versatile, lightweight square poufs can be used as seats, ottomans, surfaces and even footrests for a flexible seating option. GREAT FOR SMALL SPACES — comfy, colorful poufs add a decorative accent to any space, big or small - playrooms, living rooms, bedrooms, classrooms, libraries and more. SOFT AND STURDY — filled with shape-retaining foam beads that form to your body while you sit, then return to their original shape for a comfy seat every time",
+    "price" : 95.16,
+    "rating" : 3.8,
+    "image" : ["https://m.media-amazon.com/images/I/71pQI1J1u7L._SX342_.jpg", "https://m.media-amazon.com/images/I/81wheaGSLRS._SX342_.jpg"],
+    "category_name" : "Furniture"
+},
+{
+    "name" : "Office Gaming Chair - Ergonomic Computer Desk Chairs with Footrest, Executive Swivel Chair, PU Leather, Thick Padding",
+    "description" : "Chair with Footrest - This racing style gaming chair is equipped with footrest for position reinforcement. The armrests can flip up when they’re not in use, ideal if you want to get something more compact or want a little bit of freedom in your movements. Also keeping you comfy for long hours of game or work.",
+    "price" : 86.48,
+    "rating" : 3.8,
+    "image" : ["https://m.media-amazon.com/images/I/611sou-FOaL._AC_SY450_.jpg"],
+    "category_name" : "Furniture"
 }
 ]

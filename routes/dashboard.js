@@ -24,11 +24,11 @@ router.get("/", async(req,res)=>{
         })
         .catch((err)=> console.log(err));
 
-        if(users) res.json(users);
-
-        res.send("error");
+        if(!users || !users.length) return res.json("No users found")
+        if(users) return res.json(users);
     } catch (error) {
         console.log(error.message);
+        res.send("error");
     }
 })
 

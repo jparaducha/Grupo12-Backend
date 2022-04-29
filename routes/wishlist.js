@@ -76,6 +76,7 @@ router.get("/", async (req, res) => {
       return user.getWishlists();
     })
     .then((user_wishlist) => {
+      console.log(user_wishlist);
       user_wishlist.forEach((object) => {
         result.push(object.wishlist.product);
       });
@@ -91,32 +92,26 @@ router.get("/", async (req, res) => {
 
 router.delete("/", async (req, res) => {
   const { user_id, target, seller_id } = req.body;
-
-  User.findOne({
+  console.log(user_id);
+  console.log(target);
+  console.log(seller_id);
+  if (!user_id || !target || !seller_id)
+    return res.status(400).send("Error:Missing data in request");
+  const user = await User.findOne({
     where: {
       user_id: user_id,
     },
-  })
-    .then((user) => {
-      if (!user) return res.status(400).send("User not found");
-    })
-    .catch((e) => {
-      console.log(e);
-      return res.status(400).send(e.message);
-    });
+  });
 
-  User.findOne({
+  if (!user) return res.status(400).send("User not found");
+
+  const seller = await User.findOne({
     where: {
       user_id: seller_id,
     },
-  })
-    .then((seller) => {
-      if (!seller) return res.status(404).send("Seller not found");
-    })
-    .catch((e) => {
-      console.log(e);
-      return res.status(400).send(e.message);
-    });
+  });
+
+  if (!seller) return res.status(404).send("Seller not found");
 
   if (!target) return res.status(400).send("Target not specified");
 
@@ -134,13 +129,12 @@ router.delete("/", async (req, res) => {
         return res.status(400).send(e.message);
       });
   } else {
-    await Product.findOne({
+    const product = await Product.findOne({
       where: {
         product_id: target,
       },
-    }).then((product) => {
-      if (!product) return res.send.status(404).send("Product not found ");
     });
+    if (!product) return res.send.status(404).send("Product not found ");
     Wishlist.destroy({
       where: {
         user_id: user_id,

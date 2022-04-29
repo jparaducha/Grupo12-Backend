@@ -30,4 +30,6 @@ app.use("/relations", require("./routes/relations"));
 
 app.use("/recent", require("./routes/recentlySearched"));
 
+app.use("/mp_confirmation" , require("./routes/mp_confirmation"));
+
 app.listen(APIPORT, () => console.log(`Server running on port ${APIPORT}`));
