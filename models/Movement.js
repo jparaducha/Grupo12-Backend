@@ -30,6 +30,14 @@ module.exports = (sequelize) => {
         },
         productImg : {
             type : DataTypes.STRING
+        },
+        seen : {
+            type : DataTypes.BOOLEAN,
+            defaultValue : false
+        },
+        rated : {
+            type : DataTypes.BOOLEAN,
+            defaultValue : false
         }
     },{ timestamps : false});
     }
