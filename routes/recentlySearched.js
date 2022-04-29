@@ -1,4 +1,4 @@
-const { Recently_searched } = require("../db");
+const { Recently_searched, Product, User } = require("../db");
 
 const router = require("express").Router();
 
@@ -10,6 +10,21 @@ router.post("/", async (req, res) => {
       user_id: user_id,
     },
   });
+
+  const user = await User.findOne({
+    where: {
+      user_id: user_id,
+    },
+  });
+
+  if (!user) return res.status(404).send("Error: User not found");
+  const product = await Product.findOne({
+    where: {
+      product_id: product_id,
+    },
+  });
+
+  if (!product) return res.status(404).send("Error: Product not found");
 
   if (!list) {
     Recently_searched.create({
@@ -43,8 +58,35 @@ router.get("/", (req, res) => {
       user_id: user_id,
     },
   }).then((list) => {
-    if (list.products.length > 0) return res.status(200).send(list);
-    return res.status(404).send("List non-existant or empty");
+    if (!list) return res.status(404).send("Error : no products found");
+    const product_promises = [];
+    list.products.forEach((product_id) => {
+      product_promises.push(
+        Product.findOne({
+          where: {
+            product_id: product_id,
+          },
+        }).then((product) => {
+          return {
+            product_id: product.dataValues.product_id,
+            name: product.dataValues.name,
+            rating: product.dataValues.rating,
+            images: product.dataValues.images,
+            category_name: product.dataValues.category_name,
+            stock: product.dataValues.stock,
+            price: product.dataValues.price,
+            featured_seller: product.dataValues.featured_seller,
+          };
+        })
+      );
+    });
+    Promise.all(product_promises).then((product_objects) => {
+      (list.products = []),
+        product_objects.forEach((obj) => {
+          list.products.push(obj);
+        });
+      return res.status(200).send(list.products);
+    });
   });
 });
 
