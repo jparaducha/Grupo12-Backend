@@ -53,6 +53,8 @@ const crearOrden = async (req,res, next)=>{
         }, 0);
 
         console.log("\n\n\TOTAL PRICE: ", totalPrice, "\n\n\n\n\n\n");
+
+        if(!totalPrice) return res.json("Empty cart");
       
         let preference = {
           items: [
