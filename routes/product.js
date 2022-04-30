@@ -339,7 +339,7 @@ router.post("/load", async (req, res) => {
   try {
     const json = require("../utils/products.json");
 
-    const user = await User.findOne();
+    const users = await User.findAll();
 
     json.forEach(async (i) => {
       const product = await Product.create({
@@ -376,15 +376,26 @@ router.post("/load", async (req, res) => {
 
       /// ????????????????????????????? ///////
       /// ????????????????????????????? ///////
+      let firstAdded = false;
 
-      user
-        .addStocks(product, { through: { quantity: 1, unit_price: i.price } })
+      for(let user of users){
+
+        user
+        .addStocks(product, { through: { quantity: !firstAdded?  1 : Math.ceil(Math.random()*50),
+           unit_price: !firstAdded ? i.price : (i.price*(1 + Math.floor(Math.random()*300) / 1000 )).toFixed(2)
+           }
+           })
         .then((data) => {
           return data;
         })
         .catch((e) => {
           console.log(e.errors);
         });
+
+        firstAdded = true;
+      }
+
+      
     });
     return res.sendStatus(200);
   } catch (e) {
