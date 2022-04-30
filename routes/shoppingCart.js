@@ -56,8 +56,22 @@ router.post("/", async (req, res) => {
       console.log(e);
       return res.status(400).send(e.message);
     });
-    if (!product) return res.send("Error : Product not found ").status(404);
-
+    if (!product)
+      return res
+        .send(`Error : Product with id=${productToAdd.product_id} not found`)
+        .status(404);
+    console.log("checking seller");
+    var seller = await User.findOne({
+      where: {
+        user_id: productToAdd.user_id,
+      },
+    });
+    if (!seller)
+      return res
+        .status(404)
+        .send(
+          `Error : Seller for product with id=${productToAdd.product_id} not found`
+        );
     //------------------------------
 
     const stock = await Stock.findOne({
@@ -78,6 +92,12 @@ router.post("/", async (req, res) => {
     product.save();
  */
     //------------------------------
+    if (stock.quantity < productToAdd.quantity)
+      return res
+        .status(400)
+        .send(
+          `Error : not enough stock on product with id ${productToAdd.product_id}`
+        );
 
     const overwrite = await Shopping_cart.findOne({
       where: {
