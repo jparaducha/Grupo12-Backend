@@ -196,4 +196,33 @@ router.post("/disapprove/:productId" , async (req,res)=>{
     }
 })
 
+
+router.patch("/giveAdmin/:userId", async (req,res)=>{
+    try {
+        const { userId } = req.params;
+
+        if(!userId) return res.json("Must provide a user id");
+
+        const user = await User.findOne({
+            where : {
+                user_id : userId
+            }
+        }).then((data)=>{
+            return data;
+        }).catch(console.log);
+
+        if(!user) return res.json("User not found");
+
+        user.admin = !user.admin;
+
+        await user.save();
+
+
+        user.admin ? res.json("User made admin"): res.json("Administrator credentials taken away")
+    } catch (error) {
+        console.log(error);
+        return res.sendStatus(500);
+    }
+})
+
 module.exports = router;
