@@ -93,7 +93,7 @@ Product.belongsToMany(User, { through: Movement });
 // Category.hasMany(Product,  {foreignKey : 'category_id'})
 
 sequelize
-  .sync({ force: true })
+  .sync({ alter: true })
   .then((data) => {
     console.log("DB synced");
   })
