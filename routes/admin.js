@@ -213,12 +213,12 @@ router.patch("/giveAdmin/:userId", async (req,res)=>{
 
         if(!user) return res.json("User not found");
 
-        user.admin = true;
+        user.admin = !user.admin;
 
         await user.save();
 
 
-        return res.json("User made admin");
+        user.admin ? res.json("User made admin"): res.json("Administrator credentials taken away")
     } catch (error) {
         console.log(error);
         return res.sendStatus(500);
