@@ -71,12 +71,13 @@ router.get("/", async (req, res) => {
       user_id: user_id,
     },
   })
-    .then((user) => {
+    .then(async (user) => {
       if (!user) return res.status(404).send("Error : User not found ");
-      return user.getWishlists();
+      return await user.getWishlists();
     })
     .then((user_wishlist) => {
-      if (user_wishlist.length == 0)
+      console.log(user_wishlist);
+      if (user_wishlist.length == 0 || !user_wishlist)
         return res.status(404).send("Error : Wishlist is empty");
       const product_promises = [];
       user_wishlist.forEach((object) => {
