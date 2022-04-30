@@ -47,6 +47,7 @@ router.post("/", async (req, res) => {
   if (!buyer) return res.status(404).send("Error : Buyer not found ");
 
   for (let productToAdd of products) {
+    console.log(productToAdd);
     var product = await Product.findOne({
       where: {
         product_id: productToAdd.product_id,
@@ -62,7 +63,7 @@ router.post("/", async (req, res) => {
     console.log("checking seller");
     var seller = await User.findOne({
       where: {
-        user_id: productToAdd.user_id,
+        user_id: productToAdd.seller_id,
       },
     });
     if (!seller)
