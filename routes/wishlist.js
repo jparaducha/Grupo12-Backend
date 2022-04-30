@@ -157,7 +157,7 @@ router.delete("/", async (req, res) => {
       },
     })
       .then(() => {
-        return res.status(200).send("Error : User wishlist deleted");
+        return res.status(200).send("User wishlist deleted");
       })
       .catch((e) => {
         console.log(e);
