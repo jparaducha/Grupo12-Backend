@@ -72,10 +72,12 @@ router.get("/", async (req, res) => {
     },
   })
     .then((user) => {
-      if (!user) return res.send.status(404).send("User not found ");
+      if (!user) return res.status(404).send("Error : User not found ");
       return user.getWishlists();
     })
     .then((user_wishlist) => {
+      if (user_wishlist.length == 0)
+        return res.status(404).send("Error : Wishlist is empty");
       const product_promises = [];
       user_wishlist.forEach((object) => {
         product_promises.push(
@@ -136,7 +138,7 @@ router.delete("/", async (req, res) => {
     },
   });
 
-  if (!user) return res.status(400).send("User not found");
+  if (!user) return res.status(400).send("Error : User not found");
 
   const seller = await User.findOne({
     where: {
@@ -144,9 +146,9 @@ router.delete("/", async (req, res) => {
     },
   });
 
-  if (!seller) return res.status(404).send("Seller not found");
+  if (!seller) return res.status(404).send("Error : Seller not found");
 
-  if (!target) return res.status(400).send("Target not specified");
+  if (!target) return res.status(400).send("Error : Target not specified");
 
   if (target === "all") {
     Wishlist.destroy({
@@ -167,7 +169,8 @@ router.delete("/", async (req, res) => {
         product_id: target,
       },
     });
-    if (!product) return res.send.status(404).send("Product not found ");
+    if (!product)
+      return res.send.status(404).send("Error : Product not found ");
     Wishlist.destroy({
       where: {
         user_id: user_id,

@@ -7,7 +7,7 @@ router.get("/", async (req, res) => {
   try {
     const { id } = req.query;
 
-    if(!id) return res.json("Must provide a valid id");
+    if (!id) return res.json("Error : Must provide a valid id");
 
     const user = await User.findOne({
       where: {
@@ -15,13 +15,14 @@ router.get("/", async (req, res) => {
       },
     });
 
-    if (!user) return res.status(404).send("User not found");
+    if (!user) return res.status(404).send("Error : User not found");
 
     const cart = await Shopping_cart.findAll({ where: { buyer_id: id } });
 
-    if (!cart) return res.status(404).send("User's cart is empty");
+    if (cart.length == 0)
+      return res.status(404).send("Error : User's cart is empty");
 
-    return res.status(400).send(cart);
+    return res.status(200).send(cart);
   } catch (error) {
     console.log(error.message);
   }
@@ -43,7 +44,7 @@ router.post("/", async (req, res) => {
 
   const buyer = await User.findOne({ where: { user_id: buyer_id } });
 
-  if (!buyer) return res.send("Buyer not found ").status(404);
+  if (!buyer) return res.status(404).send("Error : Buyer not found ");
 
   for (let productToAdd of products) {
     var product = await Product.findOne({
@@ -54,9 +55,22 @@ router.post("/", async (req, res) => {
       console.log(e);
       return res.status(400).send(e.message);
     });
-    if (!product) return res.send("Product not found ").status(404);
-
-    //------------------------------
+    if (!product)
+      return res
+        .send(`Error : Product with id=${productToAdd.product_id} not found`)
+        .status(404);
+    console.log("checking seller");
+    var seller = await User.findOne({
+      where: {
+        user_id: productToAdd.user_id,
+      },
+    });
+    if (!seller)
+      return res
+        .status(404)
+        .send(
+          `Error : Seller for product with id=${productToAdd.product_id} not found`
+        );
 
     const stock = await Stock.findOne({
       where: {
@@ -67,15 +81,14 @@ router.post("/", async (req, res) => {
       console.log(e);
       return res.status(400).send(e.message);
     });
-    if (!stock) return res.send.status(404).send("Stock not found ");
-    //------------------------------
+    if (!stock) return res.send.status(404).send("Error : Stock not found ");
 
-    /*     stock.quantity = stock.quantity - productToAdd.quantity;
-    stock.save();
-    product.stock = product.stock - productToAdd.quantity;
-    product.save();
- */
-    //------------------------------
+    if (stock.quantity < productToAdd.quantity)
+      return res
+        .status(400)
+        .send(
+          `Error : not enough stock on product with id ${productToAdd.product_id}`
+        );
 
     const overwrite = await Shopping_cart.findOne({
       where: {
@@ -93,15 +106,6 @@ router.post("/", async (req, res) => {
       overwrite.product = product;
       overwrite.save();
 
-      //------------------------------
-
-      /*       stock.quantity = stock.quantity + productToAdd.quantity;
-      stock.save();
-      product.stock = product.stock + productToAdd.quantity;
-      product.save(); */
-
-      //------------------------------
-
       result.push(overwrite);
     } else {
       const cart = Shopping_cart.create({
@@ -112,7 +116,8 @@ router.post("/", async (req, res) => {
         quantity: productToAdd.quantity,
         seller_id: productToAdd.seller_id,
       });
-      if (!cart) return res.send.status(404).send("Failed to create cart");
+      if (!cart)
+        return res.send.status(404).send("Error : Failed to create cart");
       productsToAdd.push(cart);
     }
   }
@@ -139,44 +144,67 @@ router.post("/", async (req, res) => {
 //--------------------------------------------------------------------------------------------
 
 router.delete("/", async (req, res) => {
-  const { buyer_id, seller_id, product_id } = req.body;
+  const { buyer_id, seller_id, target } = req.body;
 
-  if (!buyer_id || !seller_id || !product_id)
-    return res.status(400).send("Faltan datos");
-
-  Shopping_cart.destroy({
+  if (!buyer_id || !seller_id || !target)
+    return res.status(400).send("Error : Missing data in request");
+  const buyer = await User.findOne({
     where: {
-      buyer_id: buyer_id,
-      seller_id: seller_id,
-      product_id: product_id,
+      user_id: buyer_id,
     },
-  })
-    .then((rowsDeleted) => {
-      if (rowsDeleted === 1) {
-        const product = Product.findOne({
-          where: {
-            product_id: product_id,
-          },
-        });
-        product.stock = product.stock - quantity;
-        product.save();
+  });
+  if (!buyer) return res.status(404).send("Error : Buyer not found");
+  const seller = await User.findOne({
+    where: {
+      user_id: seller_id,
+    },
+  });
+  if (!seller) return res.status(404).send("Error : Seller not found");
 
-        const stock = Stock.findOne({
-          where: {
-            product_id: product_id,
-            seller_id: seller_id,
-          },
-        });
-        stock.quantity = stock.quantity - quantity;
-        stock.save();
-        return res.status(200).send("Deleted succesfully");
-      }
-      return res.status(400).send("Delete unsuccesfull");
-    })
-    .catch((e) => {
-      console.log(e);
-      return res.status(400).send(e.message);
+  if (target == "ALL") {
+    Shopping_cart.destroy({
+      where: {
+        user_id: buyer_id,
+      },
+    }).then(() => {
+      return res.status(200).send("User cart deleted");
     });
+  } else {
+    const product = await Product.findOne({
+      where: {
+        product_id: target,
+      },
+    });
+    if (!product) return res.status(404).send("Error : Product not found");
+
+    const cart = await Shopping_cart.findOne({
+      where: {
+        buyer_id: buyer_id,
+        seller_id: seller_id,
+        product_id: target,
+      },
+    });
+
+    if (!cart) return res.status(404).send("Error : Item not found on cart");
+
+    Shopping_cart.destroy({
+      where: {
+        buyer_id: buyer_id,
+        seller_id: seller_id,
+        product_id: target,
+      },
+    })
+      .then((rowsDeleted) => {
+        if (rowsDeleted === 1) {
+          return res.status(200).send("Deleted succesfully");
+        }
+        return res.status(400).send("Delete unsuccesfull");
+      })
+      .catch((e) => {
+        console.log(e);
+        return res.status(400).send(e.message);
+      });
+  }
 });
 
 //--------------------------------------------------------------------------------------------
@@ -215,31 +243,29 @@ router.patch("/", async (req, res) => {
 
 //--------------------------------------------------------------------------------------------
 
+router.delete("/all/:id", async (req, res) => {
+  try {
+    const { params } = req;
+    const { id } = params;
 
+    if (!id) return res.json("Must provide a valid id").status(422);
 
-router.delete("/all/:id" , async (req,res)=>{
-    try {
-        const { params } = req;
-        const { id } = params;
+    const carts = await Shopping_cart.findAll({
+      where: {
+        buyer_id: id,
+      },
+    });
 
-        if(!id) return res.json("Must provide a valid id").status(422);
-        
-        const carts = await Shopping_cart.findAll({
-            where : {
-                buyer_id : id
-            }
-        });
+    if (!carts) return res.json("No carts found").status(404);
 
-        if(!carts) return res.json("No carts found").status(404);
+    carts.forEach(async (i) => {
+      await i.destroy();
+    });
 
-        carts.forEach( async (i) => {
-            await i.destroy();
-        });
-
-        return res.json("Carts deleted");
-    } catch (error) {
-        console.log(error.message);
-    }
-})
+    return res.json("Carts deleted");
+  } catch (error) {
+    console.log(error.message);
+  }
+});
 
 module.exports = router;
