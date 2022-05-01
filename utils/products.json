@@ -447,7 +447,7 @@
     "description" : "Watch thousands of movies and TV episodes with this 40-inch TCL Roku TV. Its Full HD resolution and 120Hz CMI refresh rate deliver vivid images and fluid action scenes, and the three HDMI inputs and Wi-Fi connectivity provide versatile access to video sources. This TCL Roku TV's intuitive interface enables effortless browsing through the many Roku viewing options.",
     "price": 219.99,
     "rating" : 4.5,
-    "image" : ["https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6302/6302321_sd.jpg","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6302/6302321_rd.jpg"],
+    "image" : ["https://m.media-amazon.com/images/I/61--xSgNcQL._AC_SX569_.jpg","https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6302/6302321_rd.jpg"],
     "category_name" : "TVs"
 
 },
@@ -598,7 +598,7 @@
 {
     "name" : "Boca Juniors 22/23 Third Shorts - Genuine Adidas",
     "description" : "Wear the adidas Boca Juniors Shorts with the eye-catching third uniform shirt to look like your idols on the pitch. Mesh gusset in the crotch and AEROREADY wicking technology work to keep you comfortable no matter if you're playing or cheering. Woven club crest above hem highlights your loyalty to the club Made from 100% recycled materials, this product represents just one of our solutions to end plastic waste.",
-    "price": 1.2,
+    "price": 59.99,
     "rating" : 4.5,
     "image" : ["https://i.ebayimg.com/images/g/afoAAOSwY0ZiMndr/s-l1600.jpg","https://i.ebayimg.com/images/g/~0AAAOSwadNiMndv/s-l1600.jpg"],
     "category_name" : "Football"
@@ -697,7 +697,7 @@
 {
     "name" : "Vans Authentic Men's Sneaker, OSFA",
     "description" : "Born in Anaheim, California in 1966, the Authentic is the original Vans heritage style. Originally know as Vans #44 Deck Shoes, the Authentic became an immediate cult icon, and has embodied our “Off The Wall” attitude ever since. Constructed with a simple low top, lace-up profile, this classic shoe also features sturdy canvas uppers, metal eyelets, and signature rubber waffle outsoles.",
-    "price": 1.2,
+    "price": 49.00,
     "rating" : 4.5,
     "image" : ["https://m.media-amazon.com/images/I/71kUscQzV2L._AC_UX395_.jpg", "https://m.media-amazon.com/images/I/61dO3lpzlsL._AC_UY500_.jpg" ,"https://m.media-amazon.com/images/I/61oopMfUKKL._AC_UY500_.jpg"],
     "category_name" : "Shoes"
@@ -717,7 +717,7 @@
     "description" : "Extremely flexible – Our distinctive ZillaGreen hoses are built from a flexible hybrid polymer material that allows for all-weather flexibility, even in subzero temperatures, making it easy to use in the harshest conditions. Extremely durable – Purpose built to handle any industry and environment. Durable outer cover resists abrasion and UV. Crush resistant anodized aircraft aluminum fittings means this hose is always ready to work",
     "price": 99.64,
     "rating" : 4.5,
-    "image" : ["m.media-amazon.com/images/I/61T6p-51zEL._AC_SX425_.jpg" ,"https://m.media-amazon.com/images/I/714d66Ez8XL._AC_SX425_.jpg" ,"https://m.media-amazon.com/images/I/615aiW6SXCL._AC_SX425_.jpg"],
+    "image" : ["https://m.media-amazon.com/images/I/714d66Ez8XL._AC_SL1200_.jpg" ,"https://m.media-amazon.com/images/I/714d66Ez8XL._AC_SX425_.jpg" ,"https://m.media-amazon.com/images/I/615aiW6SXCL._AC_SX425_.jpg"],
     "category_name" : "Garden"
 
 },
@@ -944,5 +944,557 @@
     "rating" : 3.8,
     "image" : ["https://m.media-amazon.com/images/I/611sou-FOaL._AC_SY450_.jpg"],
     "category_name" : "Furniture"
+},
+{
+    "name" : "Penn Championship Tennis Balls - Extra Duty Felt Pressurized Tennis Balls",
+    "description" : "Penn Championship tennis balls represent the standard by which all other tennis balls are measured with consistent feel and playability every time you step onto the court.",
+    "price" : 86.20,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/812We6aPFML._AC_SX425_.jpg","https://m.media-amazon.com/images/I/81lNwSaEkxL._AC_SX425_.jpg"],
+    "category_name" : "Tennis"
+},
+{
+    "name" : "Gamma Sports Supreme Overgrip, for Tennis, Pickleball, Squash, Badminton, and Racquetball, Durable and Absorbent, Easy to Apply, Various Colors",
+    "description" : "An overgrip that offers excellent tackiness and absorbency! Soft, yet durable enough to stand up to many hours of play. Fits extra long racquets.",
+    "price" : 4.99,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/716-+ZdWU9L._AC_SX425_.jpg","https://m.media-amazon.com/images/I/81CYZ8jtg0L._AC_SY450_.jpg"],
+    "category_name" : "Tennis"
+},
+{
+    "name" : "DUNLOP Australian Open Tennis Balls (Can)",
+    "description" : "DUNLOP Australian Open Tennis Balls (Can)",
+    "price" : 12.95,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/81HtL5tqJIL._AC_SX425_.jpg", "https://m.media-amazon.com/images/I/81SmAPCy09L._AC_SX425_.jpg"],
+    "category_name" : "Tennis"
+},
+{
+    "name" : "WILSON US Open Tennis Balls",
+    "description" : "The Wilson US Open Extra Duty tennis ball is the official ball of the US Open since 1978. The US Open tennis ball is made with exclusive felt from Tex Tech Industries for superior playability, consistency, and durability. The yellow, extra duty felt is made for hard court surfaces. Also available are Wilson US Open Regular Duty tennis ball for clay or indoor courts, Wilson US Open High Altitude tennis ball for all court surfaces over 3500 ft. elevation, or Wilson US Open Grass Court tennis ball with white felt. The Wilson US Open tennis ball is both USTA and ITF approved.",
+    "price" : 12.95,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/71El9rGYFXL._AC_SY879_.jpg", "https://m.media-amazon.com/images/I/71tIFrC-k9L._AC_SX425_.jpg"],
+    "category_name" : "Tennis"
+},
+{
+    "name" : "HEAD Geo Speed Adult Tennis Racket - Pre-Strung Light Balance 27.5 Inch Racquet",
+    "description" : "About the Racquet Everyone has to start somewhere; why not start with the most trusted name in tennis? Perfect for those with a moderate swing looking for added power, the Geo Speed is an excellent adult beginners tennis racket. The racquet's optimized geometry provides additional force and control with each shot. Its oversized head is the perfect choice for entry level players looking for crisp shots right from the start. Great value and even greater versatility combine for the ultimate casual players racquet. Oversized racket head diameter creates a larger sweet spot. HEAD Born out of engineering a better way to ski and play tennis, we have used the most modern techniques available to improve athletic equipment for decades. Now, we have turned that same vision and attention to detail to all racquet sports to bring you nothing but the best sports equipment & workout apparel available.",
+    "price" : 54.99,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/71nuCOXKXWL._AC_SY679_.jpg" , "https://m.media-amazon.com/images/I/61dajsEmF0L._AC_SY879_.jpg"],
+    "category_name" : "Tennis"
+},
+{
+    "name" : "Spalding Street Outdoor Basketball",
+    "description" : "Street ball will never die. Built for summer tournaments and Saturdays at the park, the NBA Street outdoor basketball holds to the NBA official size and weight. It has a deep channel design to give you proper grip and a durable rubber cover that stands up to asphalt or concrete.",
+    "price" : 16.99,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/81iJRwi+QHL._AC_SX425_.jpg" , "https://m.media-amazon.com/images/I/81QKLSklbHL._AC_SX425_.jpg"],
+    "category_name" : "Basketball"
+},
+{
+    "name" : "SSG Multisport Indoor Tabletop Scoreboard (EA)",
+    "description" : "Keep track of the score and time during competitive or recreational games with the Indoor Tabletop Electronic Scoreboard. When time is winding down on a close game, players and coaches need to know the situation at hand, including whether to foul or not, how many timeouts remain and the score, and this scoreboard's face provides key information at a glance. Officials and scorekeepers can easily start and stop the clock and add points to the score with the wireless remote.",
+    "price" : 400.68,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/61X5bVqDJbL._AC_SX425_.jpg", "https://m.media-amazon.com/images/I/81pHGwcWhOL._AC_SX425_.jpg"],
+    "category_name" : "Basketball"
+},
+{
+    "name" : "AOC CQ32G1 31.5'' Curved Frameless Gaming Monitor, Quad HD 2560x1440, VA panel, 4 ms Response Time, MPRT, 144Hz, FreeSync, DisplayPort/HDMI/VGA, VESA, Black",
+    "description" : "32-inch class curved gaming monitor free sync support ensures a stutter-free and tear-free gaming experience at any frame rate. Equipped with a curved 31. 5'' VA panel, The CQ32G1 displays a super-detailed Quad HD resolution (2560x1440 pixels) at a screaming 144 Hz refresh rate and 1ms response time. crazy immersive experience curved design wraps around you putting you at the center of the action and provides an immersive gaming experience. 144hz, 1ms gameplay144hz refresh and 1ms response times brings unprecedented smoothness and fluidity to your games and virtually instantaneous response to your mouse and keyboard actions. expand your view with multiple monitor set-ups. The frameless design (with narrow Border) offers the minimal bezel distraction and extra clean set-up for the ultimate Battle station. mad free sync AMD free Sync synchronizes the display and AMD GPU in your PC to eliminate screen tearing, stutter and input lag, providing the smoothest, fastest, and visually stunning gaming experience possible. no annoying flickering direct current backlighting reduces flickering, absolutely minimizing eye strain and fatigue. Feel free to enjoy those long, intense gaming sessions in comfort. immersive & captivating 31. 5'' Quds gaming display with 144 Hz, 1 mms response and free sync what's in the box315 Monitor, power cord, DP cable, HDMI cable, QSG. The brightness is 300 nit",
+    "price" : 300.79,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/81lGKc7oDGL._AC_SY450_.jpg", "https://m.media-amazon.com/images/I/916j4OTGgiL._AC_SY450_.jpg"],
+    "category_name" : "Screens"
+},
+{
+    "name" : "ASUS ROG Swift 27” 1440P Gaming Monitor (PG279QM) - WQHD (2560 x 1440), Fast IPS, 240Hz, 1ms, G-SYNC, NVIDIA Reflex Latency Analyzer, DisplayHDR400, Eye Care, HDMI, DisplayPort, USB, Height Adjustable",
+    "description" : "27-inch WQHD (2560 x 1440) Fast IPS gaming monitor with 240Hz refresh rate designed for professional gamers",
+    "price" : 840.00,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/81Ti9ezZJoL._AC_SY450_.jpg" ,"https://m.media-amazon.com/images/I/81OEdz1UoYL._AC_SY450_.jpg"],
+    "category_name" : "Screens"
+},
+{
+    "name" : "AOC C32G2ZE 32'' Curved Frameless Gaming Monitor, Full HD 1920x1080, VA, 0.5ms 240Hz, AMD FreeSync Premium, DP/HDMI/VGA, VESA, 3-3-1 Re-Spawn Program",
+    "description" : "With a 0.5ms response time, a 240Hz refresh rate, AMD FreeSync Premium technology and 300 Nits luminance, the AOC C32G2ZE provides all the gaming power you’ll need. Immerse yourself in a world of color and detail with the C32G2ZE’s massive 31.5”, wrap-around VA screen.",
+    "price" : 279.99,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/81uSMSUef-S._AC_SX450_.jpg" ,"https://m.media-amazon.com/images/I/712J4g-yLQL._AC_SX450_.jpg"],
+    "category_name" : "Screens"
+},
+{
+    "name" : "Squatty Potty The Original Toilet Stool - Bamboo Flip, 7in & 9in Height, Brown",
+    "description" : "The bamboo flip helps align the colon for better elimination. To simulate a squatting position, all you have to do is take a seat, put your feet on the toilet stool, and get comfortable. Prefer the 7in Height, but someone else in the home requires the 9in Height? This Squatty Potty adjusts between both heights with just a flip. It's clever design requires very little effort to accommodate anyone's squatting needs. So simple. Yet so smart. Which size is right for me? The flip stool offers the best of both worlds. 7″ Height is the most comfortable for most people. For those with comfort height toilets the 9″ Height is sometimes preferred. Children also do better with the 9″ Height.",
+    "price" : 39.99,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/81W7OXP3xpL._AC_SX425_.jpg","https://m.media-amazon.com/images/I/71sUr0-XbfL._AC_SX425_.jpg"],
+    "category_name" : "Bathroom"
+},
+{
+    "name" : "Moen DN0762CH Iso 2-Light Dual-Mount Bath Bathroom Vanity Fixture with Frosted Glass, Chrome",
+    "description" : "The Iso Collection's telescoping machined-metal design infuses industrial elements into European minimalism as it boldly, and beautifully, embraces the future. Moen is dedicated to designing and delivering beautiful products that last a lifetime. Moen offers a diverse selection of kitchen faucets, kitchen sinks, bathroom faucets and accessories, and showering products. Moen products combine style and functionality with durability for a lifetime of customer satisfaction.",
+    "price" : 126.48,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/61gK++B-8XL._AC_SY355_.jpg","https://m.media-amazon.com/images/I/71Mh84gXt0L._AC_SX355_.jpg"],
+    "category_name" : "Bathroom"
+},
+{
+    "name" : "LUXE Bidet Neo 120 - Self Cleaning Nozzle - Fresh Water Non-Electric Mechanical Bidet Toilet Attachment (blue and white)",
+    "description" : "A LUXURIOUS LOOK AT AN EXCELLENT PRICE – With a sleek design and high-quality parts, our bidet attachment will give your bathroom a next-level look. Constructed with high-pressure valves with metal/ceramic cores and steel hoses instead of plastic.",
+    "price" : 29.97,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/71yD4RSesbL._AC_SX355_.jpg","https://m.media-amazon.com/images/I/711PwYI238L._AC_SY355_.jpg"],
+    "category_name" : "Bathroom"
+},
+{
+    "name" : "JONATHAN Y JYL7427C July 17.5 inches 2-Light Metal Shade Farmhouse Sconce Contemporary Transitional 2200K Edison 25W Bulbs for Bedroom Living Room Bathroom, Vanity Lighting, Oil Rubbed Bronze/Brass Gold",
+    "description" : "Like a classic barn light but in a modern shape and smaller scale, this classic design features a metal cone shade that conceals the top half of the bulb perfect for a clean, industrial look. In a matte oil rubbed bronze finish, this sconce is perfectly at home on either side of a bathroom mirror or as extra lighting in kitchens, where your hardware truly shines. Also available in multi-light configurations, the geometric shape adds elegant interest to any space.",
+    "price" : 101.65,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/81Ui5OHaRgL._AC_SY355_.jpg" ,"https://m.media-amazon.com/images/I/71bv4PV6jUL._AC_SX355_.jpg"],
+    "category_name" : "Bathroom"
+},
+{
+    "name" : "Amazon Basics Wall-Mounted Vanity Mirror - 1X/5X Magnification, Chrome",
+    "description" : "Amazon Basics Wall-Mounted Vanity Mirror - 1X/5X Magnification, Chrome",
+    "price" : 13.83,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/61dbaKNt+kL._AC_SY450_.jpg" , "https://m.media-amazon.com/images/I/71HoZs100hL._AC_SY450_.jpg"],
+    "category_name" : "Bathroom"
+},
+{
+    "name" : "Deny Designs Iveta Abolina Creme De La Creme Duvet Cover, King",
+    "description" : "Our duvet cover is made from an ultra soft, lightweight woven polyester printed cream top with a 100% polyester cream bottom and includes a hidden zipper with interior corner ties to secure your comforter. It’s comfy, fade-resistant, and machine washable. The comforter insert and pillow shams are not included. Based in Denver, Colorado, Deny Designs is a modern, think-outside-the-box home furnishings company. Deny empowers its customers to transform dull, everyday household accessories into fun and original statement. With each purchase, our team of talented artists earn part of the proceeds, enabling Deny to support art communities all over the world while also spreading the creative love!",
+    "price" : 121.50,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/A1uZUzv5QVL._AC_SX466_.jpg", "https://m.media-amazon.com/images/I/A1wMPT6BWTL._AC_SY450_.jpg"],
+    "category_name" : "Bedroom"
+},
+{
+    "name" : "Northwest Shark Adventure 6-Piece Twin Bed in a Bag with Decorative Pillow, 66in x 86in",
+    "description" : "Drift off to sleep in this Shark Adventure 6-Piece Twin Bed in a Bag with Decorative Pillow by The Northwest Group, LLC. You'll never want to get out of bed in the morning!",
+    "price" : 43.37,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/910Iln94wiL._AC_SX450_.jpg"],
+    "category_name" : "Bedroom"
+},
+{
+    "name" : "American Baby Company 100% Natural Cotton Value Jersey Knit Fitted Portable/Mini-Crib Sheet, Grey Star/Zigzag, 24 x 38 x 5, Soft Breathable, for Boys and Girls, Pack of 3",
+    "description" : "Our 100% Cotton value jersey knit fitted mini crib sheet provides comfort for the next generation. Fits standard 24 x 38 mini crib mattresses and can fit up to 3in thick mattresses; Deep pockets with elastic all around provide a snug and secure fit for baby's comfort. Machine washable cold with gentle cycle, tumble dry low for best results.",
+    "price" : 16.38,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/71jGEVDPTlL._SY450_.jpg" , "https://m.media-amazon.com/images/I/61FNLJtgzXS._SY355_.jpg"],
+    "category_name" : "Bedroom"
+},
+{
+    "name" : "Cal King Size Bed Sheets Set by Leesa, 100% Cotton Cooling Sateen, Includes Pillowcases and Fitted Sheets, with High Thread Count, Light Grey",
+    "description" : "Our Leesa 100% organic cotton, high thread count sheets are soft and breathable cool sheets for hot sleepers. Sateen weave method gives our sheets a smooth silk feel that only gets softer with every wash. At Leesa, we are proud to be B Corp certified, meeting the highest environmental and social standards and using business as a force for good. Every Leesa mattress purchased helps us donate a bed to a child in need--one donated for every 10 sold.",
+    "price" : 159.00,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/61CVd9eWy4L._AC_SY450_.jpg"],
+    "category_name" : "Bedroom"
+},
+{
+    "name" : "Rubbermaid FastTrack Garage Storage Vertical Ball Rack, Garage Organization, Stackable Ball Cage for Garage Organizer",
+    "description" : "Fast track, vertical ball rack, 8. 5 mm diameter, steel tube construction, bungee cords allow easy access, locking Gripper holds hooks in place more securely. Push/pull lever provides the ability to move hooks easily.",
+    "price" : 28.98,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/51QzT7YZcvL._AC_SY679_.jpg"],
+    "category_name" : "Basketball"
+},
+{
+    "name" : "Basketball Butler 2 Ball Storage Rack",
+    "description" : "",
+    "price" : 74.18,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/71ubk5YFLlL._AC_SX425_.jpg"],
+    "category_name" : "Basketball"
+},
+{
+    "name" : "HP Elite Desktop PC Computer Intel Core i5 3.1-GHz, 8 gb Ram, 1 TB Hard Drive, DVDRW, 19 Inch LCD Monitor",
+    "description" : "This Certified Refurbished product is tested and certified to look and work like new. The refurbishing process includes functionality testing, basic cleaning, inspection, and repackaging. The product ships with all relevant accessories, a minimum 90-day warranty, and may arrive in a generic box. Only select sellers who maintain a high-performance bar may offer Certified Refurbished products on Amazon.com. HP Elite 8200 Small Form Factor Desktop PC, Intel Quad Core i5-2400 up to 3.4GHz, 8G DDR3, 1T, DVDRW, WiFi, Windows 10 64-Multi-Language Support English/Spanish/French (Renewed)",
+    "price" : 175.78,
+    "rating": 2.1,
+    "image" : ["https://m.media-amazon.com/images/I/718sn7oOcfL._AC_SY450_.jpg"],
+    "category_name" : "Computers"
+},
+{
+    "name" : "Acer Aspire TC-895-UA92 Desktop, 10th Gen Intel Core i5-10400 6-Core Processor, 12GB 2666MHz DDR4, 512GB NVMe M.2 SSD, 8X DVD, 802.11ax Wi-Fi 6, USB 3.2 Type C, Windows 10 Home",
+    "description" : "10th Generation Intel Core i5-10400 6-Core Processor (Up to 4.3GHz) 12GB 2666MHz DDR4 Memory; 512GB NVMe M.2 SSD; 8X DVD-Writer Double-Layer Drive (DVD-RW) Intel Wireless Wi-Fi 6 AX200 802.11ax Dual-Band 2.4GHz and 5GHz featuring 2x2 MU-MIMO technology; Bluetooth 5.1; 10/100/1000 Gigabit Ethernet LAN",
+    "price" : 1075.78,
+    "rating": 3.1,
+    "image" : ["https://m.media-amazon.com/images/I/61A+K1MjTeL._AC_SY355_.jpg"],
+    "category_name" : "Computers"
+},
+{
+    "name" : "SkyTech Archangel 3.0 Gaming Computer PC Desktop - Ryzen 7 3700X 8-Core 3.6GHz",
+    "description" : "AMD Ryzen 7 3700X 8-Core 16-Thread 3.6 GHz (4.4 GHz Max Boost) CPU | 1TB SSD – Up to 30x faster than traditional HDD ✔ GeForce RTX 3060 12GB GDDR6 Graphics Card (Brand May Varies) | 16GB DDR4 3200MHz Gaming Memory with Heat Spreaders | Windows 10 Home 64-bit",
+    "price" : 1799.99,
+    "rating": 4.9,
+    "image" : ["https://m.media-amazon.com/images/I/81KOEh2NRVL._AC_SY450_.jpg"],
+    "category_name" : "Computers"
+},
+{
+    "name" : "Skytech Prism II Gaming Computer PC Desktop - AMD Ryzen 7 5800X 8-Core 3.8GHz",
+    "description" : "",
+    "price" : 3099.99,
+    "rating": 5,
+    "image" : ["https://m.media-amazon.com/images/I/814iGw8XwqL._AC_SX466_.jpg"],
+    "category_name" : "Computers"
+},
+{
+    "name" : "ASUS AiO 27” All-in-One Desktop Computer",
+    "description" : "The stunningly beautiful ASUS AiO M3700 all-in-one PC has a 27-inch FHD LED display with a near-invisible 3 mm display bezel that gives you edge-to-edge visuals and an incredible 91% screen-to-body ratio. Combined with its advanced ASUS SonicMaster audio — featuring a DTS Audio Processing bass-reflex speaker system and two-way AI-powered noise canceling — M3700 immerses you in amazing visuals and superb sound for the ultimate entertainment experience. ASUS AiO; Ryzen 7 AiO, AMD AiO, pre-built, AiO",
+    "price" : 1099.99,
+    "rating": 5,
+    "image" : ["https://m.media-amazon.com/images/I/81YaXjESfYL._AC_SY355_.jpg"],
+    "category_name" : "Computers"
+},
+{
+    "name" : "Motorola Edge+ 2022",
+    "description" : "Unlocked for the freedom to choose your carrier. 5G service available with 5G plan. 5G network coverage required; available only in select areas. Compatible with T-Mobile 5G and Verizon 5G. Ready for 5G on other select networks dependent on availability; contact your service provider for details. Compatible with all major 4G U.S. carriers, including Verizon, AT&T, and T-Mobile. It also works with prepaid carriers, including Cricket Wireless, Metro by T-Mobile, Simple Mobile, Total Wireless, Tracfone, Net10, Mint, TracFone, Boost, and H2O. Industry-leading Snapdragon 8 performance. Experience the fastest, most powerful mobile platform. Instant all-pixel focus and HDR10+ recording. Get 32x more focusing pixels for faster, more accurate low light performance, plus HDR10+ recording for over a billion shades of color. High-res 50MP ultra-wide and 60MP selfie cameras. Capture amazing detail in both normal and low light using Quad Pixel technology. Ultra-smooth 144 Hz display + Dolby Atmos audio. Enjoy a 6.7in OLED display with HDR10+ for a billion shades of color and listen with stereo speakers.",
+    "price" : 898.23,
+    "rating": 4.8,
+    "image" : ["https://m.media-amazon.com/images/I/71K-HMTsGHL._AC_SY355_.jpg"],
+    "category_name" : "Cellphones"
+},
+{
+    "name" : "Motorola Moto g Pure 2021",
+    "description" : "Meet moto g Pure and get more of what you love. An ultra-wide view of your favorite movies, games, and video chats on a 6.5” Max Vision HD+ display. Plus, up to two days of battery life1 to keep the fun going all weekend long. And there’s more. Dual camera system. Octa-core processor. Water-repellent design2. With moto g Pure, more comes standard.",
+    "price" : 59.99,
+    "rating": 3.1,
+    "image" : ["https://m.media-amazon.com/images/I/71zGrrAe5NL._AC_SX522_.jpg"],
+    "category_name" : "Cellphones"
+},
+{
+    "name" : "Apple iPhone 12, 64GB",
+    "description" : "Apple iPhone 12, 64GB, Black - Unlocked (Renewed Premium)",
+    "price" : 599.00,
+    "rating": 4.3,
+    "image" : ["https://m.media-amazon.com/images/I/71Q0E2DYf2L._AC_SY550_.jpg"],
+    "category_name" : "Cellphones"
+},
+{
+    "name" : "Apple iPhone 11 Pro, 64GB",
+    "description" : "Shoot amazing videos and photos with the Ultra Wide, Wide, and Telephoto cameras. Capture your best low-light photos with Night mode. Watch HDR movies and shows on the Super Retina XDR display—the brightest iPhone display yet. Experience unprecedented performance with A13 Bionic for gaming, augmented reality (AR), and photography. All in the first iPhone powerful enough to be called Pro.",
+    "price" : 549.99,
+    "rating": 4.6,
+    "image" : ["https://m.media-amazon.com/images/I/81LmL94PUvS._AC_SX522_.jpg"],
+    "category_name" : "Cellphones"
+},
+{
+    "name" : "Huawei Nova 9 128GB",
+    "description" : "TELEPHONY, Smartphone, GSM / GPRS / EDGE / UMTS / HSDPA, Huawei, Huawei Nova 9 Black Huawei nova 9. Display diagonal: 16.7 cm (6.57in), Display resolution: 2340 x 1080 pixels, Display type: OLED. Processor frequency: 2.42 GHz, Processor family: Qualcomm Snapdragon, Processor model: 778G. RAM capacity: 8 GB, Internal storage capacity: 128 GB. Rear camera resolution (numeric): 50 MP, Rear camera type: Quad camera. SIM card capability: Dual SIM. Operating system installed: EMUI 11.0. Battery capacity: 4300 mAh. Product colour: Black. Weight: 175 g Display Display diagonal 16.7 cm (6.57in) Display resolution 2340 x 1080 pixels Touchscreen Y Display type OLED Touchscreen type Capacitive Pixel density 392 ppi Processor Processor frequency 2.42 GHz Processor family Qualcomm Snapdragon Processor model 778G Processor architecture ARM Cortex-A78+Cortex-A55 Processor cores 4 Coprocessor frequency 1.8 GHz Coprocessor architecture ARM Cortex-A55 Coprocessor cores 4 Storage RAM capacity 8 GB Internal storage capacity 128 GB Compatible memory cards Not supported Camera Rear camera type Quad camera Rear camera resolution (numeric) 50 MP Front camera type Single camera Front camera resolution (numeric) 32 MP Rear camera flash Y Second rear camera resolution (numeric) 8 MP Third rear camera resolution (numeric) 2 MP Fourth rear camera resolution (numeric) 2 MP Rear camera aperture number 1.9 Second rear camera aperture number 2.2 Third",
+    "price" : 425.42,
+    "rating": 4,
+    "image" : ["https://m.media-amazon.com/images/I/418F0gGqQ6L._AC_SX522_.jpg"],
+    "category_name" : "Cellphones"
+},
+{
+    "name" : "Huawei P30 Pro 128GB",
+    "description" : "3G HSDPA 800 / 850 / 900 / 1700(AWS) / 1900 / 2100 - 4G LTE band 1(2100), 2(1900), 3(1800), 4(1700/2100), 5(850), 6(900), 7(2600), 8(900), 9(1800), 12(700), 17(700), 18(800), 19(800), 20(800), 26(850), 28(700), 32(1500), 34(2000), 38(2600), 39(1900), 40(2300)",
+    "price" : 524.99,
+    "rating": 4,
+    "image" : ["https://m.media-amazon.com/images/I/61XM1qbUPUL._AC_SX522_.jpg"],
+    "category_name" : "Cellphones"
+},
+{
+    "name" : "Huawei Mate 20 128GB/6GB",
+    "description" : "Non-removable Li-Po 5000 mAh battery",
+    "price" : 595.99,
+    "rating": 3.1,
+    "image" : ["https://m.media-amazon.com/images/I/71vm1uK9XBL._AC_SX522_.jpg"],
+    "category_name" : "Cellphones"
+},
+{
+    "name" : "Nike Men's Air Zoom Pegasus 36 Running Shoes",
+    "description" : "The iconic Nike Air Zoom Pegasus 36 is updated with multiple perforated inserts and engineered mesh on the upper for strategic breathability in the warmer spots. The slimmer tongue and collar portion at the heel reduces clutter without compromising comfort, while exposed Flywire cables ensure a comfortable fit when the speed rises",
+    "price" : 93.99,
+    "rating": 3.0,
+    "image" : ["https://m.media-amazon.com/images/I/71NItYP7+DL._AC_UY395_.jpg"],
+    "category_name" : "Shoes"
+},
+{
+    "name" : "Nike Men's Flex Control Tr4 Cross Trainer",
+    "description" : "Tailored for bodyweight workouts, The Nike flex control 4 emphasizes mobility and stability. Its flexible sole lets your foot move naturally from 1 high-energy set to the next. It features a rubber outrigger at the sole for better stability during side-to-side drills.",
+    "price" : 65.00,
+    "rating": 2.3,
+    "image" : ["https://m.media-amazon.com/images/I/71cwb1GchJL._AC_UX395_.jpg"],
+    "category_name" : "Shoes"
+},
+{
+    "name" : "adidas Men's Lite Racer Adapt 4.0 Running Shoes",
+    "description" : "Keep your style easy and comfortable. These men's adidas running-inspired shoes have a slip-on build that's secured by an elastic top strap. A Cloudfoam midsole provides elevated cushioning.",
+    "price" : 49.95,
+    "rating": 4.4,
+    "image" : ["https://m.media-amazon.com/images/I/81cuTtP+n6L._AC_UX395_.jpg"],
+    "category_name" : "Shoes"
+},
+{
+    "name" : "adidas Men's Supernova Cushion",
+    "description" : "Everyone runs for different reasons. Whatever drives you to hit the path or the pavement, these adidas shoes are designed to help you reach your goals. Flexible cushioning in the forefoot combines with responsive cushioning in the heel to give you a comfortable ride. And because we're serious about creating a healthier environment, these shoes are built with recycled materials. Adidas' Supernova Cushion Running Shoe is one of the most-beloved cushioning shoes on the road today. Designed to take you far and fast, this latest generation shoe offers greater comfort and breathability with even less weight. Features include a breathable, quick drying open-mesh upper; a molded ortholite anti-microbial moisture-wicking sock liner; a QuickStrike outsole for increased flexibility and durability; and an Adiwear outsole for best durability in high-wear areas. Generations of runners have loved the cushioned, neutral ride and the versatility of this day-in, day-out trainer.",
+    "price" : 53.52,
+    "rating": 4,
+    "image" : ["https://m.media-amazon.com/images/I/81u6GqQCp0L._AC_UX679_.jpg"],
+    "category_name" : "Shoes"
+},
+{
+    "name" : "New Balance Men's 624 V2 Casual Comfort Cross Trainer",
+    "description" : "Get moving with help from the 624 casual training shoe from New Balance. These well-rounded trainers are ready to provide comfortable, cushioned support that fits your active lifestyle. This updated version of the popular New Balance training shoe offers enhanced flexibility with Forefoot Flex Grooves that support the free and natural movement of your feet. Whether you’re working or working out, you’re sure to appreciate how the internal midsole shank of the 624 helps provide midfoot structure and support. But the comfort factor doesn’t stop there – these trainers are also equipped with ABZORB technology that minimizes impact through a combination of cushioning and compression resistance, and a lightweight injection-molded EVA foam midsole and Phantom Liner for soft support underfoot. Designed to maximize your comfort while training indoors or out, the durable, non-marking outsole stands up well to regular wear-and-tear on a variety of surfaces. Available in a range of widths to help you find a proper fit, the 624 is a versatile training shoe for everyday wear. To ensure your feet look as good as they feel, these performance shoes feature supple leather uppers with classic New Balance branding that will effortlessly complement your go-to gear.",
+    "price" : 48.99,
+    "rating": 2.5,
+    "image" : ["https://m.media-amazon.com/images/I/61NEFFxC90L._AC_UX395_.jpg"],
+    "category_name" : "Shoes"
+},
+{
+    "name" : "Hanes Men's Full-Zip Eco-Smart Hoodie",
+    "description" : "The Hanes Comfort Blend Eco-Smart full-zip hooded jacket provides medium weight fleece comfort all year around. Feel better in this sweatshirt because Hanes keeps plastic bottles of landfills by using recycled polyester.",
+    "price" : 9.99,
+    "rating": 4.6,
+    "image" : ["https://m.media-amazon.com/images/I/81S2WhcTf7L._AC_UX342_.jpg"],
+    "category_name" : "Men's clothing"
+},
+{
+    "name" : "Under Armour Men’s Tech 2.0 ½ Zip Long Sleeve",
+    "description" : "UA Tech fabric is quick-drying, ultra-soft & has a more natural feel.Material wicks sweat & dries really fast.Generous ½ zip front makes for easy layering.New, streamlined fit & shaped hem.Under Armour’s mission is to make all athletes better through passion, design and the relentless pursuit of innovation.",
+    "price" : 24.00,
+    "rating": 4,
+    "image" : ["https://m.media-amazon.com/images/I/61kyz61WKxL._AC_UX385_.jpg"],
+    "category_name" : "Men's clothing"
+},
+{
+    "name" : "Amazon Essentials Men's Slim-Fit Stretch Golf Pant",
+    "description" : "Amazon Essentials is focused on creating affordable, high-quality, and long-lasting everyday clothing you can rely on. Our line of men’s must-haves includes polo shirts, chino pants, classic-fit shorts, casual button-downs, and crew-neck tees. Our consistent sizing takes the guesswork out of shopping, and each piece is put to the test to maintain the highest standards in quality and comfort.",
+    "price" : 32.80,
+    "rating": 1,
+    "image" : ["https://m.media-amazon.com/images/I/711SuC7PMnL._AC_UX342_.jpg"],
+    "category_name" : "Men's clothing"
+},
+{
+    "name" : "Hanes ComfortSoft EcoSmart Men's Fleece Sweatpants",
+    "description" : "Hanes men's EcoSmart fleece sweatpants are designed to be a versatile pair of lounging or casual pants that can be worn while out running errands or on a relaxing day at home, and they're environmentally friendly with up to 5 percent of polyester created from recycled bottles.",
+    "price" : 11.00,
+    "rating": 3.1,
+    "image" : ["https://m.media-amazon.com/images/I/71D+AR2Z2AL._AC_UX342_.jpg"],
+    "category_name" : "Men's clothing"
+},
+{
+    "name" : "Champion Men's Powerblend Fleece Pullover Hoodie, Script Logo",
+    "description" : "Made for any season, our Men's Powerblend Hoodie is a customer favorite offering the best of warmth and durability, without the extra weight. This season's pop of color logo amps up your sport style with joggers or sweatpants. Exceptionally soft, It resists pilling and shrinking, so it keeps its great fit and comfort no matter how hard you play. Wear this midweight fleece workout to weekend, it's made with extra stitch details for durability, a double-layer hood with metal grommets, soft back neck tape and hand-warming pouch pocket. Part of our Champion Made initiative, Powerblend fleece is made with traceable U.S. grown cotton and requires 2-5 times less water. Even better, we use up to 10% recycled polyester fibers, which helps keep recycled plastic bottles out of landfills.",
+    "price" : 19.99,
+    "rating": 2,
+    "image" : ["https://m.media-amazon.com/images/I/71szqCoFfYL._AC_UX342_.jpg"],
+    "category_name" : "Men's clothing"
+},
+{
+    "name" : "PUMA Men's Standard Mattr Topo Polo",
+    "description" : "The MATTR Topo Polo will have you dreaming of perfect greens, lush fairways and flagsticks. Designed to perform on the course and keep golf on your mind when you're off it.",
+    "price" : 51.94,
+    "rating": 3.1,
+    "image" : ["https://m.media-amazon.com/images/I/61vUVrGiSQL._AC_SX425_.jpg"],
+    "category_name" : "Men's clothing"
+},
+{
+    "name" : "Champion Ameritage Dad Adjustable Cap",
+    "description" : "Champion is an American manufacturer of clothing, specializing in sportswear.",
+    "price" : 15.70,
+    "rating": 1.5,
+    "image" : ["https://m.media-amazon.com/images/I/71iqEA5zGPS._AC_UX385_.jpg"],
+    "category_name" : "Men's clothing"
+},
+{
+    "name" : "Timberland PRO Men's Base Plate Blended Long-Sleeve T-Shirt with Logo",
+    "description" : "Timberland PRO's shirts make a serious function statement by offering wicking and anti-odor technologies plus comfort features, such as side-seam construction, bi-swing backs and tag less neck lables. Seasonal layering, made comfortable and easy.",
+    "price" : 18.39,
+    "rating": 3.1,
+    "image" : ["https://m.media-amazon.com/images/I/71ogpYch1dL._AC_UX385_.jpg"],
+    "category_name" : "Men's clothing"
+},
+{
+    "name" : "Legendary Whitetails Men's Legendary Old Buck Fleece Lined Shirt Jacket",
+    "description" : "The 'Old Buck' is a casual shirt jacket shirt that's great for a walk in the woods or going to the supper club. This yarn dyed twill shirt jacket looks stylish, while keeping you cozy with the warm berber lining and easy entry side seam pockets. Give 'Old Buck' a shout when you go out!",
+    "price" : 59.99,
+    "rating": 3.1,
+    "image" : ["https://m.media-amazon.com/images/I/81XUaumqdPL._AC_UX385_.jpg"],
+    "category_name" : "Men's clothing"
+},
+{
+    "name" : "Monrow Women's Hd1070-supersoft Puff Sleeve Sweatshirt",
+    "description" : "Crew neck, three quarter puff sleeve sweatshirt. Featured in our most popular supersoft fabric.",
+    "price" : 27.70,
+    "rating": 3,
+    "image" : ["https://m.media-amazon.com/images/I/91M1d2YzfwL._AC_UX342_.jpg"],
+    "category_name" : "Women's clothing"
+},
+{
+    "name" : "Amazon Essentials Women's Short-Sleeve Woven Blouse",
+    "description" : "Amazon Essentials is focused on creating affordable, high-quality, and long-lasting everyday clothing you can rely on. Our line of women's apparel includes cashmere sweaters, fleece and down jackets, and more, including plus-size options. Our consistent sizing takes the guesswork out of shopping, and each piece is put to the test to maintain the highest standards in quality and comfort.",
+    "price" : 12.70,
+    "rating": 3.7,
+    "image" : ["https://m.media-amazon.com/images/I/91uq6TyIhzL._AC_UX342_.jpg"],
+    "category_name" : "Women's clothing"
+},
+{
+    "name" : "Under Armour Women's Tech Short Sleeve V-Neck - Solid",
+    "description" : "UA Tech fabric is quick-drying, ultra-soft & has a more natural feel. Material wicks sweat & dries really fast. 4-way stretch construction moves better in every direction . Deep V-neck collar & slimmer fit deliver a sleek, more feminine silhouette. Metallic silver front chest logo.",
+    "price" : 17.74,
+    "rating": 3.9,
+    "image" : ["https://m.media-amazon.com/images/I/51c5K0DI-WL._AC_UX385_.jpg"],
+    "category_name" : "Women's clothing"
+},
+{
+    "name" : "Hanes Women's Tri-blend French Terry Jogger with Pockets",
+    "description" : "Warmth without the weight! Insanely soft French Terry joggers are great for lounging around or going out for a run.",
+    "price" : 9.42,
+    "rating": 3.1,
+    "image" : ["https://m.media-amazon.com/images/I/71oUeP0RQPL._AC_UX385_.jpg"],
+    "category_name" : "Women's clothing"
+},
+{
+    "name" : "Amazon Essentials Women's Casual Crew Socks, Pack of 6",
+    "description" : "Amazon Essentials is focused on creating affordable, high-quality, and long-lasting everyday clothing you can rely on. Our line of women's apparel includes cashmere sweaters, fleece and down jackets, and more, including plus-size options. Our consistent sizing takes the guesswork out of shopping, and each piece is put to the test to maintain the highest s in quality and comfort.",
+    "price" : 11.90,
+    "rating": 4.7,
+    "image" : ["https://m.media-amazon.com/images/I/91PSMjYsh7S._AC_UX425_.jpg"],
+    "category_name" : "Women's clothing"
+},
+{
+    "name" : "Anne Klein Jeans Women's Cozigan Long Color Block Cardigan Sweater",
+    "description" : "Anne Klein Jeans Women's Apparel Cozigan color block cardigan sweater with open front, shawl neckline and long sleeves on a loose fit body This reliable ladies sweater goes great with all top and bottom combinations from dressy to casual. Perfect to wear to work, attending a class, family functions or happy hour with friends. Anne Klein Jeans - A mix of sophistication and comfort you can enjoy every day without sacrificing style. We encourage all women to create a wardrobe full of great staple pieces for work, pleasure and everything in between.",
+    "price" : 89.50,
+    "rating": 4.9,
+    "image" : ["https://m.media-amazon.com/images/I/71L1iQP-gSS._AC_UX385_.jpg"],
+    "category_name" : "Women's clothing"
+},
+{
+    "name" : "Amazon Collection Platinum or Gold Plated Sterling Silver Infinite Elements Zirconia Antique Ring Set",
+    "description" : "Sparkling antique-style ring with asscher-cut Infinite Elements Cubic Zirconia and band with prong-set faceted rounds.",
+    "price" : 38.10,
+    "rating": 4,
+    "image" : ["https://m.media-amazon.com/images/I/81hp1RlVccL._AC_UX395_.jpg"],
+    "category_name" : "Jewelry"
+},
+{
+    "name" : "Betsey Johnson Stone Heart Drop Earrings",
+    "description" : "Betsey Johnson dangle earrings featuring pink faceted stone heart detailed with small critter and flower accent. Earrings are set in gold-tone metal with shepherds hook closure.",
+    "price" : 15.59,
+    "rating": 3.7,
+    "image" : ["https://m.media-amazon.com/images/I/71DP1iyU3TL._AC_UX395_.jpg"],
+    "category_name" : "Jewelry"
+},
+{
+    "name" : "8mm Diamond Necklace Pendant 1.5 carat",
+    "description" : "Diamond Jewelry Reigns in the supreme world of jewelry. Diamonds are known for their sparkle, brilliance & durability. The hardest known mineral and can withstand almost any kind of wear and tear, which makes them ideal for everyday wear. A tough diamond that will not chip easily or lose its brilliance. Tougher, brighter & more sparkly than any other gemstone. Excellent choice of jewelry at reasonable prices.",
+    "price" : 399.99,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/71zOhqWaJDL._SY500_.jpg"],
+    "category_name" : "Jewelry"
+},
+{
+    "name" : "Betsey Johnson Flower Rectangle Stone Drop Earrings",
+    "description" : "Betsey Johnson drop earrings featuring iridescent rectangle-shaped stone embellished with flower and mixed stone cluster. Earrings are set in rose gold-tone metal with a fish hook closure.",
+    "price" : 26.52,
+    "rating": 4,
+    "image" : ["https://m.media-amazon.com/images/I/71qlbLY8jNL._AC_UY395_.jpg"],
+    "category_name" : "Jewelry"
+},
+{
+    "name" : "JewelExclusive 10K Yellow Gold Compass Necklace,17\"",
+    "description" : "This simple 10K yellow gold compass is perfect for any outfit.",
+    "price" : 69.99,
+    "rating": 3.1,
+    "image" : ["https://m.media-amazon.com/images/I/61AVjVbq0EL._AC_UY395_.jpg"],
+    "category_name" : "Jewelry"
+},
+{
+    "name" : "Garden Gnome Holding Bird",
+    "description" : "Add a touch of playful magic to your outdoor space with the Alpine Corporation Garden Gnome Holding Bird Statue. This stunning statue is constructed of durable polyresin with a colorful finish to suit any outdoor space. The statue is weatherproof, rust-resistant, and durable for years of quality use. With a playful look, intricate details, and portrayal of a friendly gnome, this Alpine Corporation statue is sure to bring a sense of playfulness and tranquility to your home! The statue is perfect for your garden, patio, deck, porch, or yard space. you can be confident in the quality of your purchase. Statue measures 5\"L x 5\"W x 12\"H for use in yards of any size. Alpine Corporation is one of America's leading designers, importers, and distributors of superior quality home and garden décor products. Alpine's award winning in-house design team continuously develops new and innovative \"statements pieces\" for your home and garden. Your outdoor living spaces will be the envy of the neighborhood with our wide assortment of fresh, fashionable and contemporary products, from beautifully crafted solar garden stakes featuring patented motion and fiber optic lighting technology to gorgeous glass and glow-in-the-dark birdbaths and feeders.",
+    "price" : 15.98,
+    "rating": 4,
+    "image" : ["https://m.media-amazon.com/images/I/81nQJY+qrvL._AC_SX425_.jpg"],
+    "category_name" : "Garden"
+},
+{
+    "name" : "Jonathan Y TBL1019A Moroccan Diamonds 18\" Ceramic Drum Garden Stool",
+    "description" : "A navy-on-white diamond pattern gives this ceramic garden stool an exotic flair. Its simplified shape makes it the perfect modern accent table. Try a pair in front of a sofa, or use them for drinks or plants indoors or out.",
+    "price" : 118.29,
+    "rating": 4.3,
+    "image" : ["https://m.media-amazon.com/images/I/A1+HpgYoJnL._AC_SY450_.jpg"],
+    "category_name" : "Garden"
+},
+{
+    "name" : "LawnMaster GV1212B Scarifier and Dethatcher 13-Inch 12AMP",
+    "description" : "Revitalize your yard with LawnMaster's 13\" Electric Scarifier and Lawn Dethatcher. The powerful 12-amp motor runs up to 3400 RPM, making it easy to remove unwanted clippings and debris from your yard. The included dethatcher and scarifier cylinders allow for a 12” cutting width. The cutting height can be adjusted to 19 different positions, -0.39 ~ 0.19 inch (-10 ~5 mm) for the scarifier cylinder and -0.19 ~0.39 inch (-5 ~10 mm) for the dethatcher cylinder. The simple-to-start system and one-touch height adjustments make it an easy solution for all lawn care needs. Store your dethatcher/scarifier easily by folding the handles when the job is complete.",
+    "price" : 120.00,
+    "rating": 4.8,
+    "image" : ["https://m.media-amazon.com/images/I/61uKxw7WKHL._AC_SX425_.jpg"],
+    "category_name" : "Garden"
+},
+{
+    "name" : "SAMSUNG 23.5” CF396 Curved Computer Monitor",
+    "description" : "Immersive Viewing Experience: The 1800R curvature of the screen lets you enjoy big, bold and stunning panoramic views while you work or play at home or the office",
+    "price" : 139.99,
+    "rating": 4.8,
+    "image" : ["https://m.media-amazon.com/images/I/91ubktnbNVL._AC_SX450_.jpg"],
+    "category_name" : "Screens"
+},
+{
+    "name" : "Sceptre 24\" Professional Thin 75Hz 1080p LED Monitor",
+    "description" : "Slim bezel with thin chassis. Power Range (V, A, Hz)- AC-DC Adapter Input 100 – 240 VAC, 50/60 Hz, 1.0A (Max.) Output - 12V DC, 2.5A. Power Consumption (Typical)- 25.4W. Neck/Stand Detachable: Yes",
+    "price" : 134.15,
+    "rating": 4.4,
+    "image" : ["https://m.media-amazon.com/images/I/71rXSVqET9L._AC_SX450_.jpg"],
+    "category_name" : "Screens"
+},
+{
+    "name" : "Sceptre Curved 27\" 75Hz LED Monitor",
+    "description" : "1500R Curved Display: The 1500R degree curved design immerses you completely into the gaming landscape, allowing you to spot all threats and opportunities before all of your competitors.",
+    "price" : 199.97,
+    "rating": 4.1,
+    "image" : ["https://m.media-amazon.com/images/I/61oYf1b5EfL._AC_SX466_.jpg"],
+    "category_name" : "Screens"
+},
+{
+    "name" : "SAMSUNG S40VA Series 24-Inch Computer Monitor",
+    "description" : "Computer monitor with a built-in webcam & microphone creates limitless collaboration when connecting on a project. The webcam can be simply pushed down into the monitor to hide when it is not needed.",
+    "price" : 199.99,
+    "rating": 4.8,
+    "image" : ["https://m.media-amazon.com/images/I/81pEUBK197S._AC_SX450_.jpg"],
+    "category_name" : "Screens"
+},
+{
+    "name" : "FORZA Soccer Goal [5 Sizes] – Premium Weatherproof PVC Backyard Soccer Goal",
+    "description" : "The high-quality FORZA outdoor soccer goal for kids is an excellent addition to the backyard. The soccer set for kids backyard goals are available in multiple sizes, so that you can find the right kids goalpost.",
+    "price" : 69.99,
+    "rating": 3,
+    "image" : ["https://m.media-amazon.com/images/I/A19TUSdpx1L._AC_SX425_.jpg"],
+    "category_name" : "Football"
+},
+{
+    "name" : "Franklin Sports Soccer Balls - Competition 100 Soccer Balls",
+    "description" : "Official sizes: Comes in sizes 3, 4, and 5 with precise stitching and official sizing so it can be used at all skill levels for training and skill building",
+    "price" : 11.84,
+    "rating": 4.8,
+    "image" : ["https://m.media-amazon.com/images/I/71cTqYFokQL._AC_SX425_.jpg"],
+    "category_name" : "Football"
+},
+{
+    "name" : "Franklin Sports Blackhawk Backyard Soccer Goal",
+    "description" : "Durable Construction: Our durable, weather-resistant soccer goals make practicing shots fun and easy.",
+    "price" : 19.99,
+    "rating": 4.9,
+    "image" : ["https://m.media-amazon.com/images/I/91f7YCbvByL._AC_SX425_.jpg"],
+    "category_name" : "Football"
+},
+{
+    "name" : "WILSON Junior/Youth Recreational Tennis Rackets",
+    "description" : "The US Open Junior Tennis Racket is extremely lightweight and easy to swing. It's the perfect choice for players beginning to learn to play tennis. - 1",
+    "price" : 32.00,
+    "rating": 4,
+    "image" : ["https://m.media-amazon.com/images/I/71-3RThVdfL._AC_SX425_.jpg"],
+    "category_name" : "Tennis"
 }
 ]

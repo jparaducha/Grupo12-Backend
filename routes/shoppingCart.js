@@ -48,6 +48,13 @@ router.post("/", async (req, res) => {
 
   for (let productToAdd of products) {
     console.log(productToAdd);
+    if (
+      !productToAdd.seller_id ||
+      !productToAdd.product_id ||
+      !productToAdd.quantity
+    ) {
+      return res.status(400).send("Error : Missing data in products");
+    }
     var product = await Product.findOne({
       where: {
         product_id: productToAdd.product_id,
