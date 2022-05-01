@@ -72,4 +72,42 @@ router.post("/", async (req, res) => {
   }
 });
 
+
+router.get("/", async (req,res)=>{
+  try {
+    const { userId } = req.query;
+
+    if(userId){
+
+    const stocks = await Stock.findAll({
+      where : {
+        user_id : userId
+      }
+    }).then((data)=>{
+      return data;
+    }).catch((e)=>{
+      console.log(e);
+      return res.sendStatus(500);
+    })
+
+    return res.json(stocks);
+  }
+
+  
+  const stocks = await Stock.findAll().then((data)=>{
+    return data;
+  }).catch((e)=>{
+    console.log(e);
+    return res.sendStatus(500);
+  })
+
+  return res.json(stocks);
+
+  } catch (error) {
+    console.log(error.message);
+
+    return res.sendStatus(500);
+  }
+})
+
 module.exports = router;
