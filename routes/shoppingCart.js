@@ -186,7 +186,7 @@ router.delete("/", async (req, res) => {
   if (target == "ALL") {
     Shopping_cart.destroy({
       where: {
-        user_id: buyer_id,
+        buyer_id: buyer_id,
       },
     }).then(() => {
       return res.status(200).send("User cart deleted");
