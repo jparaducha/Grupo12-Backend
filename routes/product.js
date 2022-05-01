@@ -10,6 +10,8 @@ const {
   sequelize,
 } = require("../db");
 
+
+
 //------------------------------------------------------------------------------------------
 
 router.get("/", async (req, res) => {
@@ -57,13 +59,15 @@ router.get("/", async (req, res) => {
           return {
             product_id: product.product_id,
             name: product.name,
+            added : product.added,
+            approved : product.approved,
             rating: product.rating,
             images: product.images,
             category_name: product.category_name,
             stock: product.stock,
             price: product.price,
             featured_seller: final_featured_seller,
-            sellers: product.sellers,
+            sellers: product.sellers
           };
         })
         .then((result) => {
@@ -116,6 +120,8 @@ router.get("/", async (req, res) => {
             stock: product.stock,
             price: product.price,
             featured_seller: final_featured_seller,
+            added : product.added,
+            approved : product.approved
           };
           result.push(product_to_return);
         } else {
@@ -127,6 +133,8 @@ router.get("/", async (req, res) => {
             category_name: product.category_name,
             stock: 0,
             price: null,
+            added : product.added,
+            approved : product.approved
           };
           result.push(product_to_return);
         }
@@ -378,8 +386,34 @@ router.post("/load", async (req, res) => {
       /// ????????????????????????????? ///////
       let firstAdded = false;
 
-      for(let user of users){
+      
+function usersToLoad(){
+  let sellersQty = Math.ceil(Math.random() * users.length-1)+1;
+  let sellersIdx = [];
+  let sellerId = Math.ceil(Math.random() * sellersQty);
+  
+  for(let i = 0 ; i< sellersQty; i++){
+  
+      while ( sellersIdx.includes(sellerId))
+      {
+            sellerId = Math.ceil(Math.random() * users.length);
+      }
+          sellersIdx.push(sellerId);
+  }
+      
+      return sellersIdx;
+  }
 
+      let indexes = usersToLoad();
+      let newUsers = [];
+
+      for(index of indexes){
+        newUsers.push(users[index]);
+      }
+      if(newUsers.length=== 0) newUsers.push(users[0]);
+
+      for(let user of newUsers){
+        if(!user) continue;
         user
         .addStocks(product, { through: { quantity: !firstAdded?  1 : Math.ceil(Math.random()*50),
            unit_price: !firstAdded ? i.price : (i.price*(1 + Math.floor(Math.random()*300) / 1000 )).toFixed(2)
@@ -391,12 +425,12 @@ router.post("/load", async (req, res) => {
         .catch((e) => {
           console.log(e.errors);
         });
-
         firstAdded = true;
       }
 
-      
+    // console.log(newUsers.filter((i)=> i).map((i)=> i.name));
     });
+
     return res.sendStatus(200);
   } catch (e) {
     console.log(e.message);
