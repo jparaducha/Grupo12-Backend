@@ -8,7 +8,7 @@ module.exports = (sequelize) => {
             primaryKey : true
         },
         seller : {
-            type : DataTypes.JSON
+            type : DataTypes.STRING
         },
         buyer_id : {
             type : DataTypes.STRING
