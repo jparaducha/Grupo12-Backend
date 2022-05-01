@@ -19,8 +19,7 @@ router.get("/", async (req, res) => {
 
     const cart = await Shopping_cart.findAll({ where: { buyer_id: id } });
 
-    if (cart.length == 0)
-      return res.status(404).send("Error : User's cart is empty");
+    if (cart.length == 0) return res.send("User's cart is empty");
 
     return res.status(200).send(cart);
   } catch (error) {
@@ -45,6 +44,7 @@ router.post("/", async (req, res) => {
   const buyer = await User.findOne({ where: { user_id: buyer_id } });
 
   if (!buyer) return res.status(404).send("Error : Buyer not found ");
+  if (!buyer.active) return res.status(400).send("Error : Buyer not active");
 
   for (let productToAdd of products) {
     console.log(productToAdd);
@@ -58,9 +58,14 @@ router.post("/", async (req, res) => {
     });
     if (!product)
       return res
-        .send(`Error : Product with id=${productToAdd.product_id} not found`)
-        .status(404);
-    console.log("checking seller");
+        .status(404)
+        .send(`Error : Product with id=${productToAdd.product_id} not found`);
+    if (!product.approved)
+      return res
+        .status(400)
+        .send(
+          `Error : Product with id=${productToAdd.product_id} not approved`
+        );
     var seller = await User.findOne({
       where: {
         user_id: productToAdd.seller_id,
@@ -72,6 +77,18 @@ router.post("/", async (req, res) => {
         .send(
           `Error : Seller for product with id=${productToAdd.product_id} not found`
         );
+
+    if (!seller.provider)
+      return res
+        .status(400)
+        .send(
+          `Error : Seller with id=${productToAdd.seller_id} not validated as such`
+        );
+
+    if (!seller.active)
+      return res
+        .status(400)
+        .send(`Error : Seller with id=${productToAdd.seller_id} not active`);
 
     const stock = await Stock.findOne({
       where: {
@@ -131,10 +148,7 @@ router.post("/", async (req, res) => {
       });
     })
     .then(() => {
-      const toSend = {
-        added: result,
-      };
-      return res.status(200).send(toSend);
+      return res.status(200).send(result);
     })
     .catch((e) => {
       console.log(e);

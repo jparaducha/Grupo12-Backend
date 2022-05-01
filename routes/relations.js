@@ -55,7 +55,6 @@ router.post("/", async (req, res) => {
 
 router.get("/", async (req, res) => {
   const { product_id, type } = req.query;
-  const result = [];
   var promise1, promise2;
   const product = await Product.findOne({ where: { product_id: product_id } });
   if (!product) return res.status(404).send("Error : Product not found ");

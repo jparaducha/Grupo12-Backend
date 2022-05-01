@@ -14,7 +14,7 @@ const {
 
 router.get("/", async (req, res) => {
   try {
-    const { product_id, order } = req.query;
+    const { product_id, order, stock } = req.query;
 
     if (product_id) {
       Product.findOne({
@@ -71,6 +71,9 @@ router.get("/", async (req, res) => {
         });
     } else {
       const products = await Product.findAll({
+        where: {
+          approved: true,
+        },
         include: {
           model: User,
           as: "sellers",
@@ -78,6 +81,7 @@ router.get("/", async (req, res) => {
         },
       });
       const result = [];
+      const out_Of_Stock = [];
       if (products.length === 0)
         return res.status(404).send("No products found");
       products.forEach(async (product) => {
@@ -117,7 +121,15 @@ router.get("/", async (req, res) => {
             price: product.price,
             featured_seller: final_featured_seller,
           };
-          result.push(product_to_return);
+          if (product_to_return.stock !== 0) {
+            result.push(product_to_return);
+          } else {
+            if (stock == true) {
+              result.push(product_to_return);
+            } else {
+              out_Of_Stock.push(product_to_return);
+            }
+          }
         } else {
           const product_to_return = {
             product_id: product.product_id,
@@ -128,7 +140,11 @@ router.get("/", async (req, res) => {
             stock: 0,
             price: null,
           };
-          result.push(product_to_return);
+          if (stock == true) {
+            result.push(product_to_return);
+          } else {
+            out_Of_Stock.push(product_to_return);
+          }
         }
       });
 
@@ -527,31 +543,30 @@ router.get("/categories/", async (req, res) => {
   }
 });
 
-
-router.patch("/rating", async (req,res)=>{
+router.patch("/rating", async (req, res) => {
   try {
-      const { productId } = req.query;
-      const { rating } = req.body;
+    const { productId } = req.query;
+    const { rating } = req.body;
 
-      if(typeof(rating)!=="number" || rating > 5 || rating < 0) return res.json("Rating must be a number between 0 and 5");
+    if (typeof rating !== "number" || rating > 5 || rating < 0)
+      return res.json("Rating must be a number between 0 and 5");
 
-  const product = await Product.findOne({
-      where : {
-          product_id:  productId
-      }
-  }).then((data)=> data).catch(console.log);
+    const product = await Product.findOne({
+      where: {
+        product_id: productId,
+      },
+    })
+      .then((data) => data)
+      .catch(console.log);
 
+    product.rating = rating;
 
-  product.rating = rating;
+    await product.save();
 
-  await product.save();
-
-
-  return res.json(product);
-
+    return res.json(product);
   } catch (error) {
-      console.log(error.message)
+    console.log(error.message);
   }
-})
+});
 
 module.exports = router;
