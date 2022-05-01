@@ -57,13 +57,15 @@ router.get("/", async (req, res) => {
           return {
             product_id: product.product_id,
             name: product.name,
+            added : product.added,
+            approved : product.approved,
             rating: product.rating,
             images: product.images,
             category_name: product.category_name,
             stock: product.stock,
             price: product.price,
             featured_seller: final_featured_seller,
-            sellers: product.sellers,
+            sellers: product.sellers
           };
         })
         .then((result) => {
@@ -116,6 +118,8 @@ router.get("/", async (req, res) => {
             stock: product.stock,
             price: product.price,
             featured_seller: final_featured_seller,
+            added : product.added,
+            approved : product.approved
           };
           result.push(product_to_return);
         } else {
@@ -127,6 +131,8 @@ router.get("/", async (req, res) => {
             category_name: product.category_name,
             stock: 0,
             price: null,
+            added : product.added,
+            approved : product.approved
           };
           result.push(product_to_return);
         }
