@@ -108,6 +108,23 @@ router.post("/ban", async (req, res) => {
             console.log(e);
         });
 
+        const stocks = await Stock.findAll({
+            where : {
+                user_id : userId
+            }
+        })
+        .then((data) => data).catch(console.log);
+
+        if(stocks.length) {
+
+        for(let stock of stocks){
+            stock.active = false;
+
+            await stock.save();
+        }
+        }
+
+
         user.active = false;
 
         await user.save();
@@ -137,6 +154,22 @@ router.post("/unban", async (req, res) => {
         }).catch((e) => {
             console.log(e);
         });
+
+        const stocks = await Stock.findAll({
+            where : {
+                user_id : userId
+            }
+        })
+        .then((data) => data).catch(console.log);
+
+        if(stocks.length) {
+
+        for(let stock of stocks){
+            stock.active = true;
+
+            await stock.save();
+        }
+        }
 
         user.active = true;
 

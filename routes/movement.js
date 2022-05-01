@@ -18,7 +18,7 @@ router.post("/sold", async(req,res)=>{
 
         const product = await Product.findByPk(product_id);
 
-        if(!product.approved) return res.json("Product not approved to sell");
+        if(!product || !product.approved) return res.json("Product not approved to sell");
         if(!seller) return res.json("Seller not found");
         if(!buyer) return res.json("Buyer not found");
         if(!product) return res.json("Product not found");
@@ -52,8 +52,9 @@ router.post("/sold", async(req,res)=>{
         //     console.log(e);
         // })
 
+        let seller_id2 = seller.user_id;
         const newMove = await Movement.create({
-            seller,
+            seller : seller_id2,
             product,
             buyer_id
         }).then((data)=>{
