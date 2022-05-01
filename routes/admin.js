@@ -225,4 +225,32 @@ router.patch("/giveAdmin/:userId", async (req,res)=>{
     }
 })
 
+router.patch("/giveProvider/:userId", async (req,res)=>{
+    try {
+        const { userId } = req.params;
+
+        if(!userId) return res.json("Must provide a user id");
+
+        const user = await User.findOne({
+            where : {
+                user_id : userId
+            }
+        }).then((data)=>{
+            return data;
+        }).catch(console.log);
+
+        if(!user) return res.json("User not found");
+
+        user.provider = !user.provider;
+
+        await user.save();
+
+
+        user.provider ? res.json("User made a provider"): res.json("User is no longer a provider")
+    } catch (error) {
+        console.log(error);
+        return res.sendStatus(500);
+    }
+})
+
 module.exports = router;

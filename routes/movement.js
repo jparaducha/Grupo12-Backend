@@ -71,8 +71,13 @@ router.post("/sold", async(req,res)=>{
     }
 });
 
-router.get("/:userId", async (req,res)=>{
-    const { userId } = req.params;
+router.get("/", async (req,res)=>{
+    try {
+        
+    const { userId , type } = req.query;
+
+    //----- SI SE PASA USER ID SIN TYPE O TYPE = BUYER DEVUELVE LOS MOVIMIENTOS DE UN COMPRADOR -----
+    if(userId &&( !type || type === "buyer")) {
 
     const moves = await Movement.findAll({
         where : {
@@ -83,8 +88,40 @@ router.get("/:userId", async (req,res)=>{
     }).catch((e)=>{
         console.log(e);
     });
+    
+    return res.json(moves);
+    }
+
+    //------ SI SE PASA USER ID CON TYPE = SELLER DEVUELVE LOS MOVIMIENTOS DE UN VENDEDOR ------
+    if(userId && type === "seller"){
+
+    const moves = await Movement.findAll({
+        where : {
+            seller : userId
+        }
+    }).then((data)=>{
+        return data;
+    }).catch((e)=>{
+        console.log(e);
+    });
+    
+    return res.json(moves);
+    }
+
+    //----- SI NO SE PASA USER ID DEVUELVE TODOS LOS MOVIMIENTOS -----------------
+    const moves = await Movement.findAll().then((data)=> data)
+    .catch((e)=>{
+        console.log(e.error);
+        return res.sendStatus(500);
+    })
 
     return res.json(moves);
+    //---------------------------------------------------------------------------
+
+    } catch (error) {
+        console.log(error.message);
+        return res.sendStatus(500);
+    }
 })
 
 router.post("/review", async (req,res)=>{
