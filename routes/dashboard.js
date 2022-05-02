@@ -75,6 +75,7 @@ router.patch("/provider", async (req,res)=>{
 
 
         if(!user) return res.json("User not found");
+        if(user.provider === "true") return res.json("User is already a provider");
 
         user.provider = "requested";
 
