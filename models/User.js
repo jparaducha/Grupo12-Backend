@@ -59,8 +59,12 @@ sequelize.define('user', {
             defaultValue : false,
         },
         provider : {
-            type : DataTypes.BOOLEAN,
-            defaultValue : false
+            type : DataTypes.STRING(DataTypes.ENUM([
+                "true",
+                "false",
+                "requested"
+            ])),
+            defaultValue : "false"
         },
         newsletter : {
             type : DataTypes.BOOLEAN,

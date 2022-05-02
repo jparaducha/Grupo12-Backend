@@ -261,6 +261,7 @@ router.patch("/giveAdmin/:userId", async (req,res)=>{
 router.patch("/giveProvider/:userId", async (req,res)=>{
     try {
         const { userId } = req.params;
+        const { rejected } = req.query;
 
         if(!userId) return res.json("Must provide a user id");
 
@@ -273,13 +274,19 @@ router.patch("/giveProvider/:userId", async (req,res)=>{
         }).catch(console.log);
 
         if(!user) return res.json("User not found");
+        if(rejected){
+             user.provider = "false";
+             await user.save();
 
-        user.provider = !user.provider;
+             return res.json("User request rejected");
+        }
+
+        user.provider = user.provider!=="true" ? "true" : "false";
 
         await user.save();
 
 
-        user.provider ? res.json("User made a provider"): res.json("User is no longer a provider")
+        user.provider == "true" ? res.json("User made a provider"): res.json("User is no longer a provider")
     } catch (error) {
         console.log(error);
         return res.sendStatus(500);
