@@ -8,6 +8,13 @@ router.post("/", async (req, res) => {
   try {
     const { user_id, product_id, seller_id } = req.body;
 
+    console.log("user_id");
+    console.log(user_id);
+    console.log("product_id");
+    console.log(product_id);
+    console.log("seller_id");
+    console.log(seller_id);
+
     const user = await User.findOne({
       where: {
         user_id: user_id,
