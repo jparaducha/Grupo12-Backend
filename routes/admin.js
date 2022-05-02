@@ -261,6 +261,7 @@ router.patch("/giveAdmin/:userId", async (req,res)=>{
 router.patch("/giveProvider/:userId", async (req,res)=>{
     try {
         const { userId } = req.params;
+        const { rejected } = req.query;
 
         if(!userId) return res.json("Must provide a user id");
 
@@ -273,6 +274,12 @@ router.patch("/giveProvider/:userId", async (req,res)=>{
         }).catch(console.log);
 
         if(!user) return res.json("User not found");
+        if(rejected){
+             user.provider = "false";
+             await user.save();
+
+             return res.json("User request rejected");
+        }
 
         user.provider = user.provider!=="true" ? "true" : "false";
 
