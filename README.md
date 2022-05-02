@@ -228,6 +228,8 @@
     
     
 <div><h4><img width="25px" height="10px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyaY6YSJzDJk0N6HK1yn-3pScT9mZMJVHQEY21Gjuy7PNaPuAb9QscIy53DiwR9XrSwuE&usqp=CAU"/> PATCH '/dashboard/provider' = Recibe por query { userId } </h4></div>
+    
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se pasa una userId devuelve un JSON "Must provide an user id"</div>
    
  <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se encuentra el usuario devuelve un JSON "User not found"</div>
     
@@ -235,12 +237,14 @@
     
     
       
-<div><h4><img width="25px" height="10px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyaY6YSJzDJk0N6HK1yn-3pScT9mZMJVHQEY21Gjuy7PNaPuAb9QscIy53DiwR9XrSwuE&usqp=CAU"/> PATCH '/admin/giveProvider/:userId' = Recibe por params { userId } </h4></div>
+<div><h4><img width="25px" height="10px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyaY6YSJzDJk0N6HK1yn-3pScT9mZMJVHQEY21Gjuy7PNaPuAb9QscIy53DiwR9XrSwuE&usqp=CAU"/> PATCH '/admin/giveProvider/:userId' = Recibe por params { userId } 
+  Recibe por query = { rejected } </h4></div>
     
-<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se pasa una orderId devuelve un JSON "Must provide an user id"</div>
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se pasa una userId devuelve un JSON "Must provide an user id"</div>
         
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se encuentra el usuario devuelve un JSON "User not found"</div>
     
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Si se pasa "rejected" por query con algún valor (string no vacía) se rechaza la petición del usuario y su estado de provider pasa a false </div>
     
 <div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Invierte el valor booleano de la propiedad "provider". Devuelve un JSON "User made a provider" o "User is no longer a provider", respectivamente </div>
     
