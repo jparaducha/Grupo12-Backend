@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
       },
     });
 
-    if (!user) return res.status(404).send("Error : User not found");
+    if (!user) return res.status(204).send("Error : User not found");
 
     const cart = await Shopping_cart.findAll({ where: { buyer_id: id } });
 
@@ -43,8 +43,8 @@ router.post("/", async (req, res) => {
 
   const buyer = await User.findOne({ where: { user_id: buyer_id } });
 
-  if (!buyer) return res.status(404).send("Error : Buyer not found ");
-  if (!buyer.active) return res.status(400).send("Error : Buyer not active");
+  if (!buyer) return res.status(204).send("Error : Buyer not found ");
+  if (!buyer.active) return res.status(204).send("Error : Buyer not active");
 
   for (let productToAdd of products) {
     console.log(productToAdd);
@@ -65,7 +65,7 @@ router.post("/", async (req, res) => {
     });
     if (!product)
       return res
-        .status(404)
+        .status(204)
         .send(`Error : Product with id=${productToAdd.product_id} not found`);
     if (!product.approved)
       return res
@@ -80,7 +80,7 @@ router.post("/", async (req, res) => {
     });
     if (!seller)
       return res
-        .status(404)
+        .status(204)
         .send(
           `Error : Seller for product with id=${productToAdd.product_id} not found`
         );
@@ -106,7 +106,7 @@ router.post("/", async (req, res) => {
       console.log(e);
       return res.status(400).send(e.message);
     });
-    if (!stock) return res.send.status(404).send("Error : Stock not found ");
+    if (!stock) return res.send.status(204).send("Error : Stock not found ");
 
     if (stock.quantity < productToAdd.quantity)
       return res
@@ -142,7 +142,7 @@ router.post("/", async (req, res) => {
         seller_id: productToAdd.seller_id,
       });
       if (!cart)
-        return res.send.status(404).send("Error : Failed to create cart");
+        return res.send.status(400).send("Error : Failed to create cart");
       productsToAdd.push(cart);
     }
   }
@@ -167,7 +167,12 @@ router.post("/", async (req, res) => {
 
 router.delete("/", async (req, res) => {
   const { buyer_id, seller_id, target } = req.body;
-
+  console.log("user_id");
+  console.log(user_id);
+  console.log("product_id");
+  console.log(product_id);
+  console.log("seller_id");
+  console.log(seller_id);
   if (!buyer_id || !seller_id || !target)
     return res.status(400).send("Error : Missing data in request");
   const buyer = await User.findOne({
@@ -175,13 +180,7 @@ router.delete("/", async (req, res) => {
       user_id: buyer_id,
     },
   });
-  if (!buyer) return res.status(404).send("Error : Buyer not found");
-  const seller = await User.findOne({
-    where: {
-      user_id: seller_id,
-    },
-  });
-  if (!seller) return res.status(404).send("Error : Seller not found");
+  if (!buyer) return res.status(204).send("Error : Buyer not found");
 
   if (target == "ALL") {
     Shopping_cart.destroy({
@@ -192,12 +191,18 @@ router.delete("/", async (req, res) => {
       return res.status(200).send("User cart deleted");
     });
   } else {
+    const seller = await User.findOne({
+      where: {
+        user_id: seller_id,
+      },
+    });
+    if (!seller) return res.status(204).send("Error : Seller not found");
     const product = await Product.findOne({
       where: {
         product_id: target,
       },
     });
-    if (!product) return res.status(404).send("Error : Product not found");
+    if (!product) return res.status(204).send("Error : Product not found");
 
     const cart = await Shopping_cart.findOne({
       where: {
@@ -207,7 +212,7 @@ router.delete("/", async (req, res) => {
       },
     });
 
-    if (!cart) return res.status(404).send("Error : Item not found on cart");
+    if (!cart) return res.status(204).send("Error : Item not found on cart");
 
     Shopping_cart.destroy({
       where: {
@@ -243,7 +248,7 @@ router.patch("/", async (req, res) => {
   })
     .then((productInCart) => {
       if (!productInCart)
-        return res.status(404).send("Producto no encontrado en el carrito");
+        return res.status(204).send("Producto no encontrado en el carrito");
       const stock = Stock.findOne({
         where: {
           product_id: product_id,
@@ -278,7 +283,7 @@ router.delete("/all/:id", async (req, res) => {
       },
     });
 
-    if (!carts) return res.json("No carts found").status(404);
+    if (!carts) return res.json("No carts found").status(204);
 
     carts.forEach(async (i) => {
       await i.destroy();

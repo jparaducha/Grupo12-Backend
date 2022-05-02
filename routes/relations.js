@@ -9,7 +9,7 @@ router.post("/", async (req, res) => {
     return res.status(400).send("Error : Missing data in request");
   if (type != "SIMILAR") {
     if (type != "COMPLEMENTARY") {
-      return res.status(404).send("Error : type of relation unknown");
+      return res.status(400).send("Error : type of relation unknown");
     }
   }
 
@@ -27,13 +27,13 @@ router.post("/", async (req, res) => {
     where: { product_id: product_2_id },
   });
 
-  if (!product_2) return res.status(404).send("Product 2 not found ");
+  if (!product_2) return res.status(204).send("Product 2 not found ");
 
   const product_1 = await Product.findOne({
     where: { product_id: product_1_id },
   });
 
-  if (!product_1) return res.send.status(404).send("Product 1 not found ");
+  if (!product_1) return res.send.status(204).send("Product 1 not found ");
 
   Products_relations.create({
     product_1_id,
@@ -42,7 +42,7 @@ router.post("/", async (req, res) => {
   })
     .then((relation) => {
       if (!relation)
-        return res.send.status(404).send("Failed to create relation");
+        return res.send.status(400).send("Failed to create relation");
       return res.send(relation);
     })
     .catch((e) => {
@@ -57,7 +57,7 @@ router.get("/", async (req, res) => {
   const { product_id, type } = req.query;
   var promise1, promise2;
   const product = await Product.findOne({ where: { product_id: product_id } });
-  if (!product) return res.status(404).send("Error : Product not found ");
+  if (!product) return res.status(204).send("Error : Product not found ");
 
   if (!type) {
     promise1 = Products_relations.findAll({
@@ -73,7 +73,7 @@ router.get("/", async (req, res) => {
   } else {
     if (type != "SIMILAR") {
       if (type != "COMPLEMENTARY") {
-        return res.status(404).send("Error : type of relation unknown");
+        return res.status(400).send("Error : type of relation unknown");
       }
     }
     promise1 = Products_relations.findAll({
@@ -119,7 +119,7 @@ router.get("/", async (req, res) => {
       Promise.all(product_promises).then((promises_snapshot) => {
         const result = [];
         if (promises_snapshot.length === 0)
-          return res.status(404).send("Error : No related products found");
+          return res.status(204).send("Error : No related products found");
         promises_snapshot.forEach(async (product) => {
           let totalStock = 0;
           if (product.product_promise_result.sellers.length !== 0) {
@@ -207,8 +207,8 @@ router.delete("/", async (req, res) => {
     },
   });
 
-  if (!product_1) return res.status(404).send("Error: Product 1 not found");
-  if (!product_2) return res.status(404).send("Error: Product 2 not found");
+  if (!product_1) return res.status(204).send("Error: Product 1 not found");
+  if (!product_2) return res.status(204).send("Error: Product 2 not found");
 
   if (type !== "SIMILAR") {
     if (type !== "COMPLEMENTARY") {
@@ -223,7 +223,7 @@ router.delete("/", async (req, res) => {
       product_2_id: product_2_id,
     },
   });
-  if (!relation) return res.status(404).send("Error: relation not found");
+  if (!relation) return res.status(204).send("Error: relation not found");
 
   await relation.destroy();
 
