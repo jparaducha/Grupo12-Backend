@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
       })
       .catch((e) => console.log(e));
 
-    if (!user) return res.status(404).send("Error : User not found");
+    if (!user) return res.status(204).send("Error : User not found");
     if (!user.provider)
       return res.status(400).send("Error : User not validated as provider");
     if (!user.active) return res.json("Error : User not active");
@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
       })
       .catch((e) => console.log(e));
 
-    if (!product) return res.status(404).send("Error : Product not found");
+    if (!product) return res.status(204).send("Error : Product not found");
     if (!product.approved)
       return res.status(400).send("Error : Product not approved");
 
@@ -76,42 +76,42 @@ router.post("/", async (req, res) => {
   }
 });
 
-
-router.get("/", async (req,res)=>{
+router.get("/", async (req, res) => {
   try {
     const { userId } = req.query;
 
-    if(userId){
+    if (userId) {
+      const stocks = await Stock.findAll({
+        where: {
+          user_id: userId,
+        },
+      })
+        .then((data) => {
+          return data;
+        })
+        .catch((e) => {
+          console.log(e);
+          return res.sendStatus(500);
+        });
 
-    const stocks = await Stock.findAll({
-      where : {
-        user_id : userId
-      }
-    }).then((data)=>{
-      return data;
-    }).catch((e)=>{
-      console.log(e);
-      return res.sendStatus(500);
-    })
+      return res.json(stocks);
+    }
+
+    const stocks = await Stock.findAll()
+      .then((data) => {
+        return data;
+      })
+      .catch((e) => {
+        console.log(e);
+        return res.sendStatus(500);
+      });
 
     return res.json(stocks);
-  }
-
-  
-  const stocks = await Stock.findAll().then((data)=>{
-    return data;
-  }).catch((e)=>{
-    console.log(e);
-    return res.sendStatus(500);
-  })
-
-  return res.json(stocks);
-
   } catch (error) {
     console.log(error.message);
 
     return res.sendStatus(500);
   }
-})
+});
 
 module.exports = router;
