@@ -56,4 +56,36 @@ router.patch("/rating", async (req,res)=>{
     }
 })
 
+router.patch("/provider", async (req,res)=>{
+    try {
+        const { userId } = req.query;
+
+        if(!userId) return res.json("Must provide an user id").status(400);
+
+        const user = await User.findOne({
+            where : {
+                user_id : userId
+            }
+        })
+        .then((data)=>{
+            return data;
+        }).catch((e)=>{
+            console.log(e);
+        });
+
+
+        if(!user) return res.json("User not found");
+        if(user.provider === "true") return res.json("User is already a provider");
+
+        user.provider = "requested";
+
+        await user.save();
+
+        return res.sendStatus(200);
+    } catch (error) {
+        console.log(error.message);
+        return res.sendStatus(500);
+    }
+})
+
 module.exports = router;

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Op } = require("sequelize");
+const { Op, BOOLEAN } = require("sequelize");
 const {
   Product,
   Shopping_cart,
@@ -14,7 +14,7 @@ const {
 
 router.get("/", async (req, res) => {
   try {
-    const { product_id, order } = req.query;
+    const { product_id, order, stock } = req.query;
 
     if (product_id) {
       Product.findOne({
@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
       })
         .then(async (product) => {
           if (!product)
-            return res.status(404).send("Error : product not found");
+            return res.status(204).send("Error : product not found");
           let totalStock = 0;
           product.sellers.map((seller) => {
             if (!product.featured_seller) {
@@ -57,15 +57,15 @@ router.get("/", async (req, res) => {
           return {
             product_id: product.product_id,
             name: product.name,
-            added : product.added,
-            approved : product.approved,
+            added: product.added,
+            approved: product.approved,
             rating: product.rating,
             images: product.images,
             category_name: product.category_name,
             stock: product.stock,
             price: product.price,
             featured_seller: final_featured_seller,
-            sellers: product.sellers
+            sellers: product.sellers,
           };
         })
         .then((result) => {
@@ -80,8 +80,9 @@ router.get("/", async (req, res) => {
         },
       });
       const result = [];
+      const out_Of_Stock = [];
       if (products.length === 0)
-        return res.status(404).send("No products found");
+        return res.status(204).send("No products found");
       products.forEach(async (product) => {
         let totalStock = 0;
         if (product.sellers.length !== 0) {
@@ -118,10 +119,18 @@ router.get("/", async (req, res) => {
             stock: product.stock,
             price: product.price,
             featured_seller: final_featured_seller,
-            added : product.added,
-            approved : product.approved
+            added: product.added,
+            approved: product.approved,
           };
-          result.push(product_to_return);
+          if (product_to_return.stock !== 0) {
+            result.push(product_to_return);
+          } else {
+            if (stock === "true") {
+              result.push(product_to_return);
+            } else {
+              out_Of_Stock.push(product_to_return);
+            }
+          }
         } else {
           const product_to_return = {
             product_id: product.product_id,
@@ -131,10 +140,14 @@ router.get("/", async (req, res) => {
             category_name: product.category_name,
             stock: 0,
             price: null,
-            added : product.added,
-            approved : product.approved
+            added: product.added,
+            approved: product.approved,
           };
-          result.push(product_to_return);
+          if (stock === "true") {
+            result.push(product_to_return);
+          } else {
+            out_Of_Stock.push(product_to_return);
+          }
         }
       });
 
@@ -261,7 +274,7 @@ router.post("/", async (req, res) => {
     });
 
     if (!category)
-      return res.status(400).send("La categoria seleccionada no existe");
+      return res.status(204).send("La categoria seleccionada no existe");
 
     const response = await Product.create({
       name,
@@ -384,25 +397,55 @@ router.post("/load", async (req, res) => {
       /// ????????????????????????????? ///////
       let firstAdded = false;
 
-      for(let user of users){
+      function usersToLoad() {
+        let sellersQty = Math.ceil(Math.random() * users.length - 1) + 1;
+        let sellersIdx = [];
+        let sellerId = Math.ceil(Math.random() * sellersQty);
 
+        for (let i = 0; i < sellersQty; i++) {
+          while (sellersIdx.includes(sellerId)) {
+            sellerId = Math.ceil(Math.random() * users.length);
+          }
+          sellersIdx.push(sellerId);
+        }
+
+        return sellersIdx;
+      }
+
+      let indexes = usersToLoad();
+      let newUsers = [];
+
+      for (index of indexes) {
+        newUsers.push(users[index]);
+      }
+      if (newUsers.length === 0) newUsers.push(users[0]);
+
+      for (let user of newUsers) {
+        if (!user) continue;
         user
-        .addStocks(product, { through: { quantity: !firstAdded?  1 : Math.ceil(Math.random()*50),
-           unit_price: !firstAdded ? i.price : (i.price*(1 + Math.floor(Math.random()*300) / 1000 )).toFixed(2)
-           }
-           })
-        .then((data) => {
-          return data;
-        })
-        .catch((e) => {
-          console.log(e.errors);
-        });
-
+          .addStocks(product, {
+            through: {
+              quantity: !firstAdded ? 1 : Math.ceil(Math.random() * 50),
+              unit_price: !firstAdded
+                ? i.price
+                : (
+                    i.price *
+                    (1 + Math.floor(Math.random() * 300) / 1000)
+                  ).toFixed(2),
+            },
+          })
+          .then((data) => {
+            return data;
+          })
+          .catch((e) => {
+            console.log(e.errors);
+          });
         firstAdded = true;
       }
 
-      
+      // console.log(newUsers.filter((i)=> i).map((i)=> i.name));
     });
+
     return res.sendStatus(200);
   } catch (e) {
     console.log(e.message);
@@ -544,31 +587,30 @@ router.get("/categories/", async (req, res) => {
   }
 });
 
-
-router.patch("/rating", async (req,res)=>{
+router.patch("/rating", async (req, res) => {
   try {
-      const { productId } = req.query;
-      const { rating } = req.body;
+    const { productId } = req.query;
+    const { rating } = req.body;
 
-      if(typeof(rating)!=="number" || rating > 5 || rating < 0) return res.json("Rating must be a number between 0 and 5");
+    if (typeof rating !== "number" || rating > 5 || rating < 0)
+      return res.json("Rating must be a number between 0 and 5");
 
-  const product = await Product.findOne({
-      where : {
-          product_id:  productId
-      }
-  }).then((data)=> data).catch(console.log);
+    const product = await Product.findOne({
+      where: {
+        product_id: productId,
+      },
+    })
+      .then((data) => data)
+      .catch(console.log);
 
+    product.rating = rating;
 
-  product.rating = rating;
+    await product.save();
 
-  await product.save();
-
-
-  return res.json(product);
-
+    return res.json(product);
   } catch (error) {
-      console.log(error.message)
+    console.log(error.message);
   }
-})
+});
 
 module.exports = router;

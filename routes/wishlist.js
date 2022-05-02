@@ -8,6 +8,13 @@ router.post("/", async (req, res) => {
   try {
     const { user_id, product_id, seller_id } = req.body;
 
+    console.log("user_id");
+    console.log(user_id);
+    console.log("product_id");
+    console.log(product_id);
+    console.log("seller_id");
+    console.log(seller_id);
+
     const user = await User.findOne({
       where: {
         user_id: user_id,
@@ -17,7 +24,8 @@ router.post("/", async (req, res) => {
       return res.status(400).send(e.message);
     });
 
-    if (!user) return res.status(404).send("User not found");
+    if (!user) return res.status(204).send("Error : User not found");
+    if (!user.active) return res.status(204).send("Error : User not active");
 
     const product = await Product.findOne({
       where: {
@@ -28,7 +36,24 @@ router.post("/", async (req, res) => {
       return res.status(400).send(e.message);
     });
 
-    if (!product) return res.status(404).send("Product not found");
+    if (!product) return res.status(204).send("Error : Product not found");
+    if (!product.approved)
+      return res.status(400).send("Error : Product not approved");
+
+    const seller = await User.findOne({
+      where: {
+        user_id: seller_id,
+      },
+    }).catch((e) => {
+      console.log(e);
+      return res.status(400).send(e.message);
+    });
+
+    if (!seller) return res.status(204).send("Error : Seller not found");
+    if (!seller.active)
+      return res.status(204).send("Error : Seller not active");
+    if (!seller.provider)
+      return res.status(204).send("Error : Seller not validated as such");
 
     const seller_stock = await Stock.findOne({
       where: {
@@ -40,7 +65,7 @@ router.post("/", async (req, res) => {
       return res.status(400).send(e.message);
     });
 
-    if (!seller_stock) return res.status(404).send("Seller not found");
+    if (!seller_stock) return res.status(204).send("Error : Stock not found");
 
     user
       .addWishlists(product, {
@@ -71,12 +96,12 @@ router.get("/", async (req, res) => {
       user_id: user_id,
     },
   });
-  if (!user) {
-    return res.status(404).send("Error : User not found ");
+  if (!user || !user.active) {
+    return res.status(204).send("User not found or not active");
   } else {
     const user_wishlist = await user.getWishlists();
     if (user_wishlist.length == 0 || !user_wishlist)
-      return res.status(404).send("Error : Wishlist is empty");
+      return res.status(204).send("Wishlist is empty");
     const product_promises = [];
     user_wishlist.forEach((object) => {
       product_promises.push(
@@ -133,7 +158,8 @@ router.delete("/", async (req, res) => {
     },
   });
 
-  if (!user) return res.status(400).send("Error : User not found");
+  if (!user) return res.status(204).send("Error : User not found");
+  if (!user) return res.status(204).send("Error : User not active");
 
   const seller = await User.findOne({
     where: {
@@ -141,7 +167,7 @@ router.delete("/", async (req, res) => {
     },
   });
 
-  if (!seller) return res.status(404).send("Error : Seller not found");
+  if (!seller) return res.status(204).send("Error : Seller not found");
 
   if (!target) return res.status(400).send("Error : Target not specified");
 
@@ -164,8 +190,9 @@ router.delete("/", async (req, res) => {
         product_id: target,
       },
     });
-    if (!product)
-      return res.send.status(404).send("Error : Product not found ");
+    if (!product) return res.status(204).send("Error : Product not found ");
+    if (!product.active)
+      return res.status(204).send("Error : Product not active");
     Wishlist.destroy({
       where: {
         user_id: user_id,

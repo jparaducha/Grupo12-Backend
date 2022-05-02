@@ -17,14 +17,14 @@ router.post("/", async (req, res) => {
     },
   });
 
-  if (!user) return res.status(404).send("Error: User not found");
+  if (!user) return res.status(204).send("Error: User not found");
   const product = await Product.findOne({
     where: {
       product_id: product_id,
     },
   });
 
-  if (!product) return res.status(404).send("Error: Product not found");
+  if (!product) return res.status(204).send("Error: Product not found");
 
   if (!list) {
     Recently_searched.create({
@@ -58,7 +58,7 @@ router.get("/", (req, res) => {
       user_id: user_id,
     },
   }).then((list) => {
-    if (!list) return res.status(404).send("Error : no products found");
+    if (!list) return res.status(204).send("Error : no products found");
     const product_promises = [];
     list.products.forEach((product_id) => {
       product_promises.push(
