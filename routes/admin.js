@@ -274,12 +274,12 @@ router.patch("/giveProvider/:userId", async (req,res)=>{
 
         if(!user) return res.json("User not found");
 
-        user.provider = !user.provider;
+        user.provider = user.provider!=="true" ? "true" : "false";
 
         await user.save();
 
 
-        user.provider ? res.json("User made a provider"): res.json("User is no longer a provider")
+        user.provider == "true" ? res.json("User made a provider"): res.json("User is no longer a provider")
     } catch (error) {
         console.log(error);
         return res.sendStatus(500);
