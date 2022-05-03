@@ -299,7 +299,8 @@ router.patch("/giveProvider/:userId", async (req,res)=>{
 
         if(!user) return res.json("User not found");
         if(rejected){
-             user.provider = "false";
+            if(user.provider !== "requested") return res.json("User didn't request a provider status");
+             user.provider = "rejected";
              await user.save();
 
              return res.json("User request rejected");
