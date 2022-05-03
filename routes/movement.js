@@ -164,7 +164,6 @@ router.post("/review", async (req,res)=>{
             producto.rating = 1;
         }
 
-        console.log(move.rating)
         await move.save();
         await producto.save();
     }
