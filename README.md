@@ -201,14 +201,17 @@
     
       
 <div><h4><img height="10px" width="25px" src="https://www.ulsterceramicspotterysupplies.co.uk/wp-content/uploads/2017/10/4118.png"/> POST '/movement/review' =  Recibe por query {  "orderId" }</h4></div> 
-<div><h4> Recibe por body {  "review" } "review" del tipo string </h4></div>
+<div><h4> Recibe por body {  "review", "stars" , "sellerStars" } "review" del tipo string, "stars" y "sellerStars" del tipo entero. Siendo "stars" la puntuación del producto y "sellerStars" la puntuación al vendedor. </h4></div>
     
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se pasa una orderId devuelve un JSON "An order id must be provided"</div>
     
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se pasa una review devuelve un JSON "Missing review"</div>
     
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se encuentra el movimiento devuelve un JSON "movement not found"</div>
+
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Agrega "sellerStars" al vendedor como rating </div>
     
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Agrega "stars" al producto como rating </div>
     
 <div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Guarda la review en "notes" y cambia el campo "rated" a true. Devuelve un JSON "Review saved" </div>
     
@@ -221,6 +224,14 @@
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si el usuario no tiene movimientos devuelve un JSON "User has no moves"</div>
 <div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Actualiza los campos "seen" de todos los movimientos del usuario a "true". Devuelve un JSON "Movements seen" </div>
     
+
+    
+<div><h4><img width="25px" height="10px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1_PEAPdXyverhNPGppuIntV-fwM3EUYzVettELm6trP0QY9wsUNo4umN59cEPexJWvQ&usqp=CAU"/> GET '/movement/reviews' = Recibe por query { productId } </h4></div>
+   
+    
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Devuelve un arreglo con las reviews del producto de la forma:</div>
+    
+<div><h5>[   { "review" : "Buen producto", "rating" : 2 }  , { "review" : "Malaso" , "rating" : 5 } , {...} , ...] </h5></div>
     
     
 
