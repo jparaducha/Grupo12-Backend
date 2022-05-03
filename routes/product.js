@@ -66,6 +66,7 @@ router.get("/", async (req, res) => {
             price: product.price,
             featured_seller: final_featured_seller,
             sellers: product.sellers,
+            description : product.description
           };
         })
         .then((result) => {
@@ -121,6 +122,7 @@ router.get("/", async (req, res) => {
             featured_seller: final_featured_seller,
             added: product.added,
             approved: product.approved,
+            description: product.description
           };
           if (product_to_return.stock !== 0) {
             result.push(product_to_return);
@@ -142,6 +144,7 @@ router.get("/", async (req, res) => {
             price: null,
             added: product.added,
             approved: product.approved,
+            description : product.description
           };
           if (stock === "true") {
             result.push(product_to_return);

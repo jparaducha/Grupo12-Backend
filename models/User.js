@@ -62,7 +62,8 @@ sequelize.define('user', {
             type : DataTypes.STRING(DataTypes.ENUM([
                 "true",
                 "false",
-                "requested"
+                "requested",
+                "rejected"
             ])),
             defaultValue : "false"
         },
