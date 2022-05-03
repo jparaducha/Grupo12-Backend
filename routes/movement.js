@@ -175,7 +175,7 @@ router.post("/review", async (req,res)=>{
         }
     });
 
-    seller.rating_as_seller = sellerStars;
+    if(sellerStars) seller.rating_as_seller = sellerStars;
 
     await seller.save();
         
