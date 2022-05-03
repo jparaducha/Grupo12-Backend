@@ -371,6 +371,7 @@ router.post("/load", async (req, res) => {
         images: i.image,
         // "category" : i.category_name,
         added: new Date(Date.now()),
+        approved : true
       })
         .then((data) => {
           return data;
