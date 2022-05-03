@@ -105,7 +105,7 @@
     "name" : "WILSON Prime All Court Tennis Balls",
     "description" : "The Wilson Prime tennis ball features exclusive Duraweave felt that is ideal for all court surfaces. Extended play and durability are provided through this ball as well as added performance. Wilson is the Official Ball of the US Open and Australian Open Grand Slam Championships, as well as the NCAA Tennis (Men and Women).",
     "price" : 10.60,
-    "rating" : 5,
+    "rating" : 4,
     "image" : ["https://m.media-amazon.com/images/I/61G-sRVmZSS._AC_SL1500_.jpg"],
     "category_name" : "Tennis"
 },
@@ -123,7 +123,7 @@
     "name" : "adidas Argentina Away Authentic Mens Soccer Jersey- 2020",
     "description" : "Dedicated to the land we live on. Argentina's away uniform is a blue-on-blue dream, reflecting the country's stunning glaciers. This authentic jersey deals with heat and sweat thanks to a breathable fabric that's as cool as silk. The team crest and details are all heat-transferred on, so you stay light on your feet.",
     "price" : 119.99,
-    "rating" : 5,
+    "rating" : 4.2,
     "image" : ["https://m.media-amazon.com/images/I/81EgWeEzUDL._AC_UX342_.jpg"],
     "category_name" : "Football"
 },
@@ -213,7 +213,7 @@
     "name" : "The Complete Sherlock Holmes (Timeless Classics, 2)",
     "description" : "Written by Sir Arthur Conan Doyle between the years 1867 and 1927, the legendary Sherlock Holmes employed his mastery of deductive reasoning and expert sleuthing to solve an array of complex and harrowing cases. From his home—221B Baker Street in London—the legendary Sherlock Holmes (accompanied by his loyal companion and chronicler, Dr. Watson) baffled policemen and became famous worldwide for his remarkable observations and even more eccentric habits.",
     "price" : 25.30,
-    "rating" : 5,
+    "rating" : 4.5,
     "image" : ["https://images-na.ssl-images-amazon.com/images/I/51ruWhmI2iL._SX347_BO1,204,203,200_.jpg"],
     "category_name" : "Mystery"
 },
@@ -249,7 +249,7 @@
     "name" : "The Death of Ivan Ilyich",
     "description" : "The Death of Ivan Ilyich, first published in 1886, is a novella by Leo Tolstoy, considered one of the masterpieces of his late fiction, written shortly after his religious conversion of the late 1870s.",
     "price" : 14.50,
-    "rating" : 5,
+    "rating" : 4.8,
     "image" : ["https://images-na.ssl-images-amazon.com/images/I/51kptwLCQlL._SX331_BO1,204,203,200_.jpg"],
     "category_name" : "Adventure"
 },
@@ -285,7 +285,7 @@
     "name" : "Collected Fictions",
     "description" : "From Jorge Luis Borges’s 1935 debut with The Universal History of Iniquity, through his immensely influential collections Ficciones and The Aleph, these enigmatic, elaborate, imaginative inventions display his talent for turning fiction on its head by playing with form and genre and toying with language. Together these incomparable works comprise the perfect one-volume compendium for all those who have long loved Borges, and a superb introduction to the master's work for those who have yet to discover this singular genius.",
     "price" : 28.49,
-    "rating" : 5,
+    "rating" : 4.3,
     "image" : ["https://images-na.ssl-images-amazon.com/images/I/41To0kgvozL._SX331_BO1,204,203,200_.jpg"],
     "category_name" :  "Classic Literature"
 },
@@ -320,7 +320,7 @@
     "name" : "KitchenAid - KSM150PSER Artisan Series Tilt-Head Stand Mixer - Empire Red",
     "description" : "KitchenAid Artisan Series 5-Quart KSM150PSER Tilt-Head Stand Mixer: Make your favorite appetizers, cakes, cookies and other baked goods with this versatile tilt-head stand mixer. The comfortable handle and 10 speed options help you flawlessly blend even the thickest batters. Easily match your kitchen décor by choosing from a wide variety of colors.",
     "price": 449.99,
-    "rating" : 4.5,
+    "rating" : 5,
     "image" : ["https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6008/6008009_sd.jpg"],
     "category_name" : "Kitchen"
 
@@ -965,7 +965,7 @@
     "name" : "DUNLOP Australian Open Tennis Balls (Can)",
     "description" : "DUNLOP Australian Open Tennis Balls (Can)",
     "price" : 12.95,
-    "rating": 4.1,
+    "rating": 5,
     "image" : ["https://m.media-amazon.com/images/I/81HtL5tqJIL._AC_SX425_.jpg", "https://m.media-amazon.com/images/I/81SmAPCy09L._AC_SX425_.jpg"],
     "category_name" : "Tennis"
 },
@@ -1205,7 +1205,7 @@
     "name" : "Huawei Mate 20 128GB/6GB",
     "description" : "Non-removable Li-Po 5000 mAh battery",
     "price" : 595.99,
-    "rating": 3.1,
+    "rating": 5,
     "image" : ["https://m.media-amazon.com/images/I/71vm1uK9XBL._AC_SX522_.jpg"],
     "category_name" : "Cellphones"
 },
@@ -1309,7 +1309,7 @@
     "name" : "Timberland PRO Men's Base Plate Blended Long-Sleeve T-Shirt with Logo",
     "description" : "Timberland PRO's shirts make a serious function statement by offering wicking and anti-odor technologies plus comfort features, such as side-seam construction, bi-swing backs and tag less neck lables. Seasonal layering, made comfortable and easy.",
     "price" : 18.39,
-    "rating": 3.1,
+    "rating": 5,
     "image" : ["https://m.media-amazon.com/images/I/71ogpYch1dL._AC_UX385_.jpg"],
     "category_name" : "Men's clothing"
 },
