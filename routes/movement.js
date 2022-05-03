@@ -128,7 +128,7 @@ router.get("/", async (req,res)=>{
 router.post("/review", async (req,res)=>{
     try {
         const { orderId } = req.query;
-        const { review } = req.body;
+        const { review , stars, sellerStars } = req.body;
 
         if(!orderId) return res.json("An order id must be provided");
         if(!review) return res.json("Missing review");
@@ -143,6 +143,42 @@ router.post("/review", async (req,res)=>{
 
         if(!move) return res.json("Movement not found");
 
+        let producto;
+    if(stars){
+        producto = await Product.findOne({
+            where : {
+                product_id: move.product_id
+            }
+        })
+
+        
+        move.rating = stars;
+
+        producto.rating = stars;
+        if(stars > 5){
+            move.rating = 5;
+            producto.rating = 5;
+        }
+        if(stars < 1){
+            move.rating = 1;
+            producto.rating = 1;
+        }
+
+        console.log(move.rating)
+        await move.save();
+        await producto.save();
+    }
+
+    const seller = await User.findOne({
+        where : {
+            user_id : move.seller
+        }
+    });
+
+    seller.rating_as_seller = sellerStars;
+
+    await seller.save();
+        
         move.notes = review;
         move.rated = true;
 
@@ -182,6 +218,33 @@ router.patch("/notification", async (req,res)=>{
         });
 
         return res.json("Movements seen");
+
+    } catch (error) {
+        console.log(error.message);
+        return res.sendStatus(500);
+    }
+})
+
+router.get("/reviews", async (req,res)=>{
+    try {
+        const { productId } = req.query;
+
+        if(!productId) return res.json("Invalid input")
+
+        let notes = await Movement.findAll({
+            where : {
+                product_id : productId
+            },
+            attributes : ["notes", "rating"]
+        });
+
+
+        if(!notes || !notes.length) return res.json("Product has no reviews").status(204);
+
+        return res.json(notes.map((i)=> {
+            return {review: i.notes , rating : i.rating};
+        }));
+
 
     } catch (error) {
         console.log(error.message);

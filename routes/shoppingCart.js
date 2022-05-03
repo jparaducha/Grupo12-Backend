@@ -43,8 +43,8 @@ router.post("/", async (req, res) => {
 
   const buyer = await User.findOne({ where: { user_id: buyer_id } });
 
-  if (!buyer) return res.status(204).send("Error : Buyer not found ");
-  if (!buyer.active) return res.status(204).send("Error : Buyer not active");
+  if (!buyer) return res.send("Error : Buyer not found ").status(204);
+  if (!buyer.active) return res.send("Error : Buyer not active").status(204);
 
   for (let productToAdd of products) {
     console.log("post cart");

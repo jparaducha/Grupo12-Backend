@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { sequelize , User } = require("../db");
+const { sequelize , User , Product} = require("../db");
 const authorization = require("../middleware/authorization");
 
 
@@ -36,6 +36,8 @@ router.patch("/rating", async (req,res)=>{
     try {
         const { userId } = req.query;
         const { rating } = req.body;
+
+        if(!rating) return res.json("Missing rating");
 
     const user = await User.findOne({
         where : {
