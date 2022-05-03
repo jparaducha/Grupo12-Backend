@@ -31,42 +31,61 @@ router.get("/", async (req, res) => {
           if (!product)
             return res.status(204).send("Error : product not found");
           let totalStock = 0;
-          product.sellers.map((seller) => {
-            if (!product.featured_seller) {
-              product.featured_seller = seller;
-            }
-            if (
-              seller.rating_as_seller > product.featured_seller.rating_as_seller
-            ) {
-              product.featured_seller = seller;
-            }
-            totalStock += seller.stock.quantity;
-          });
-          product.stock = totalStock;
-          product.price = product.featured_seller.stock.unit_price;
-          const final_featured_seller_stock = {
-            quantity: product.featured_seller.stock.quantity,
-            unit_price: product.featured_seller.stock.unit_price,
-          };
-          const final_featured_seller = {
-            user_id: product.featured_seller.user_id,
-            name: product.featured_seller.name,
-            rating_as_seller: product.featured_seller.rating_as_seller,
-            stock: final_featured_seller_stock,
-          };
-          return {
-            product_id: product.product_id,
-            name: product.name,
-            added: product.added,
-            approved: product.approved,
-            rating: product.rating,
-            images: product.images,
-            category_name: product.category_name,
-            stock: product.stock,
-            price: product.price,
-            featured_seller: final_featured_seller,
-            sellers: product.sellers,
-          };
+          if (product.sellers.length !== 0) {
+            product.sellers.map((seller) => {
+              if (!product.featured_seller) {
+                product.featured_seller = seller;
+              }
+              if (
+                seller.rating_as_seller >
+                product.featured_seller.rating_as_seller
+              ) {
+                product.featured_seller = seller;
+              }
+              totalStock += seller.stock.quantity;
+            });
+            product.stock = totalStock;
+            product.price = product.featured_seller.stock.unit_price;
+            const final_featured_seller_stock = {
+              quantity: product.featured_seller.stock.quantity,
+              unit_price: product.featured_seller.stock.unit_price,
+            };
+            const final_featured_seller = {
+              user_id: product.featured_seller.user_id,
+              name: product.featured_seller.name,
+              rating_as_seller: product.featured_seller.rating_as_seller,
+              stock: final_featured_seller_stock,
+            };
+            return {
+              product_id: product.product_id,
+              name: product.name,
+              added: product.added,
+              approved: product.approved,
+              rating: product.rating,
+              images: product.images,
+              category_name: product.category_name,
+              stock: product.stock,
+              price: product.price,
+              featured_seller: final_featured_seller,
+              sellers: product.sellers,
+              description: product.description,
+            };
+          } else {
+            return {
+              product_id: product.product_id,
+              name: product.name,
+              added: product.added,
+              approved: product.approved,
+              rating: product.rating,
+              images: product.images,
+              category_name: product.category_name,
+              stock: product.stock,
+              price: product.price,
+              featured_seller: {},
+              sellers: product.sellers,
+              description: product.description,
+            };
+          }
         })
         .then((result) => {
           return res.status(200).send(result);
@@ -121,6 +140,7 @@ router.get("/", async (req, res) => {
             featured_seller: final_featured_seller,
             added: product.added,
             approved: product.approved,
+            description: product.description,
           };
           if (product_to_return.stock !== 0) {
             result.push(product_to_return);
@@ -142,6 +162,7 @@ router.get("/", async (req, res) => {
             price: null,
             added: product.added,
             approved: product.approved,
+            description: product.description,
           };
           if (stock === "true") {
             result.push(product_to_return);
@@ -368,6 +389,7 @@ router.post("/load", async (req, res) => {
         images: i.image,
         // "category" : i.category_name,
         added: new Date(Date.now()),
+        approved : true
       })
         .then((data) => {
           return data;

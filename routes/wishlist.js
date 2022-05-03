@@ -7,7 +7,7 @@ const router = require("express").Router();
 router.post("/", async (req, res) => {
   try {
     const { user_id, product_id, seller_id } = req.body;
-
+    console.log("post wishlist");
     console.log("user_id");
     console.log(user_id);
     console.log("product_id");
@@ -147,6 +147,7 @@ router.get("/", async (req, res) => {
 
 router.delete("/", async (req, res) => {
   const { user_id, target, seller_id } = req.body;
+  console.log("delete wishlist");
   console.log(user_id);
   console.log(target);
   console.log(seller_id);
