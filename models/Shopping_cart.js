@@ -10,6 +10,9 @@ module.exports = (sequelize) => {
             type : DataTypes.INTEGER,
             primaryKey : true
         },
+        seller_name : {
+            type : DataTypes.STRING,
+        },
         quantity : {
             type : DataTypes.INTEGER,
         },
