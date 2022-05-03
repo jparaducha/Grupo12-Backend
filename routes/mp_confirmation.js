@@ -28,6 +28,7 @@ router.post("/", async (req,res)=>{
                 type : "SALE",
                 notes : status,
                 productImg : i.product.images[0]
+                ,product_id : i.product.product_id
             });
 
             let product = await Stock.findOne({

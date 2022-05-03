@@ -17,7 +17,8 @@ module.exports = (sequelize) => {
             type : DataTypes.JSON
         },
         input : {
-            type : DataTypes.STRING
+            type : DataTypes.DATEONLY,
+            defaultValue : new Date()
         },
         output : {
             type : DataTypes.STRING
@@ -38,6 +39,13 @@ module.exports = (sequelize) => {
         rated : {
             type : DataTypes.BOOLEAN,
             defaultValue : false
+        },
+        product_id : {
+            type : DataTypes.INTEGER,
+            allowNull : false
+        },
+        rating : {
+            type : DataTypes.FLOAT
         }
     },{ timestamps : false});
     }
