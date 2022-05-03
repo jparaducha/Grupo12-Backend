@@ -47,6 +47,7 @@ router.post("/", async (req, res) => {
   if (!buyer.active) return res.send("Error : Buyer not active").status(204);
 
   for (let productToAdd of products) {
+    console.log("post cart");
     console.log(productToAdd);
     if (
       !productToAdd.seller_id ||
@@ -167,12 +168,13 @@ router.post("/", async (req, res) => {
 
 router.delete("/", async (req, res) => {
   const { buyer_id, seller_id, target } = req.body;
-  console.log("user_id");
-  console.log(user_id);
-  console.log("product_id");
-  console.log(product_id);
-  console.log("seller_id");
-  console.log(seller_id);
+  // console.log("delete cart");
+  // console.log("user_id");
+  // console.log(buyer_id);
+  // console.log("product_id");
+  // console.log(product_id);
+  // console.log("seller_id");
+  // console.log(seller_id);
   if (!buyer_id || !seller_id || !target)
     return res.status(400).send("Error : Missing data in request");
   const buyer = await User.findOne({
