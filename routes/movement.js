@@ -251,4 +251,44 @@ router.get("/reviews", async (req,res)=>{
     }
 })
 
+router.patch("/status", async ( req,res)=>{
+    try {
+        const { query } = req;
+        const { orderId } = query;
+
+        if(!orderId) return res.json("Must provide an order id").status(204)
+
+        const move = await Movement.findOne({
+            where : {
+                order_id : orderId
+            }
+        })
+
+        if(!move) return res.json("Movement not found").status(404);
+
+
+        if(move.type === "SALE")
+        {
+             move.type = "SENT";
+             move.seen = true;
+             await move.save();
+
+             return res.json(`Movement marked as ${move.type}`);
+        }
+
+        if(move.type === "SENT")
+        {
+             move.type = "RECEIVED";
+             await move.save();
+
+             return res.json(`Movement marked as ${move.type}`);
+        }
+
+        return res.json(`Movement is ${move.type}`);
+    } catch (error) {
+        console.log(error.message);
+        return res.sendStatus(500);
+    }
+})
+
 module.exports = router;

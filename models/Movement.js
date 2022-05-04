@@ -24,7 +24,11 @@ module.exports = (sequelize) => {
             type : DataTypes.STRING
         },
         type : {
-            type : DataTypes.STRING
+            type : DataTypes.STRING(DataTypes.ENUM([
+                "SALE",
+                "SENT",
+                "RECEIVED"
+            ]))
         },
         notes : {
             type : DataTypes.TEXT
