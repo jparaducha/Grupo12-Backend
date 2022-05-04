@@ -43,11 +43,10 @@ router.post("/", async (req, res) => {
 
   const buyer = await User.findOne({ where: { user_id: buyer_id } });
 
-  if (!buyer) return res.status(204).send("Error : Buyer not found ");
-  if (!buyer.active) return res.status(204).send("Error : Buyer not active");
+  if (!buyer) return res.send("Error : Buyer not found ").status(204);
+  if (!buyer.active) return res.send("Error : Buyer not active").status(204);
 
   for (let productToAdd of products) {
-    console.log(productToAdd);
     if (
       !productToAdd.seller_id ||
       !productToAdd.product_id ||
@@ -106,7 +105,7 @@ router.post("/", async (req, res) => {
       console.log(e);
       return res.status(400).send(e.message);
     });
-    if (!stock) return res.send.status(204).send("Error : Stock not found ");
+    if (!stock) return res.status(204).send("Error : Stock not found ");
 
     if (stock.quantity < productToAdd.quantity)
       return res
@@ -140,9 +139,10 @@ router.post("/", async (req, res) => {
         buyer_id: buyer_id,
         quantity: productToAdd.quantity,
         seller_id: productToAdd.seller_id,
+        seller_name : seller.name
       });
       if (!cart)
-        return res.send.status(400).send("Error : Failed to create cart");
+        return res.status(400).send("Error : Failed to create cart");
       productsToAdd.push(cart);
     }
   }
@@ -167,12 +167,13 @@ router.post("/", async (req, res) => {
 
 router.delete("/", async (req, res) => {
   const { buyer_id, seller_id, target } = req.body;
-  console.log("user_id");
-  console.log(user_id);
-  console.log("product_id");
-  console.log(product_id);
-  console.log("seller_id");
-  console.log(seller_id);
+  // console.log("delete cart");
+  // console.log("user_id");
+  // console.log(buyer_id);
+  // console.log("product_id");
+  // console.log(product_id);
+  // console.log("seller_id");
+  // console.log(seller_id);
   if (!buyer_id || !seller_id || !target)
     return res.status(400).send("Error : Missing data in request");
   const buyer = await User.findOne({
