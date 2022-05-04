@@ -224,6 +224,18 @@
 <div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si el usuario no tiene movimientos devuelve un JSON "User has no moves"</div>
 <div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Actualiza los campos "seen" de todos los movimientos del usuario a "true". Devuelve un JSON "Movements seen" </div>
     
+    
+    
+    
+    
+<div><h4><img width="25px" height="10px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyaY6YSJzDJk0N6HK1yn-3pScT9mZMJVHQEY21Gjuy7PNaPuAb9QscIy53DiwR9XrSwuE&usqp=CAU"/> PATCH '/movement/status' =  Recibe por query {  "orderId" }</h4></div>
+    
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si no se pasa una orderId devuelve un JSON "Must provide an order id"</div>
+    
+<div><img width="15px" height="15px" src="https://i.dlpng.com/static/png/6330023_preview.png"/> Si el movimiento no existe devuelve un JSON "Movement not found"</div>
+<div><img width="15px" height="15px" src="https://icons-for-free.com/download-icon-approval-131964752335548226_512.png"/> Cambia el campo "type" de "SALE" a "SENT" o de "SENT" a "RECEIVED". Devuelve un JSON "Movement marked as (sent o received, respectivamente)".
+Si el movimiento ya está con type= "RECEIVED. Devuelve un JSON "Movement is RECEIVED" </div>
+    
 
     
 <div><h4><img width="25px" height="10px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRx1_PEAPdXyverhNPGppuIntV-fwM3EUYzVettELm6trP0QY9wsUNo4umN59cEPexJWvQ&usqp=CAU"/> GET '/movement/reviews' = Recibe por query { productId } </h4></div>
