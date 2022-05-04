@@ -235,16 +235,15 @@ router.post("/forgot", async (req,res)=>{
   });
 
   router.post('/loginGoogle' ,async (req,res)=> {
-        console.log('entre a la ruta')
+        // console.log('entre a la ruta')
         const { name, email, tokenId,googleId } = req.body;
-        console.log(name,'soy name')
-        console.log(email,'soy email')
-        console.log(tokenId,'soy token')
+        // console.log(name,'soy name')
+        // console.log(email,'soy email')
+        // console.log(tokenId,'soy token')
         try {
             let usuario = await User.findOne({
                 where: { email },
             });
-            console.log(usuario,'soy usuario existente')
             if (!usuario) {
                 usuario = await User.create({
                 name,
@@ -252,9 +251,12 @@ router.post("/forgot", async (req,res)=>{
                 password:googleId.toString(),
                 active: true
                 });
-                console.log(usuario,'soy usuario en creacion')
+                
             }
-            res.send(usuario);
+
+            const token = jwtGenerator(usuario.dataValues.user_id, usuario.dataValues.email, usuario.dataValues.admin, usuario.dataValues.provider, usuario.dataValues.name); // se genera un token JWT ligado al user_id y se devuelve al usuario;
+             
+            res.json(token);
             } catch (err) {
             res.send(err);
             }
