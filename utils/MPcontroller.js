@@ -1,7 +1,7 @@
 var mercadopago = require("mercadopago");
 const { Stock, Shopping_cart } = require("../db");
 require("dotenv").config();
-const mainPage = "https://hubazar.vercel.app/"
+const mainPage = 'http://localhost:3000/' // "https://hubazar.vercel.app/"
 
 mercadopago.configurations.setAccessToken(process.env.MERCADOPAGOACCESSTOKEN);
 mercadopago.configure({
