@@ -1,7 +1,7 @@
 var mercadopago = require("mercadopago");
 const { Stock, Shopping_cart } = require("../db");
 require("dotenv").config();
-const mainPage = "http://localhost:3000/" || 'https://hubazar.herokuapp.com/'
+const mainPage = 'https://hubazar.herokuapp.com/'
 
 mercadopago.configurations.setAccessToken(process.env.MERCADOPAGOACCESSTOKEN);
 mercadopago.configure({
