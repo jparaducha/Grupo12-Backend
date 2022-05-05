@@ -25,14 +25,23 @@ router.post("/", async (req,res)=>{
                 where : {
                     user_id : i.buyer_id
                 },
-                attributes : ["name"]
+                attributes : ["name","email"]
+            })
+
+            const sellerName = await User.findOne({
+                where : {
+                    user_id : i.buyer_id
+                },
+                attributes : ["name", "email"]
             })
 
             await Movement.create({
                 seller : i.seller_id,
                 seller_name : i.seller_name,
+                seller_email : sellerName.email,
                 buyer_id : external_reference,
                 buyer_name : buyerName.name,
+                buyer_email : buyerName.email,
                 product : i.product.name,
                 type : "SALE",
                 notes : status,

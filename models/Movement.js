@@ -13,10 +13,16 @@ module.exports = (sequelize) => {
         seller_name : {
             type : DataTypes.STRING
         },
+        seller_email : {
+            type : DataTypes.STRING
+        },
         buyer_id : {
             type : DataTypes.STRING
         },
         buyer_name : {
+            type : DataTypes.STRING
+        },
+        buyer_email : {
             type : DataTypes.STRING
         },
         product : {
