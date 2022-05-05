@@ -10,7 +10,13 @@ module.exports = (sequelize) => {
         seller : {
             type : DataTypes.STRING
         },
+        seller_name : {
+            type : DataTypes.STRING
+        },
         buyer_id : {
+            type : DataTypes.STRING
+        },
+        buyer_name : {
             type : DataTypes.STRING
         },
         product : {
@@ -49,6 +55,12 @@ module.exports = (sequelize) => {
             allowNull : false
         },
         rating : {
+            type : DataTypes.FLOAT
+        },
+        quantity : {
+            type : DataTypes.INTEGER
+        },
+        unit_price : {
             type : DataTypes.FLOAT
         }
     },{ timestamps : false});
