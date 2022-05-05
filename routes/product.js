@@ -46,6 +46,15 @@ router.get("/", async (req, res) => {
             };
             if (product.sellers.length !== 0) {
               product.sellers.map((seller) => {
+                if (product.featured_seller) {
+                  if (product.featured_seller.name == seller.name) {
+                    if (seller.stock.quantity == 0) {
+                      product.featured_seller = {};
+                    }
+                  }
+                }
+              });
+              product.sellers.map((seller) => {
                 if (seller.stock.quantity != 0) {
                   console.log(seller.name);
                   console.log(seller.stock.quantity);
@@ -60,11 +69,14 @@ router.get("/", async (req, res) => {
                     product.featured_seller = seller;
                   }
                   totalStock += seller.stock.quantity;
+                } else {
+                  if (product.featured_seller.name == seller.name) {
+                  }
                 }
               });
               product.stock = totalStock;
 
-              if (product.featured_seller) {
+              if (product.featured_seller !== undefined) {
                 const final_featured_seller_stock = {
                   quantity: product.featured_seller.stock.quantity,
                   unit_price: product.featured_seller.stock.unit_price,
@@ -127,6 +139,15 @@ router.get("/", async (req, res) => {
         };
         if (product.sellers.length !== 0) {
           product.sellers.map((seller) => {
+            if (product.featured_seller) {
+              if (product.featured_seller.name == seller.name) {
+                if (seller.stock.quantity == 0) {
+                  product.featured_seller = {};
+                }
+              }
+            }
+          });
+          product.sellers.map((seller) => {
             if (seller.stock.quantity != 0) {
               hasStock = true;
               if (!product.featured_seller) {
@@ -148,7 +169,7 @@ router.get("/", async (req, res) => {
             toPush.price = undefined;
             if (stock == "true") result.push(toPush);
           } else {
-            if (product.featured_seller) {
+            if (product.featured_seller !== undefined) {
               const final_featured_seller_stock = {
                 quantity: product.featured_seller.stock.quantity,
                 unit_price: product.featured_seller.stock.unit_price,
