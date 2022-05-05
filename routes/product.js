@@ -28,50 +28,12 @@ router.get("/", async (req, res) => {
         },
       })
         .then(async (product) => {
-          if (!product)
-            return res.status(204).send("Error : product not found");
-          let totalStock = 0;
-          if (product.sellers.length !== 0) {
-            product.sellers.map((seller) => {
-              if (!product.featured_seller) {
-                product.featured_seller = seller;
-              }
-              if (
-                seller.rating_as_seller >
-                product.featured_seller.rating_as_seller
-              ) {
-                product.featured_seller = seller;
-              }
-              totalStock += seller.stock.quantity;
-            });
-            product.stock = totalStock;
-            product.price = product.featured_seller.stock.unit_price;
-            const final_featured_seller_stock = {
-              quantity: product.featured_seller.stock.quantity,
-              unit_price: product.featured_seller.stock.unit_price,
-            };
-            const final_featured_seller = {
-              user_id: product.featured_seller.user_id,
-              name: product.featured_seller.name,
-              rating_as_seller: product.featured_seller.rating_as_seller,
-              stock: final_featured_seller_stock,
-            };
-            return {
-              product_id: product.product_id,
-              name: product.name,
-              added: product.added,
-              approved: product.approved,
-              rating: product.rating,
-              images: product.images,
-              category_name: product.category_name,
-              stock: product.stock,
-              price: product.price,
-              featured_seller: final_featured_seller,
-              sellers: product.sellers,
-              description: product.description,
-            };
+          if (!product) {
+            return "Error : product not found";
           } else {
-            return {
+            let hasStock = false;
+            let totalStock = 0;
+            const result = {
               product_id: product.product_id,
               name: product.name,
               added: product.added,
@@ -79,16 +41,76 @@ router.get("/", async (req, res) => {
               rating: product.rating,
               images: product.images,
               category_name: product.category_name,
-              stock: product.stock,
-              price: product.price,
-              featured_seller: {},
-              sellers: product.sellers,
               description: product.description,
+              sellers: product.sellers,
             };
+            if (product.sellers.length !== 0) {
+              product.sellers.map((seller) => {
+                if (product.featured_seller) {
+                  if (product.featured_seller.name == seller.name) {
+                    if (seller.stock.quantity == 0) {
+                      product.featured_seller = {};
+                    }
+                  }
+                }
+              });
+              product.sellers.map((seller) => {
+                if (seller.stock.quantity != 0) {
+                  console.log(seller.name);
+                  console.log(seller.stock.quantity);
+                  hasStock = true;
+                  if (!product.featured_seller) {
+                    product.featured_seller = seller;
+                  }
+                  if (
+                    seller.rating_as_seller >
+                    product.featured_seller.rating_as_seller
+                  ) {
+                    product.featured_seller = seller;
+                  }
+                  totalStock += seller.stock.quantity;
+                } else {
+                  if (product.featured_seller.name == seller.name) {
+                  }
+                }
+              });
+              product.stock = totalStock;
+
+              if (product.featured_seller !== undefined) {
+                const final_featured_seller_stock = {
+                  quantity: product.featured_seller.stock.quantity,
+                  unit_price: product.featured_seller.stock.unit_price,
+                };
+                product.price = product.featured_seller.stock.unit_price;
+                const final_featured_seller = {
+                  user_id: product.featured_seller.user_id,
+                  name: product.featured_seller.name,
+                  rating_as_seller: product.featured_seller.rating_as_seller,
+                  stock: final_featured_seller_stock,
+                };
+                result.featured_seller = final_featured_seller;
+                result.stock = totalStock;
+                result.price = final_featured_seller.stock.unit_price;
+              }
+              if (hasStock === false) {
+                result.featured_seller = {};
+                result.stock = 0;
+                result.price = undefined;
+              }
+            } else {
+              result.featured_seller = {};
+              result.stock = 0;
+              result.price = undefined;
+            }
+            product.save();
+            return result;
           }
         })
         .then((result) => {
-          return res.status(200).send(result);
+          return res.send(result).status(200);
+        })
+        .catch((e) => {
+          console.log(e);
         });
     } else {
       const products = await Product.findAll({
@@ -99,79 +121,85 @@ router.get("/", async (req, res) => {
         },
       });
       const result = [];
-      const out_Of_Stock = [];
       if (products.length === 0)
         return res.status(204).send("No products found");
       products.forEach(async (product) => {
+        let hasStock = false;
         let totalStock = 0;
+        const toPush = {
+          product_id: product.product_id,
+          name: product.name,
+          added: product.added,
+          approved: product.approved,
+          rating: product.rating,
+          images: product.images,
+          category_name: product.category_name,
+          description: product.description,
+          sellers: product.sellers,
+        };
         if (product.sellers.length !== 0) {
           product.sellers.map((seller) => {
-            if (!product.featured_seller) {
-              product.featured_seller = seller;
+            if (product.featured_seller) {
+              if (product.featured_seller.name == seller.name) {
+                if (seller.stock.quantity == 0) {
+                  product.featured_seller = {};
+                }
+              }
             }
-            if (
-              seller.rating_as_seller > product.featured_seller.rating_as_seller
-            ) {
-              product.featured_seller = seller;
+          });
+          product.sellers.map((seller) => {
+            if (seller.stock.quantity != 0) {
+              hasStock = true;
+              if (!product.featured_seller) {
+                product.featured_seller = seller;
+              }
+              if (
+                seller.rating_as_seller >
+                product.featured_seller.rating_as_seller
+              ) {
+                product.featured_seller = seller;
+              }
+              totalStock += seller.stock.quantity;
             }
-            totalStock += seller.stock.quantity;
           });
           product.stock = totalStock;
-          product.price = product.featured_seller.stock.unit_price;
-          const final_featured_seller_stock = {
-            quantity: product.featured_seller.stock.quantity,
-            unit_price: product.featured_seller.stock.unit_price,
-          };
-          const final_featured_seller = {
-            user_id: product.featured_seller.user_id,
-            name: product.featured_seller.name,
-            rating_as_seller: product.featured_seller.rating_as_seller,
-            stock: final_featured_seller_stock,
-          };
-          product.save();
-          const product_to_return = {
-            product_id: product.product_id,
-            name: product.name,
-            rating: product.rating,
-            images: product.images,
-            category_name: product.category_name,
-            stock: product.stock,
-            price: product.price,
-            featured_seller: final_featured_seller,
-            added: product.added,
-            approved: product.approved,
-            description: product.description,
-          };
-          if (product_to_return.stock !== 0) {
-            result.push(product_to_return);
+          if (hasStock === false) {
+            toPush.featured_seller = {};
+            toPush.stock = 0;
+            toPush.price = undefined;
+            if (stock == "true") result.push(toPush);
           } else {
-            if (stock === "true") {
-              result.push(product_to_return);
-            } else {
-              out_Of_Stock.push(product_to_return);
+            if (product.featured_seller !== undefined) {
+              const final_featured_seller_stock = {
+                quantity: product.featured_seller.stock.quantity,
+                unit_price: product.featured_seller.stock.unit_price,
+              };
+              product.price = product.featured_seller.stock.unit_price;
+              const final_featured_seller = {
+                user_id: product.featured_seller.user_id,
+                name: product.featured_seller.name,
+                rating_as_seller: product.featured_seller.rating_as_seller,
+                stock: final_featured_seller_stock,
+              };
+              toPush.featured_seller = final_featured_seller;
+              toPush.stock = totalStock;
+              toPush.price = final_featured_seller.stock.unit_price;
+              if (hasStock === false) {
+                toPush.featured_seller = {};
+                toPush.stock = 0;
+                toPush.price = undefined;
+              }
             }
+            result.push(toPush);
           }
         } else {
-          const product_to_return = {
-            product_id: product.product_id,
-            name: product.name,
-            rating: product.rating,
-            images: product.images,
-            category_name: product.category_name,
-            stock: 0,
-            price: null,
-            added: product.added,
-            approved: product.approved,
-            description: product.description,
-          };
-          if (stock === "true") {
-            result.push(product_to_return);
-          } else {
-            out_Of_Stock.push(product_to_return);
-          }
+          toPush.featured_seller = {};
+          toPush.stock = 0;
+          toPush.price = undefined;
+          if (stock == "true") result.push(toPush);
         }
+        product.save();
       });
-
       if (order === "nameASC") {
         return res.json(
           result.sort((a, b) => {
@@ -389,7 +417,7 @@ router.post("/load", async (req, res) => {
         images: i.image,
         // "category" : i.category_name,
         added: new Date(Date.now()),
-        approved : true
+        approved: true,
       })
         .then((data) => {
           return data;
