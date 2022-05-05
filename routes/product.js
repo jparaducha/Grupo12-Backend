@@ -56,8 +56,6 @@ router.get("/", async (req, res) => {
               });
               product.sellers.map((seller) => {
                 if (seller.stock.quantity != 0) {
-                  console.log(seller.name);
-                  console.log(seller.stock.quantity);
                   hasStock = true;
                   if (!product.featured_seller) {
                     product.featured_seller = seller;

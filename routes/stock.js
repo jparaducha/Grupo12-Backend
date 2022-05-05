@@ -28,8 +28,6 @@ router.post("/", async (req, res) => {
       .catch((e) => console.log(e));
 
     if (!product) return res.status(204).send("Error : Product not found");
-    if (!product.approved)
-      return res.status(400).send("Error : Product not approved");
 
     //--------------------------------------------------------------------
 
