@@ -109,19 +109,19 @@ router.post("/ban", async (req, res) => {
         });
 
         const stocks = await Stock.findAll({
-            where : {
-                user_id : userId
+            where: {
+                user_id: userId
             }
         })
-        .then((data) => data).catch(console.log);
+            .then((data) => data).catch(console.log);
 
-        if(stocks.length) {
+        if (stocks.length) {
 
-        for(let stock of stocks){
-            stock.active = false;
+            for (let stock of stocks) {
+                stock.active = false;
 
-            await stock.save();
-        }
+                await stock.save();
+            }
         }
 
 
@@ -156,19 +156,19 @@ router.post("/unban", async (req, res) => {
         });
 
         const stocks = await Stock.findAll({
-            where : {
-                user_id : userId
+            where: {
+                user_id: userId
             }
         })
-        .then((data) => data).catch(console.log);
+            .then((data) => data).catch(console.log);
 
-        if(stocks.length) {
+        if (stocks.length) {
 
-        for(let stock of stocks){
-            stock.active = true;
+            for (let stock of stocks) {
+                stock.active = true;
 
-            await stock.save();
-        }
+                await stock.save();
+            }
         }
 
         user.active = true;
@@ -254,9 +254,38 @@ router.patch("/giveAdmin/:userId", async (req, res) => {
     }
 })
 
+// router.patch("/giveProvider/:userId", async (req, res) => {
+//     try {
+//         const { userId } = req.params;
+
+//         if (!userId) return res.json("Must provide a user id");
+
+//         const user = await User.findOne({
+//             where: {
+//                 user_id: userId
+//             }
+//         }).then((data) => {
+//             return data;
+//         }).catch(console.log);
+
+//         if (!user) return res.json("User not found");
+
+//         user.provider = !user.provider;
+
+//         await user.save();
+
+
+//         user.provider ? res.json("User made provider") : res.json("Provider credentials taken away")
+//     } catch (error) {
+//         console.log(error);
+//         return res.sendStatus(500);
+//     }
+// })
+
 router.patch("/giveProvider/:userId", async (req, res) => {
     try {
         const { userId } = req.params;
+        const { rejected } = req.query;
 
         if (!userId) return res.json("Must provide a user id");
 
@@ -269,49 +298,21 @@ router.patch("/giveProvider/:userId", async (req, res) => {
         }).catch(console.log);
 
         if (!user) return res.json("User not found");
+        if (rejected) {
+            if (user.provider !== "requested") return res.json("User didn't request a provider status");
+            user.provider = "rejected";
+            await user.save();
 
-        user.provider = !user.provider;
-
-        await user.save();
-
-
-        user.provider ? res.json("User made provider") : res.json("Provider credentials taken away")
-    } catch (error) {
-        console.log(error);
-        return res.sendStatus(500);
-    }
-})
-
-router.patch("/giveProvider/:userId", async (req,res)=>{
-    try {
-        const { userId } = req.params;
-        const { rejected } = req.query;
-
-        if(!userId) return res.json("Must provide a user id");
-
-        const user = await User.findOne({
-            where : {
-                user_id : userId
-            }
-        }).then((data)=>{
-            return data;
-        }).catch(console.log);
-
-        if(!user) return res.json("User not found");
-        if(rejected){
-            if(user.provider !== "requested") return res.json("User didn't request a provider status");
-             user.provider = "rejected";
-             await user.save();
-
-             return res.json("User request rejected");
+            return res.json("User request rejected");
         }
+        console.log(user.provider, 'state provider----')
 
-        user.provider = user.provider!=="true" ? "true" : "false";
+        user.provider = user.provider !== "true" ? "true" : "false";
 
         await user.save();
 
 
-        user.provider == "true" ? res.json("User made a provider"): res.json("User is no longer a provider")
+        user.provider == "true" ? res.json("User made a provider") : res.json("User is no longer a provider")
     } catch (error) {
         console.log(error);
         return res.sendStatus(500);
