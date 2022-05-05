@@ -47,6 +47,8 @@ router.get("/", async (req, res) => {
             if (product.sellers.length !== 0) {
               product.sellers.map((seller) => {
                 if (seller.stock.quantity != 0) {
+                  console.log(seller.name);
+                  console.log(seller.stock.quantity);
                   hasStock = true;
                   if (!product.featured_seller) {
                     product.featured_seller = seller;
@@ -161,8 +163,6 @@ router.get("/", async (req, res) => {
               toPush.featured_seller = final_featured_seller;
               toPush.stock = totalStock;
               toPush.price = final_featured_seller.stock.unit_price;
-              console.log(hasStock);
-              console.log(product.product_id);
               if (hasStock === false) {
                 toPush.featured_seller = {};
                 toPush.stock = 0;
@@ -172,8 +172,6 @@ router.get("/", async (req, res) => {
             result.push(toPush);
           }
         } else {
-          console.log(hasStock);
-          console.log(product.product_id);
           toPush.featured_seller = {};
           toPush.stock = 0;
           toPush.price = undefined;
