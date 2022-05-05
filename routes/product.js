@@ -456,7 +456,7 @@ router.post("/load", async (req, res) => {
         user
           .addStocks(product, {
             through: {
-              quantity: !firstAdded ? 1 : Math.ceil(Math.random() * 50),
+              quantity: Math.ceil(Math.random() * 100),
               unit_price: !firstAdded
                 ? i.price
                 : (
